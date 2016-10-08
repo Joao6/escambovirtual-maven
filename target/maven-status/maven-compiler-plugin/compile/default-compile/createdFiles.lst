@@ -1,0 +1,11 @@
+escambovirtual\controller\ComunicacaoController.class
+escambovirtual\interceptor\Interceptor.class
+escambovirtual\constraints\AppConstraints.class
+escambovirtual\controller\AnuncianteController.class
+escambovirtual\util\FileUploadForm.class
+escambovirtual\controller\EstatisticaController.class
+escambovirtual\controller\UsuarioController.class
+escambovirtual\controller\OfertaController.class
+escambovirtual\controller\ItemController.class
+escambovirtual\controller\AdministradorController.class
+escambovirtual\controller\IndexController.class
