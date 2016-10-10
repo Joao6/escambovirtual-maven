@@ -25,7 +25,6 @@ public class IndexController {
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView goIndex(HttpSession session) throws Exception {
         ModelAndView mv = new ModelAndView("/index");
-//        session.invalidate();        
         return mv;
     }
 
