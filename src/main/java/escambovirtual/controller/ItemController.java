@@ -50,10 +50,12 @@ public class ItemController {
 
         List<Item> itemList = s.readByCriteria(criteria, null, null);
         for (Item item : itemList) {
-            ItemImagem itemImagem = item.getItemImagemList().get(0);
-            List<ItemImagem> itemImagemList = new ArrayList<>();
-            itemImagemList.add(itemImagem);
-            item.setItemImagemList(itemImagemList);
+            if (item.getItemImagemList() != null && item.getItemImagemList().size() > 0) {
+                ItemImagem itemImagem = item.getItemImagemList().get(0);
+                List<ItemImagem> itemImagemList = new ArrayList<>();
+                itemImagemList.add(itemImagem);
+                item.setItemImagemList(itemImagemList);
+            }
         }
         Long count = s.countByCriteria(criteria, null, null);
 

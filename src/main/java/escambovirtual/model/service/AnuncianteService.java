@@ -6,22 +6,28 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 import escambovirtual.model.ConnectionManager;
+import escambovirtual.model.base.BaseDAO;
 import escambovirtual.model.criteria.UsuarioCriteria;
 import escambovirtual.model.dao.UsuarioDAO;
 import java.util.HashMap;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Joao
  */
+@Service
 public class AnuncianteService implements BaseAnuncianteService {
 
+    @Autowired
+    private UsuarioDAO usuarioDAO = new UsuarioDAO();
+    
     @Override
     public void create(Anunciante entity) throws Exception {
         Connection conn = ConnectionManager.getInstance().getConnection();
         try {
-            UsuarioDAO dao = new UsuarioDAO();
-            dao.create(conn, entity);
+            usuarioDAO.create(conn, entity);
             conn.commit();
             conn.close();
         } catch (Exception e) {

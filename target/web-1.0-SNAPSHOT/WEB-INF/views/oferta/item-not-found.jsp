@@ -33,8 +33,8 @@
                     <nav class="grey darken-3 card-panel col s12 z-depth-2">
                         <div class="nav-wrapper">
                             <div class="col s12">
-                                <a href="/web/anunciante/home" class="breadcrumb">Home</a>
-                                <a href="/web/anunciante/pesquisar/item" class="breadcrumb">Pesquisa</a>
+                                <a href="<c:url value="/web/anunciante/home"/>" class="breadcrumb">Home</a>
+                                <a href="<c:url value="/anunciante/pesquisar/item"/>" class="breadcrumb">Pesquisa</a>
                                 <a href="#!" class="breadcrumb">Ver Item</a>
                             </div>                        
                         </div>

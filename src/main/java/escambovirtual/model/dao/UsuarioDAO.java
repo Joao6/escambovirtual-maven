@@ -15,11 +15,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Joao
  */
+@Repository(value = "usuarioDAO")
 public class UsuarioDAO implements BaseDAO<Usuario> {
 
     @Override

@@ -20,7 +20,7 @@
            };
            
            var _getEstados = function(){
-             return $http.get('/web/anunciante/estados/api', HEADERS);  
+             return $http.get('/anunciante/estados/api', HEADERS);  
            };
            
            return {

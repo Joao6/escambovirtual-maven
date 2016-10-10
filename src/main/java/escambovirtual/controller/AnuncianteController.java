@@ -3,6 +3,7 @@ package escambovirtual.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import escambovirtual.constraints.AppConstraints;
+import escambovirtual.model.base.service.BaseAnuncianteService;
 import escambovirtual.model.criteria.ItemCriteria;
 import escambovirtual.model.criteria.LocalizacaoCriteria;
 import escambovirtual.model.criteria.OfertaCriteria;
@@ -28,6 +29,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,6 +42,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AnuncianteController {
+
+    @Autowired
+    private BaseAnuncianteService anuncianteService;
 
     @RequestMapping(value = "anunciantes/novo", method = RequestMethod.GET)
     public ModelAndView getCreateAnunciante() {
@@ -52,8 +58,7 @@ public class AnuncianteController {
         try {
             Map<String, Object> fields = new HashMap<>();
             fields.put("email", email);
-            AnuncianteService s = new AnuncianteService();
-            Map<String, String> errors = s.validate(fields);
+            Map<String, String> errors = anuncianteService.validate(fields);
 
             if (errors.isEmpty()) {
                 Anunciante anunciante = new Anunciante();
@@ -69,7 +74,8 @@ public class AnuncianteController {
                 anunciante.setTelefone(telefone);
                 anunciante.setSexo(sexo);
 
-                s.create(anunciante);
+                anuncianteService.create(anunciante);
+
                 mv = new ModelAndView("redirect:/index");
             } else {
                 mv = new ModelAndView("usuario/anunciante/new");
@@ -278,10 +284,12 @@ public class AnuncianteController {
                 ItemService s = new ItemService();
                 List<Item> itemList = s.readByCriteria(criteria, limit, offset);
                 for (Item item : itemList) {
-                    ItemImagem itemImagem = item.getItemImagemList().get(0);
-                    List<ItemImagem> itemImagemList = new ArrayList<>();
-                    itemImagemList.add(itemImagem);
-                    item.setItemImagemList(itemImagemList);
+                    if (item.getItemImagemList() != null && item.getItemImagemList().size() > 0) {
+                        ItemImagem itemImagem = item.getItemImagemList().get(0);
+                        List<ItemImagem> itemImagemList = new ArrayList<>();
+                        itemImagemList.add(itemImagem);
+                        item.setItemImagemList(itemImagemList);
+                    }
                 }
                 Long count = s.countByCriteria(criteria, limit, offset);
                 mv = new ModelAndView("pesquisaOn/list");
