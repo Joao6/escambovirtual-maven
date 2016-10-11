@@ -11,6 +11,7 @@ import escambovirtual.model.entity.Estado;
 import escambovirtual.model.entity.Imagem;
 import escambovirtual.model.entity.Item;
 import escambovirtual.model.entity.Localizacao;
+import escambovirtual.model.entity.Log;
 import escambovirtual.model.entity.Usuario;
 import escambovirtual.model.service.AdministradorService;
 import escambovirtual.model.service.CidadeService;
@@ -18,13 +19,13 @@ import escambovirtual.model.service.EmailService;
 import escambovirtual.model.service.EstadoService;
 import escambovirtual.model.service.ItemService;
 import escambovirtual.model.service.LocalizacaoService;
+import escambovirtual.model.service.LogService;
 import escambovirtual.model.service.SenhaService;
 import escambovirtual.model.service.UsuarioService;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -106,9 +107,11 @@ public class AdministradorController {
     }
 
     @RequestMapping(value = "/administrador/new", method = RequestMethod.POST)
-    public ModelAndView postAdministradorNew(String nome, String email, String apelido, String senha, String cpf, String nascimento, String telefone, String sexo, HttpServletResponse response) {
+    public ModelAndView postAdministradorNew(String nome, String email, String apelido, String senha, String cpf, String nascimento, String telefone, String sexo, HttpServletResponse response, HttpSession session) {
         ModelAndView mv;
         try {
+            Administrador administrador = (Administrador) session.getAttribute("usuarioSessao");
+
             AdministradorService s = new AdministradorService();
             Administrador adm = new Administrador();
             adm.setNome(nome);
@@ -122,6 +125,15 @@ public class AdministradorController {
             adm.setSexo(sexo);
             adm.setApelido(apelido);
             s.create(adm);
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Cadastro de administrador");
+            log.setIdEvento(adm.getId());
+            log.setIdUsuario(administrador.getId());
+            LogService sl = new LogService();
+            sl.create(log);
+
             mv = new ModelAndView("redirect:/administrador/home");
             response.setStatus(200);
         } catch (Exception e) {
@@ -152,12 +164,22 @@ public class AdministradorController {
         if (errors.isEmpty()) {
             administrador.setSenha(ss.convertPasswordToMD5(novasenha));
             s.update(administrador);
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Alteração de senha administrador");
+            log.setIdEvento(administrador.getId());
+            log.setIdUsuario(administrador.getId());
+            LogService sls = new LogService();
+            sls.create(log);
+
             mv = new ModelAndView("redirect:/administrador/home");
         } else {
             mv = new ModelAndView("usuario/administrador/alterarsenha");
             mv.addObject("validSenha", errors);
             mv.addObject("administrador", administrador);
         }
+
         return mv;
     }
 
@@ -208,6 +230,15 @@ public class AdministradorController {
                 item.setStatus(status);
                 s.update(item);
                 mv = new ModelAndView("redirect:/administrador/list/itens");
+
+                Log log = new Log();
+                log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+                log.setEvento("Edição de status de item");
+                log.setDescricao("Item Publidado");
+                log.setIdEvento(item.getId());
+                log.setIdUsuario(administrador.getId());
+                LogService sls = new LogService();
+                sls.create(log);
             } else {
                 mv = new ModelAndView("error");
                 mv.addObject("error", "Você não possui permissão para realizar tal ação.");
@@ -231,13 +262,22 @@ public class AdministradorController {
                 item.setStatus(status);
                 s.update(item);
                 EmailService es = new EmailService();
-                String texto = "Olá, "+item.getAnunciante().getNome()+". Viemos por meio deste, notificar que "
+                String texto = "Olá, " + item.getAnunciante().getNome() + ". Viemos por meio deste, notificar que "
                         + "seu item infelizmente não foi aprovado durante a avaliação para ser publicado no "
                         + "sistema Escambo Virtual. Certamente isto ocorreu pois o administrador do sistema "
                         + "encontrou alguma incoerência com nossos termos. Logo a frente encontra-se a "
-                        + "descrição da não publicação de seu item. Descrição: "+motivo;
+                        + "descrição da não publicação de seu item. Descrição: " + motivo;
                 es.sendEmail(item.getAnunciante().getEmail(), "Item não publicado =(", texto);
                 mv = new ModelAndView("redirect:/administrador/list/itens");
+
+                Log log = new Log();
+                log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+                log.setEvento("Edição de status de item");
+                log.setDescricao("Item não publicado. Motivo:" + motivo);
+                log.setIdEvento(item.getId());
+                log.setIdUsuario(administrador.getId());
+                LogService sls = new LogService();
+                sls.create(log);
             } else {
                 mv = new ModelAndView("error");
                 mv.addObject("error", "Você não possui permissão para realizar tal ação.");
@@ -323,6 +363,14 @@ public class AdministradorController {
             adm = (Administrador) session.getAttribute("usuarioSessao");
             mv = new ModelAndView("redirect:/administrador/perfil");
             mv.addObject("administrador", adm);
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Edicao de perfil administrador");
+            log.setIdEvento(adm.getId());
+            log.setIdUsuario(adm.getId());
+            LogService sls = new LogService();
+            sls.create(log);
         } catch (Exception e) {
             mv = new ModelAndView("error");
             mv.addObject("error", e);
@@ -332,12 +380,13 @@ public class AdministradorController {
 
     @RequestMapping(value = "/administrador/create/api", method = RequestMethod.POST)
     @ResponseBody
-    public void create(@RequestBody String administrador, HttpServletResponse response) {
+    public void create(@RequestBody String administrador, HttpServletResponse response, HttpSession session) {
         try {
 //            Type type = new TypeToken<Anunciante>(){                
 //            }.getType();
 //            Gson g = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
             Gson g = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
+            Administrador adm = (Administrador) session.getAttribute("usuarioSessao");
 
             Administrador admNew = g.fromJson(administrador, Administrador.class);
             Map<String, Object> fields = new HashMap<>();
@@ -347,6 +396,14 @@ public class AdministradorController {
                 SenhaService ss = new SenhaService();
                 admNew.setSenha(ss.convertPasswordToMD5(admNew.getSenha()));
                 s.create(admNew);
+
+                Log log = new Log();
+                log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+                log.setEvento("Cadastro de administrador");
+                log.setIdEvento(admNew.getId());
+                log.setIdUsuario(adm.getId());
+                LogService sl = new LogService();
+                sl.create(log);
                 response.setStatus(200);
             }
         } catch (Exception e) {
@@ -381,6 +438,74 @@ public class AdministradorController {
             administrador.setImagem(imagem);
             session.setAttribute("administrador", administrador);
             mv = new ModelAndView("redirect:/administrador/perfil");
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Alteração de imagem administrador");
+            log.setIdUsuario(administrador.getId());
+            LogService sls = new LogService();
+            sls.create(log);
+        } catch (Exception e) {
+            mv = new ModelAndView("error");
+            mv.addObject("error", e);
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/administrador/list/logs", method = RequestMethod.GET)
+    public ModelAndView logList(HttpSession session, Long limit, Long offset) {
+        ModelAndView mv = null;
+        try {
+
+//            Administrador adm = (Administrador) session.getAttribute("usuarioSessao");
+//            LogService s = new LogService();
+//            List<Log> logList = s.readByCriteria(null, limit, offset);
+//            Long count = s.countByCriteria(null, limit, offset);
+//            mv = new ModelAndView("usuario/administrador/listLog");
+//            mv.addObject("logList", logList);
+//            mv.addObject("administrador", adm);
+//            mv.addObject("count", count);
+//            mv.addObject("limit", limit);
+//            mv.addObject("offset", offset);
+            if (limit != null && offset != null) {
+                Administrador adm = (Administrador) session.getAttribute("usuarioSessao");
+                LogService s = new LogService();
+                List<Log> logList = s.readByCriteria(null, limit, offset);
+                Long count = s.countByCriteria(null, limit, offset);
+                mv = new ModelAndView("usuario/administrador/listLog");
+                mv.addObject("logList", logList);
+                mv.addObject("administrador", adm);
+                mv.addObject("count", count);
+                mv.addObject("limit", limit);
+                mv.addObject("offset", offset);
+            } else {
+                String redirect = "redirect:/administrador/list/logs?";
+
+                if (limit == null) {
+                    redirect += "limit=" + AppConstraints.LIMIT_LIST_LOG + "&offset=0";
+                }
+                mv = new ModelAndView(redirect);
+            }
+
+//            if (limit != null && offset != null) {
+//                Administrador adm = (Administrador) session.getAttribute("usuarioSessao");
+//                LogService s = new LogService();
+//                List<Log> logList = s.readByCriteria(null, limit, offset);
+//                Long count = s.countByCriteria(null, limit, offset);
+//                mv = new ModelAndView("usuario/administrador/listLog");
+//                mv.addObject("admList", logList);
+//                mv.addObject("administrador", adm);
+//                mv.addObject("count", count);
+//                mv.addObject("limit", limit);
+//                mv.addObject("offset", offset);
+//            } else {
+//                String redirect = "redirect:/administrador/list?";
+//
+//                if (limit == null) {
+//                    redirect += "limit=" + AppConstraints.LIMIT_LIST_LOG + "&offset=0";
+//                }
+//                mv = new ModelAndView(redirect);
+//            }
         } catch (Exception e) {
             mv = new ModelAndView("error");
             mv.addObject("error", e);

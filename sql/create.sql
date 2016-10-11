@@ -134,7 +134,10 @@ CREATE TABLE cidade(
 
 CREATE TABLE log(
 	id BIGSERIAL NOT NULL,
-	descricao VARCHAR(255) NOT NULL,
+        evento VARCHAR(50) NOT NULL,
+        data_hora TIMESTAMP NOT NULL,
+        id_evento BIGINT,
+	descricao VARCHAR(255),
 	usuario_fk BIGINT NOT NULL,
 	PRIMARY KEY(id)
 );

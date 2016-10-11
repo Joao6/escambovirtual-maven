@@ -13,6 +13,10 @@ and open the template in the editor.
     padding-bottom: 15px;
 }
 
+.bodyFont{
+    font-family: 'Montserrat', sans-serif;
+}
+
 #formPesquisa {
     position: absolute;
     width: 500px;
@@ -70,9 +74,111 @@ and open the template in the editor.
 }
 
 #listAnuncios {    
-    background-color: white;    
+    /*background-color: white;*/    
     padding: 5px 30px 1px 30px;
     border-radius: 5px;
+}
+
+.titulo{
+    white-space: pre;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;    
+}
+
+.titulo1{
+    background-color: white;
+    padding-top: 5%;
+    /*width: 100%;*/
+}
+
+.sobre{
+    background-color: #dcdfe1;
+    padding-top: 3%;
+    margin-top: -5%;    
+}
+
+.sobre p{
+    text-align: justify;
+}
+
+.box1{    
+    /*background-color: blue;*/    
+    height: 600px;
+    width: 33%;    
+}
+
+.box2{    
+    /*background-color: white;*/
+    height: 600px;
+    width: 33%;
+}
+
+.box3{    
+    /*background-color: blue;*/
+    height: 600px;
+    width: 33%;
+}
+
+.box4{
+    width: 16%;
+    height: 300px;
+    background-color: black;
+}
+
+.box5{
+    width: 16%;
+    height: 300px;
+    background-color: blue;
+}
+
+.box6{
+    width: 16%;
+    height: 300px;
+    background-color: red;
+}
+
+.box7{
+    width: 16%;
+    height: 300px;
+    background-color: green;
+}
+
+.box8{
+    width: 16%;
+    height: 300px;
+    background-color: yellow;
+}
+
+.box9{
+    width: 16%;
+    height: 300px;
+    background-color: #424242
+}
+
+.developers{
+    background-color: white;
+    margin-bottom: 5%;
+    padding-bottom: 5%;
+}
+
+.img{
+    padding-top: 2%;
+}
+
+.nomes{
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;  
+}
+
+#linha{
+    color: green;
+    background-color: green;
+    height: 15px; 
+    width: 20%;
+    border: 0px;
+    margin-bottom: 10%;   
+    margin-left: 0;
 }
 
 .painelAnuncios li:hover {       
@@ -81,7 +187,7 @@ and open the template in the editor.
 }
 
 .parallax-container{
-    height: 450px;
+    height: 550px;
 }
 
 /* aplica somente no máximo de 320px */

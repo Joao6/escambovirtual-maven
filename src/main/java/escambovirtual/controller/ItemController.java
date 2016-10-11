@@ -7,6 +7,7 @@ import escambovirtual.model.entity.Cidade;
 import escambovirtual.model.entity.Estado;
 import escambovirtual.model.entity.Item;
 import escambovirtual.model.entity.ItemImagem;
+import escambovirtual.model.entity.Log;
 import escambovirtual.model.entity.Oferta;
 import escambovirtual.model.entity.PalavraChave;
 import escambovirtual.model.entity.Usuario;
@@ -14,6 +15,7 @@ import escambovirtual.model.service.CidadeService;
 import escambovirtual.model.service.EmailService;
 import escambovirtual.model.service.EstadoService;
 import escambovirtual.model.service.ItemService;
+import escambovirtual.model.service.LogService;
 import escambovirtual.model.service.OfertaService;
 import escambovirtual.model.service.PalavraChaveService;
 import java.io.ByteArrayInputStream;
@@ -133,7 +135,16 @@ public class ItemController {
 
             ItemService s = new ItemService();
             s.create(item);
-//            response.setStatus(200);
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Cadastro de item");
+            log.setIdEvento(item.getId());
+            log.setIdUsuario(anunciante.getId());
+            LogService sl = new LogService();
+            sl.create(log);
+
+            response.setStatus(200);
 
             EmailService es = new EmailService();
             String assunto = "Novo item cadastrado!";
@@ -216,6 +227,14 @@ public class ItemController {
             s.update(item);
             mv = new ModelAndView("redirect:/anunciante/item");
             response.setStatus(200);
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Edição de item");
+            log.setIdEvento(id);
+            log.setIdUsuario(anunciante.getId());
+            LogService sl = new LogService();
+            sl.create(log);
         } catch (Exception e) {
             mv = new ModelAndView("error");
             mv.addObject("error", e);
@@ -235,6 +254,14 @@ public class ItemController {
                 s.delete(idItem);
                 mv = new ModelAndView("redirect:/anunciante/item");
 //                response.setStatus(200);
+
+                Log log = new Log();
+                log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+                log.setEvento("Exclusão de item");
+                log.setIdEvento(idItem);
+                log.setIdUsuario(usuario.getId());
+                LogService sl = new LogService();
+                sl.create(log);
             } else {
                 mv = new ModelAndView("redirect:/anunciante/item/permissao-negada");
             }

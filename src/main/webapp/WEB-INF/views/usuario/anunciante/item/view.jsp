@@ -81,43 +81,47 @@
                                                 <%--</c:forEach>--%>
                                                 <!--</div>-->
                                                 <%--</c:if>--%>
+                                                <c:if test="${empty item.itemImagemList}">
+                                                    <img class="card-panel z-depth-2" src="<c:url value="/resources/img/sample-1.jpg"/>" height="200" width="200">
+                                                </c:if>
 
-
-                                                <!--SLIDER-->
-                                                <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 600px; height: 400px; overflow: hidden; visibility: hidden;">
-                                                    <!-- Loading Screen -->
-                                                    <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
-                                                        <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-                                                        <div style="position:absolute;display:block;background:url('<c:url value="/resources/img/loading.gif"/>') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
-                                                    </div>
-                                                    <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 600px; height: 400px; overflow: hidden;">
-
-                                                        <c:forEach items="${item.itemImagemList}" var="itemImagem">
-                                                            <div data-p="112.50" style="display: none;">
-                                                                <img data-u="image" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" />
-                                                                <img data-u="thumb" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" />
-                                                            </div>
-                                                        </c:forEach>
-
-                                                        <!-- Thumbnail Navigator -->
-                                                        <div u="thumbnavigator" class="jssort03" style="position:absolute;left:0px;bottom:0px;width:600px;height:60px;" data-autocenter="1">
-                                                            <div style="position: absolute; top: 0; left: 0; width: 100%; height:100%; background-color: #000; filter:alpha(opacity=30.0); opacity:0.3;"></div>
-                                                            <!-- Thumbnail Item Skin Begin -->
-                                                            <div u="slides" style="cursor: default;">
-                                                                <div u="prototype" class="p">
-                                                                    <div class="w">
-                                                                        <div u="thumbnailtemplate" class="t"></div>
-                                                                    </div>
-                                                                    <div class="c"></div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Thumbnail Item Skin End -->
+                                                <c:if test="${not empty item.itemImagemList}">
+                                                    <!--SLIDER-->
+                                                    <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 600px; height: 400px; overflow: hidden; visibility: hidden;">
+                                                        <!-- Loading Screen -->
+                                                        <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+                                                            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+                                                            <div style="position:absolute;display:block;background:url('<c:url value="/resources/img/loading.gif"/>') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
                                                         </div>
-                                                        <!-- Arrow Navigator -->
-                                                        <span data-u="arrowleft" class="jssora02l" style="top:150px;left:8px;width:55px;height:55px;" data-autocenter="2"></span>
-                                                        <span data-u="arrowright" class="jssora02r" style="top:150px;right:8px;width:55px;height:55px;" data-autocenter="2"></span>
+                                                        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 600px; height: 400px; overflow: hidden;">
+
+                                                            <c:forEach items="${item.itemImagemList}" var="itemImagem">
+                                                                <div data-p="112.50" style="display: none;">
+                                                                    <img data-u="image" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" />
+                                                                    <img data-u="thumb" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" />
+                                                                </div>
+                                                            </c:forEach>
+
+                                                            <!-- Thumbnail Navigator -->
+                                                            <div u="thumbnavigator" class="jssort03" style="position:absolute;left:0px;bottom:0px;width:600px;height:60px;" data-autocenter="1">
+                                                                <div style="position: absolute; top: 0; left: 0; width: 100%; height:100%; background-color: #000; filter:alpha(opacity=30.0); opacity:0.3;"></div>
+                                                                <!-- Thumbnail Item Skin Begin -->
+                                                                <div u="slides" style="cursor: default;">
+                                                                    <div u="prototype" class="p">
+                                                                        <div class="w">
+                                                                            <div u="thumbnailtemplate" class="t"></div>
+                                                                        </div>
+                                                                        <div class="c"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Thumbnail Item Skin End -->
+                                                            </div>
+                                                            <!-- Arrow Navigator -->
+                                                            <span data-u="arrowleft" class="jssora02l" style="top:150px;left:8px;width:55px;height:55px;" data-autocenter="2"></span>
+                                                            <span data-u="arrowright" class="jssora02r" style="top:150px;right:8px;width:55px;height:55px;" data-autocenter="2"></span>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </c:if>
                                             </td>
                                         </tr>
                                         <tr>                                            
@@ -134,7 +138,7 @@
                                         </tr>
                                         <tr>
                                             <td><b>Telefone do Anunciante: </b>${item.anunciante.telefone}</td>
-                                            <td><b>Localização do Item: </b>${item.cidade.nome}</td>
+                                            <td><b>Localização do Item: </b>${item.cidade.nome} - ${item.cidade.estado.uf}</td>
                                         </tr>
                                         <tr>
                                             <td><b>Descrição: </b><p>${item.descricao}</p></td>

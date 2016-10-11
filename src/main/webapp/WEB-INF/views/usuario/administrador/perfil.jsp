@@ -67,16 +67,16 @@
                 <div class="row">
                     <div class="input-field col s12 m6 l6">                            
                         <c:if test="${not empty administrador.imagem}">                
-                                <img class="card-panel col s12 m6 l6 lighten-3 z-depth-2 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/usuario/${administrador.id}/img.jpg"/>">
+                            <img class="card-panel col s12 m6 l6 lighten-3 z-depth-2 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/usuario/${administrador.id}/img.jpg"/>">
+                        </c:if>
+                        <c:if test="${empty administrador.imagem}">
+                            <c:if test="${administrador.sexo == 'Masculino'}">                                                                           
+                                <img class="card-panel col s12 m6 l6 lighten-3 z-depth-2 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/resources/img/default-avatar_man.png"/>">
                             </c:if>
-                            <c:if test="${empty administrador.imagem}">
-                                <c:if test="${administrador.sexo == 'Masculino'}">                                                                           
-                                    <img class="card-panel col s12 m6 l6 lighten-3 z-depth-2 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/resources/img/default-avatar_man.png"/>">
-                                </c:if>
-                                <c:if test="${administrador.sexo == 'Feminino'}">                                                                        
-                                    <img class="card-panel col s12 m6 l6 lighten-3 z-depth-2 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/resources/img/default-avatar_women.png"/>">
-                                </c:if>
+                            <c:if test="${administrador.sexo == 'Feminino'}">                                                                        
+                                <img class="card-panel col s12 m6 l6 lighten-3 z-depth-2 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/resources/img/default-avatar_women.png"/>">
                             </c:if>
+                        </c:if>
                         <br/>
                         <a class="btn blue" href="<c:url value="/administrador/imagem-perfil/alterar"/>">Alterar imagem</a>
                     </div>
@@ -131,7 +131,11 @@
                     <div class="input-field col s12 m6 l6">
                         <select name="estado" id="estado" class="browser-default" style="border-color: grey;" onchange="buscar_cidades()">
                             <option value="" disabled="" selected="">Selecione o Estado</option>
-                            <option value="${localizacao.estado.id}" selected="">${localizacao.estado.nome}</option>
+                            <c:if test="${not empty localizacao}">
+                                <c:if test="${not empty localizacao.estado}">
+                                    <option value="${localizacao.estado.id}" selected="">${localizacao.estado.nome}</option>
+                                </c:if>
+                            </c:if>
                             <c:forEach items="${estados}" var="estado">
                                 <option value="${estado.id}">${estado.nome}</option>
                             </c:forEach>
@@ -139,7 +143,12 @@
                     </div>
                     <div id="load_cidades" class="input-field col s12 m6 l6">
                         <select name="cidade" id="cidade" class="browser-default" style="border-color: grey;">                                
-                            <option value="${localizacao.cidade.id}" selected="">${localizacao.cidade.nome}</option>
+                            <option value="" disabled="" selected="">Selecione o Estado primeiro</option>
+                            <c:if test="${not empty localizacao}">
+                                <c:if test="${not empty localizacao.cidade}">
+                                    <option value="${localizacao.cidade.id}" selected="">${localizacao.cidade.nome}</option>
+                                </c:if>
+                            </c:if>
                         </select>                            
                     </div>
                 </div>

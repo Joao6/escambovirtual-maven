@@ -10,4 +10,5 @@ public class AppConstraints {
     public static Long LIMIT_LIST_ADM = 5L;
     public static Long LIMIT_LIST_AVALIACAO_ITENS = 3L;
     public static Long LIMIT_LIST_PESQUISA_INTERNA = 8L;
+    public static Long LIMIT_LIST_LOG = 10L;
 }

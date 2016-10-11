@@ -5,9 +5,12 @@ import escambovirtual.model.criteria.ItemCriteria;
 import escambovirtual.model.criteria.OfertaCriteria;
 import escambovirtual.model.entity.Anunciante;
 import escambovirtual.model.entity.Item;
+import escambovirtual.model.entity.Log;
 import escambovirtual.model.entity.Oferta;
 import escambovirtual.model.entity.OfertaItem;
+import escambovirtual.model.entity.Usuario;
 import escambovirtual.model.service.ItemService;
+import escambovirtual.model.service.LogService;
 import escambovirtual.model.service.OfertaService;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,13 +63,14 @@ public class OfertaController {
 
     @RequestMapping(value = "/oferta/create/{id}", method = RequestMethod.POST)
     @ResponseBody
-    public void createOferta(@RequestBody String itens, @PathVariable Long id, HttpServletResponse response) {
+    public void createOferta(@RequestBody String itens, @PathVariable Long id, HttpServletResponse response, HttpSession session) {
         try {
             Gson gson = new Gson();
             List<Long> itensID = gson.fromJson(itens, ArrayList.class);
             ItemService s = new ItemService();
             Map<Long, Object> criteria = new HashMap<>();
             String ids = "";
+            Usuario usuario = (Anunciante) session.getAttribute("usuarioSessao");
 
             int i = 0;
             while (i < itensID.size()) {
@@ -83,12 +87,20 @@ public class OfertaController {
                 Item item = s.readById(id);
                 Oferta oferta = new Oferta();
                 oferta.setItem(item);
-                OfertaItem ofI = new OfertaItem();                
+                OfertaItem ofI = new OfertaItem();
                 ofI.setItemList(itemList);
                 OfertaService os = new OfertaService();
                 oferta.setOfertaItem(ofI);
                 os.create(oferta);
                 response.setStatus(200);
+
+                Log log = new Log();
+                log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+                log.setEvento("Cadastro de Oferta");
+                log.setIdEvento(oferta.getId());
+                log.setIdUsuario(usuario.getId());
+                LogService sl = new LogService();
+                sl.create(log);
             } else {
                 response.setStatus(500);
             }
@@ -222,16 +234,24 @@ public class OfertaController {
             mv.addObject("error", e);
         }
         return mv;
-    }    
-    
+    }
+
     //aceitar a oferta para realizar a troca
     @RequestMapping(value = "/anunciante/oferta/{id}/aceitar", method = RequestMethod.POST)
-    public ModelAndView postAceitarOferta(HttpSession session){
+    public ModelAndView postAceitarOferta(@PathVariable Long id, HttpSession session) {
         ModelAndView mv = null;
-        try{
+        try {
             Anunciante anunciante = (Anunciante) session.getAttribute("usuarioSessao");
             mv = new ModelAndView("redirect:/anunciante/oferta/list");
-        }catch(Exception e){
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Aceite de Oferta");
+            log.setIdEvento(id);
+            log.setIdUsuario(anunciante.getId());
+            LogService sl = new LogService();
+            sl.create(log);
+        } catch (Exception e) {
             mv = new ModelAndView("error");
             mv.addObject("error", e);
         }

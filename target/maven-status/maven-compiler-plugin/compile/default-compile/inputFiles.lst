@@ -15,9 +15,11 @@ D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\LocalizacaoDAO.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\controller\AdministradorController.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\EstatisticaGeral.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\LogService.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseUsuarioService.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\EstadoDAO.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\OfertaItem.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseLogService.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\criteria\UsuarioCriteria.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\criteria\AnuncianteCriteria.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\Main.java
@@ -44,10 +46,12 @@ D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\UsuarioService.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\OfertaDAO.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Usuario.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\LogDAO.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\controller\IndexController.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\EstatisticaService.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BasePalavraChaveService.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Troca.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Log.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\AnuncianteService.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseEstatisticaService.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseTrocaService.java

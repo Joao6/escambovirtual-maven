@@ -36,14 +36,17 @@ escambovirtual\model\base\service\BaseAdministradorService.class
 escambovirtual\model\dao\CidadeDAO.class
 escambovirtual\model\base\service\BaseEmailService.class
 escambovirtual\model\entity\Anunciante.class
+escambovirtual\model\entity\Log.class
 escambovirtual\util\FileUploadForm.class
 escambovirtual\controller\EstatisticaController.class
+escambovirtual\model\service\LogService.class
 escambovirtual\model\base\service\BaseAnuncianteService.class
 escambovirtual\model\service\ItemService.class
 escambovirtual\model\base\service\BasePalavraChaveService.class
 escambovirtual\model\entity\Cidade.class
 escambovirtual\model\criteria\ItemCriteria.class
 escambovirtual\model\service\EmailService.class
+escambovirtual\model\dao\LogDAO.class
 escambovirtual\model\service\OfertaService.class
 escambovirtual\model\service\UsuarioService.class
 escambovirtual\model\dao\EstadoDAO.class
@@ -77,3 +80,4 @@ escambovirtual\model\base\service\BaseUsuarioService.class
 escambovirtual\model\dao\ComunicacaoDAO.class
 escambovirtual\model\criteria\AnuncianteCriteria.class
 escambovirtual\model\dao\OfertaDAO.class
+escambovirtual\model\base\service\BaseLogService.class

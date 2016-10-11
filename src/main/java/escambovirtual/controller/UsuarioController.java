@@ -2,14 +2,14 @@ package escambovirtual.controller;
 
 import com.google.gson.Gson;
 import escambovirtual.model.criteria.CidadeCriteria;
-import escambovirtual.model.criteria.UsuarioCriteria;
 import escambovirtual.model.entity.Administrador;
 import escambovirtual.model.entity.Anunciante;
 import escambovirtual.model.entity.Cidade;
 import escambovirtual.model.entity.Imagem;
+import escambovirtual.model.entity.Log;
 import escambovirtual.model.entity.Usuario;
-import escambovirtual.model.service.AnuncianteService;
 import escambovirtual.model.service.CidadeService;
+import escambovirtual.model.service.LogService;
 import escambovirtual.model.service.SenhaService;
 import escambovirtual.model.service.UsuarioService;
 import java.util.ArrayList;
@@ -45,18 +45,28 @@ public class UsuarioController {
         usuario = s.login(email, senhaMD5);
         if (usuario instanceof Administrador) {
             session.setAttribute("usuarioSessao", usuario);
-            Map<Long, String> toasts = new HashMap<Long, String>();
-            toasts.put(1L, "Teste do toast");
-            session.setAttribute("toasts", toasts);
             mv = new ModelAndView("redirect:/administrador/home");
             mv.addObject("administrador", usuario);
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Login de administrador");
+            log.setIdEvento(usuario.getId());
+            log.setIdUsuario(usuario.getId());
+            LogService sl = new LogService();
+            sl.create(log);
         } else if (usuario instanceof Anunciante) {
             session.setAttribute("usuarioSessao", usuario);
-            Map<Long, String> toasts = new HashMap<Long, String>();
-            toasts.put(1L, "Teste do toast");
-            session.setAttribute("toasts", toasts);
             mv = new ModelAndView("redirect:/anunciante/home");
             mv.addObject("anunciante", usuario);
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Login de anunciante");
+            log.setIdEvento(usuario.getId());
+            log.setIdUsuario(usuario.getId());
+            LogService sl = new LogService();
+            sl.create(log);
         } else {
             mv = new ModelAndView("redirect:/index");
             mv.addObject("erro", 1);
@@ -66,21 +76,52 @@ public class UsuarioController {
     }
 
     @RequestMapping(value = "/sair", method = RequestMethod.GET)
-    public ModelAndView logout(HttpSession session) {
+    public ModelAndView logout(HttpSession session) throws Exception {
+        Usuario usuario = (Usuario) session.getAttribute("usuarioSessao");
+
+        Log log = new Log();
+
+        if (usuario instanceof Administrador) {
+
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Logout de administrador");
+            log.setIdEvento(usuario.getId());
+            log.setIdUsuario(usuario.getId());
+            LogService sl = new LogService();
+            sl.create(log);
+
+        } else if (usuario instanceof Anunciante) {
+
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Logout de anunciante");
+            log.setIdEvento(usuario.getId());
+            log.setIdUsuario(usuario.getId());
+            LogService sl = new LogService();
+            sl.create(log);
+        }
+
         ModelAndView mv = new ModelAndView("/../../index");
         session.removeAttribute("usuarioSessao");
         return mv;
-    }  
+    }
 
     @RequestMapping(value = "/usuario/recuperar-senha", method = RequestMethod.POST)
     public ModelAndView recuperarSenha(String emailRecuperacao, HttpSession session) throws Exception {
         ModelAndView mv;
 
         UsuarioService s = new UsuarioService();
-        Usuario usuario = s.recuperarSenha(emailRecuperacao);        
+        Usuario usuario = s.recuperarSenha(emailRecuperacao);
 
         if (usuario != null) {
-            mv = new ModelAndView("redirect:/index");            
+            mv = new ModelAndView("redirect:/index");
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Recuperação de senha");
+            log.setIdEvento(usuario.getId());
+            log.setIdUsuario(usuario.getId());
+            LogService sl = new LogService();
+            sl.create(log);
         } else {
             mv = new ModelAndView("redirect:/index");
             mv.addObject("erro", 1);
@@ -166,6 +207,6 @@ public class UsuarioController {
         Imagem imagem = s.getImagem(id);
         response.setContentType("imagem/jpg");
         response.getOutputStream().write(imagem.getConteudo());
-        response.flushBuffer();        
+        response.flushBuffer();
     }
 }

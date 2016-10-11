@@ -80,20 +80,7 @@
                                 <h6 class="center-align" style="text-transform: uppercase;"><strong>Pertencente ao anunciante: </strong>${itemReceptor.anunciante.nome}</h6>
                             </div>
                         </div> 
-                        <!--                        <div class="card-panel">
-                                                    <div class="card-content">
-                                                        <h6 class="center-align" style="text-transform: uppercase;"><strong>Imagens do item:</strong></h6>
-                                                        <div class="carousel" style="margin-top: -70px;">
-                                                            <a class="carousel-item" href="#one!"><img src="<c:url value="/resources/img/background1.jpg"/>"></a>                                        
-                                                            <a class="carousel-item" href="#one!"><img src="<c:url value="/resources/img/background2.jpg"/>"></a>                                        
-                                                            <a class="carousel-item" href="#one!"><img src="<c:url value="/resources/img/background3.jpg"/>"></a>                                        
-                                                            <a class="carousel-item" href="#one!"><img src="<c:url value="/resources/img/background1.jpg"/>"></a>                                        
-                                                            <a class="carousel-item" href="#one!"><img src="<c:url value="/resources/img/background2.jpg"/>"></a>                                        
-                                                            <a class="carousel-item" href="#one!"><img src="<c:url value="/resources/img/background3.jpg"/>"></a>                                        
-                                                        </div>
-                                                        <p style="margin-top: -130px;"></p>
-                                                    </div>
-                                                </div>-->
+                        
                         <div class="card-panel">
                             <div class="card-content">
                                 <form name="formOferta">

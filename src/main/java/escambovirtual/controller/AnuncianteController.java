@@ -14,11 +14,13 @@ import escambovirtual.model.entity.Imagem;
 import escambovirtual.model.entity.Item;
 import escambovirtual.model.entity.ItemImagem;
 import escambovirtual.model.entity.Localizacao;
+import escambovirtual.model.entity.Log;
 import escambovirtual.model.service.AnuncianteService;
 import escambovirtual.model.service.CidadeService;
 import escambovirtual.model.service.EstadoService;
 import escambovirtual.model.service.ItemService;
 import escambovirtual.model.service.LocalizacaoService;
+import escambovirtual.model.service.LogService;
 import escambovirtual.model.service.OfertaService;
 import escambovirtual.model.service.SenhaService;
 import escambovirtual.model.service.UsuarioService;
@@ -30,7 +32,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,13 +47,13 @@ public class AnuncianteController {
     @Autowired
     private BaseAnuncianteService anuncianteService;
 
-    @RequestMapping(value = "anunciantes/novo", method = RequestMethod.GET)
+    @RequestMapping(value = "/anunciantes/novo", method = RequestMethod.GET)
     public ModelAndView getCreateAnunciante() {
         ModelAndView mv = new ModelAndView("usuario/anunciante/new");
         return mv;
     }
 
-    @RequestMapping(value = "anunciantes/novo", method = RequestMethod.POST)
+    @RequestMapping(value = "/anunciantes/novo", method = RequestMethod.POST)
     public ModelAndView postCreateAnunciante(String nome, String apelido, String email, String senha, String telefone, String nascimento, String sexo) {
         ModelAndView mv;
         try {
@@ -167,6 +168,14 @@ public class AnuncianteController {
 
             session.setAttribute("usuarioSessao", anunciante);
             mv = new ModelAndView("redirect:/anunciante/perfil");
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Edicao de perfil anunciante");
+            log.setIdEvento(anunciante.getId());
+            log.setIdUsuario(anunciante.getId());
+            LogService sls = new LogService();
+            sls.create(log);
         } catch (Exception e) {
             mv = new ModelAndView("error");
             mv.addObject("error", e);
@@ -203,6 +212,13 @@ public class AnuncianteController {
             anunciante.setImagem(imagem);
             session.setAttribute("anunciante", anunciante);
             mv = new ModelAndView("redirect:/anunciante/perfil");
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Alteração de imagem anunciante");
+            log.setIdUsuario(anunciante.getId());
+            LogService sls = new LogService();
+            sls.create(log);
         } catch (Exception e) {
             mv = new ModelAndView("error");
             mv.addObject("error", e);
@@ -256,6 +272,14 @@ public class AnuncianteController {
             anunciante.setSenha(passwordMD5);
             s.update(anunciante);
             mv = new ModelAndView("redirect:/anunciante/home");
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Alteração de senha anunciante");
+            log.setIdEvento(anunciante.getId());
+            log.setIdUsuario(anunciante.getId());
+            LogService sls = new LogService();
+            sls.create(log);
         } else {
             mv = new ModelAndView("usuario/anunciante/alterarsenha");
             mv.addObject("validSenha", errors);
@@ -346,6 +370,14 @@ public class AnuncianteController {
                 anuncianteNew.setSenha(ss.convertPasswordToMD5(anuncianteNew.getSenha()));
                 s.create(anuncianteNew);
 
+                Log log = new Log();
+                log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+                log.setEvento("Cadastro de anunciante");
+                log.setIdEvento(anuncianteNew.getId());
+                log.setIdUsuario(anuncianteNew.getId());
+                LogService sl = new LogService();
+                sl.create(log);
+
                 response.setStatus(200);
             }
         } catch (Exception e) {
@@ -363,10 +395,11 @@ public class AnuncianteController {
             ItemService s = new ItemService();
             List<Item> itemList = s.readByCriteria(criteria, null, null);
             for (Item item : itemList) {
-                ItemImagem itemImagem = item.getItemImagemList().get(0);
-                List<ItemImagem> itemImagemList = new ArrayList<>();
-                itemImagemList.add(itemImagem);
-                item.setItemImagemList(itemImagemList);
+                if (item.getItemImagemList() != null && item.getItemImagemList().size() > 0) {
+                    ItemImagem itemImagem = item.getItemImagemList().get(0);
+                    List<ItemImagem> itemImagemList = new ArrayList<>();
+                    itemImagemList.add(itemImagem);
+                }
             }
             Gson g = new Gson();
             itens = g.toJson(itemList);
