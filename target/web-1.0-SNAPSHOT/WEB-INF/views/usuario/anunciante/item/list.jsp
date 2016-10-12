@@ -18,6 +18,9 @@
         <link href="<c:url value="/resources/css/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="<c:url value="/resources/css/ghpages-materialize.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
 
+        <link href="<c:url value="/resources/css/modulo-anunciante/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="<c:url value="/resources/css/modulo-anunciante/meus-itens-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+
         <!--SCRIPTS-->
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
@@ -32,10 +35,11 @@
 
             function setId(id) {
                 document.getElementById('delete-item').value = id;
-            };
+            }
+            ;
         </script>
     </head>
-    <body style="background-color: #b0bec5;">
+    <body>
         <header>
             <jsp:include page="/resources/templates/menu-lateral-anunciante.jsp"/>
 
@@ -56,88 +60,78 @@
             </div>
             <!--FIM MODAL-->
 
-            <div class="row" style="padding-left:15%;padding-right: 15%;">
-                <nav class="grey darken-3 card-panel col s12 z-depth-2">
-                    <div class="nav-wrapper">
-                        <div class="col s12">
-                            <a href="/web/anunciante/home" class="breadcrumb">Home</a>
-                            <a href="#!" class="breadcrumb">Meus Itens</a>
-                        </div>
-                    </div>
-                </nav>
-                <div class="card-panel col s12 m12 l12 grey darken-3">
-                    <div class="right-align">
-                        <a class="waves-effect waves-light btn blue" href="<c:url value="/anunciante/item/new"/>" style="margin-top: 1rem;">Cadastrar item</a>
-                    </div>
-                    <c:if test="${empty itemList}">
-                        <div class="card-panel">
-                            <div class="card-title center" style="text-transform: uppercase;"><strong>Você ainda não possui itens cadastrados!</strong></div>
-                        </div>
-                    </c:if>
-                    <c:if test="${count > 0}">
-                        <h6 class="white-text"><strong>Você possui ${count} itens cadastrados</strong></h6>
-                    </c:if>
-                    <table>
-                        <tbody>
-                            <c:forEach items="${itemList}" var="item">                                
-                                <tr>
-                                    <td>
-                                        <div class="card-panel col s12 m12 l12 z-depth-2">
+            <div class="row container nav-breadcrumb">                                    
+                <div class="col s12 m6 l6 links">
+                    <a href="<c:url value="/anunciante/home"/>" class="breadcrumb link-anterior">Home</a>
+                    <a href="#!" class="breadcrumb link-ativo">Meus Itens</a>
+                </div>
+                <a class="waves-effect waves-light btn blue btn-large btn-cadastrar" href="<c:url value="/anunciante/item/new"/>" style="margin-top: 1rem;">Cadastrar item</a>
+            </div>
+            <div class="linha"></div>                       
 
-                                            <table class="bordered">
-                                                <tr>                                               
-                                                    <td colspan="2">
-                                                        <div class="card-title">                        
-                                                            <h5>${item.nome}</h5>                                                
-                                                        </div>
-                                                    </td>                                        
-                                                </tr>                                    
-                                                <tr>
-                                                    <td rowspan="4">
-                                                        <c:if test="${empty item.itemImagemList}">
-                                                            <img class="card-panel z-depth-2" src="<c:url value="/resources/img/sample-1.jpg"/>" height="200" width="200">
-                                                        </c:if>
-                                                        <c:if test="${not empty item.itemImagemList}">                                                            
-                                                                <c:forEach items="${item.itemImagemList}" var="itemImagem">
-                                                                    <a class="carousel-item" href="#one!">
-                                                                        <img class="materialboxed responsive-img" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" height="200" width="200">
-                                                                    </a>                                        
-                                                                </c:forEach>                                                            
-                                                        </c:if>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Data de Publicação: &nbsp;</b>${item.dataCadastro}</td>
-                                                    <td><b>Interesse 1: &nbsp;</b>${item.interesse1}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Data de Aquisição: &nbsp;</b>${item.dataAquisicao}</td>
-                                                    <td><b>Interesse 2: &nbsp;</b>${item.interesse2}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Status: &nbsp;</b>${item.status}</td>
-                                                    <td><b>Interesse 3: &nbsp;</b>${item.interesse3}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Descrição: </b></td>
-                                                    <td>${item.descricao}</td> 
-                                                </tr>
-                                                <tr>
-                                                    <td class="right-align" colspan="4">
-                                                        <a class="waves-effect waves-light btn brown" href="<c:url value="/anunciante/item/${item.id}/edit"/>" style="margin-left: 0.6rem;">Editar</a>
-                                                        <a class="waves-effect waves-light btn red modal-trigger" href="<c:url value="#modal-excluir"/>" onclick="setId(${item.id})">Excluir</a>                                        
-                                                    </td>
-                                                </tr>
-                                            </table>
+            <div class="container col s12 m12 l12">
+
+                <c:if test="${empty itemList}">
+                    <div class="card-panel">
+                        <div class="card-title center" style="text-transform: uppercase;"><strong>Você ainda não possui itens cadastrados!</strong></div>
+                    </div>
+                </c:if>
+                <div class="list-itens">
+                    <c:if test="${count > 0}">
+                        <h6 class=""><strong>Você possui ${count} itens cadastrados</strong></h6>
+                    </c:if>                                        
+                    <c:forEach items="${itemList}" var="item">                                                        
+                        <div class="item col s12 m12 l12">
+
+                            <table class="bordered">
+                                <tr>                                               
+                                    <td colspan="2">
+                                        <div class="card-title">                        
+                                            <h5>${item.nome}</h5>                                                
                                         </div>
+                                    </td>                                        
+                                </tr>                                    
+                                <tr>
+                                    <td rowspan="4">
+                                        <c:if test="${empty item.itemImagemList}">
+                                            <img class="responsive-img" src="<c:url value="/resources/img/sem-imagem.jpg"/>" height="200" width="200">
+                                        </c:if>
+                                        <c:if test="${not empty item.itemImagemList}">                                                            
+                                            <c:forEach items="${item.itemImagemList}" var="itemImagem">
+                                                <a class="carousel-item" href="#one!">
+                                                    <img class="materialboxed responsive-img" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" height="200" width="200">
+                                                </a>                                        
+                                            </c:forEach>                                                            
+                                        </c:if>
                                     </td>
                                 </tr>
-                            </c:forEach>                
-                        </tbody>
-                    </table>
+                                <tr>
+                                    <td><b>Data de Publicação: &nbsp;</b>${item.dataCadastro}</td>
+                                    <td><b>Interesse 1: &nbsp;</b>${item.interesse1}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Data de Aquisição: &nbsp;</b>${item.dataAquisicao}</td>
+                                    <td><b>Interesse 2: &nbsp;</b>${item.interesse2}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Status: &nbsp;</b>${item.status}</td>
+                                    <td><b>Interesse 3: &nbsp;</b>${item.interesse3}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Descrição: </b></td>
+                                    <td>${item.descricao}</td> 
+                                </tr>
+                                <tr>
+                                    <td class="right-align" colspan="4">
+                                        <a class="waves-effect waves-light btn blue btn-large" href="<c:url value="/anunciante/item/${item.id}/edit"/>" style="margin-left: 0.6rem;">Editar</a>
+                                        <a class="waves-effect waves-light btn red modal-trigger btn-large" href="<c:url value="#modal-excluir"/>" onclick="setId(${item.id})">Excluir</a>                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>                                    
+                    </c:forEach>                                        
                 </div>
-
-            </div>
+            </div>         
         </header>        
     </body>
 </html>

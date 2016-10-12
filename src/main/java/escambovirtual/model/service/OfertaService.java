@@ -4,6 +4,7 @@ import escambovirtual.model.ConnectionManager;
 import escambovirtual.model.base.service.BaseOfertaService;
 import escambovirtual.model.dao.ItemDAO;
 import escambovirtual.model.dao.OfertaDAO;
+import escambovirtual.model.entity.Item;
 import escambovirtual.model.entity.Oferta;
 import java.sql.Connection;
 import java.util.List;
@@ -26,6 +27,7 @@ public class OfertaService implements BaseOfertaService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw e;
         }
     }
 
@@ -36,9 +38,16 @@ public class OfertaService implements BaseOfertaService {
         try {
             OfertaDAO dao = new OfertaDAO();
             oferta = dao.readById(conn, id);
+            if(oferta != null){
+                ItemDAO itemDAO = new ItemDAO();
+                for(Item item : oferta.getOfertaItem().getItemList()){
+                    item.setItemImagemList(itemDAO.readImagesHashByItemId(conn, item.getId()));
+                }
+            }
             conn.close();
         } catch (Exception e) {
             conn.close();
+            throw e;
         }
         return oferta;
     }
@@ -50,9 +59,17 @@ public class OfertaService implements BaseOfertaService {
         try {
             OfertaDAO dao = new OfertaDAO();
             ofertaList = dao.readByCriteria(conn, criteria, null, null);
+            if(ofertaList != null){
+                ItemDAO itemDAO = new ItemDAO();
+                for (Oferta oferta : ofertaList) {
+                    oferta.getItem().setItemImagemList(itemDAO.readImagesHashByItemId(conn, oferta.getItem().getId()));
+                }
+            }
+            conn.commit();
             conn.close();
         } catch (Exception e) {
             conn.close();
+            throw e;
         }
         return ofertaList;
     }
@@ -84,6 +101,7 @@ public class OfertaService implements BaseOfertaService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw e;
         }
         return count;
     }

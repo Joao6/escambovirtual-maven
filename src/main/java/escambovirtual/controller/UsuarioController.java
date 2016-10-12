@@ -75,6 +75,55 @@ public class UsuarioController {
         return mv;
     }
 
+    @RequestMapping(value = "/usuario/login/mobile", method = RequestMethod.GET)
+    public ModelAndView getLoginMobile(){
+        ModelAndView mv = new ModelAndView("usuario/login-mobile");
+        
+        return mv;
+    }
+    
+    @RequestMapping(value = "/usuario/login/mobile", method = RequestMethod.POST)
+    public ModelAndView postLoginMobile(String email, String senha, HttpSession session) throws Exception {
+        UsuarioService s = new UsuarioService();
+        SenhaService ss = new SenhaService();
+        String senhaMD5 = ss.convertPasswordToMD5(senha);
+
+        ModelAndView mv;
+
+        Usuario usuario = null;
+        usuario = s.login(email, senhaMD5);
+        if (usuario instanceof Administrador) {
+            session.setAttribute("usuarioSessao", usuario);
+            mv = new ModelAndView("redirect:/administrador/home");
+            mv.addObject("administrador", usuario);
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Login via mobile de administrador");
+            log.setIdEvento(usuario.getId());
+            log.setIdUsuario(usuario.getId());
+            LogService sl = new LogService();
+            sl.create(log);
+        } else if (usuario instanceof Anunciante) {
+            session.setAttribute("usuarioSessao", usuario);
+            mv = new ModelAndView("redirect:/anunciante/home");
+            mv.addObject("anunciante", usuario);
+
+            Log log = new Log();
+            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            log.setEvento("Login via mobile de anunciante");
+            log.setIdEvento(usuario.getId());
+            log.setIdUsuario(usuario.getId());
+            LogService sl = new LogService();
+            sl.create(log);
+        } else {
+            mv = new ModelAndView("redirect:/index");
+            mv.addObject("erro", 1);
+        }
+
+        return mv;
+    }
+
     @RequestMapping(value = "/sair", method = RequestMethod.GET)
     public ModelAndView logout(HttpSession session) throws Exception {
         Usuario usuario = (Usuario) session.getAttribute("usuarioSessao");

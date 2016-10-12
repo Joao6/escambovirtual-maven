@@ -22,22 +22,30 @@ and open the template in the editor.
     width: 500px;
     height: 47px;
     left: 50%;
-    margin: -140px 0 0 -250px;    
+    margin: -75px 0 0 -250px;    
     top: 75%;
     background-color: white;
     border-radius: 7px;
 }
 
-::-webkit-input-placeholder {
+.login{
+    font-family: 'Roboto', sans-serif;
+}
+
+.login h5{
     color: black;
+}
+
+::-webkit-input-placeholder {
+    color: grey;
 }
 
 ::-moz-placeholder {
-    color: black;
+    color: grey;
 }
 
 ::-ms-input-placeholder {
-    color: black;
+    color: grey;
 }
 
 #lupa {
@@ -53,7 +61,11 @@ and open the template in the editor.
 }
 
 #navbarTop {
-    background-color: #424242;
+    background-color: #363636;
+}
+
+.btn-pesquisar{
+    background-color: #363636;
 }
 
 #txt-cadastrese {
@@ -84,76 +96,79 @@ and open the template in the editor.
     text-align: left;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;    
+    font-weight: 900;
 }
 
 .titulo1{
     background-color: white;
     padding-top: 5%;
+    color: #629b34;
+    font-weight: 900;
+    padding-top: 20px;
     /*width: 100%;*/
 }
 
 .sobre{
-    background-color: #dcdfe1;
+    background-color: #f2f2f2;
     padding-top: 3%;
-    margin-top: -5%;    
+    margin-top: -5%;       
 }
 
 .sobre p{
     text-align: justify;
+    color: #818286;
 }
 
 .box1{    
     /*background-color: blue;*/    
-    height: 600px;
+    height: 560px;
     width: 33%;    
 }
 
 .box2{    
     /*background-color: white;*/
-    height: 600px;
+    height: 560px;
     width: 33%;
 }
 
 .box3{    
     /*background-color: blue;*/
-    height: 600px;
+    height: 560px;
     width: 33%;
 }
 
 .box4{
+    overflow: hidden;
     width: 16%;
-    height: 300px;
-    background-color: black;
+    height: 200px;    
 }
 
 .box5{
     width: 16%;
-    height: 300px;
-    background-color: blue;
+    height: 200px;
+    background-color: #6eb0e0;
 }
 
 .box6{
     width: 16%;
-    height: 300px;
-    background-color: red;
+    height: 200px;    
 }
 
 .box7{
     width: 16%;
-    height: 300px;
-    background-color: green;
+    height: 200px;
+    background-color: #ffc80b;
 }
 
 .box8{
     width: 16%;
-    height: 300px;
-    background-color: yellow;
+    height: 200px;    
 }
 
 .box9{
     width: 16%;
-    height: 300px;
-    background-color: #424242
+    height: 200px;
+    background-color: #629b34;
 }
 
 .developers{
@@ -162,24 +177,51 @@ and open the template in the editor.
     padding-bottom: 5%;
 }
 
+.developers p, h5{
+    color: #ffffff;
+}
+
+.btn-entrar{
+    background-color: #363636;
+    border: 2px solid white;
+}
+
 .img{
+    max-width:250px;
+    max-height:200px;
+    width: auto;
+    height: auto;
+    margin-right: 10px;
+}
+
+.img-logo{
     padding-top: 2%;
+}
+
+.img-login{
+    padding-top: 10%;
 }
 
 .nomes{
     font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;  
+
 }
 
 #linha{
-    color: green;
-    background-color: green;
-    height: 15px; 
+    color: #58595b;
+    background-color: #58595b;
+    height: 13px; 
     width: 20%;
     border: 0px;
     margin-bottom: 10%;   
     margin-left: 0;
 }
+
+.footer{
+    background-color: #7dc838;
+    height: 300px;
+}
+
 
 .painelAnuncios li:hover {       
     -webkit-transform: translateY(-5px);
@@ -201,6 +243,19 @@ and open the template in the editor.
         top: 75%;
         background-color: white;
         border-radius: 7px;
+    }
+
+    .img-logo{
+        width: 100%;
+        height: 100%;
+        /*margin-bottom: -10%;*/
+        margin-top: 8%;
+    }
+
+    #txt-cadastrese {
+        position: relative;
+        margin-top: 190px;
+        font-weight: bold;
     }
 }
 

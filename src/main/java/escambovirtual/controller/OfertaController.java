@@ -5,6 +5,7 @@ import escambovirtual.model.criteria.ItemCriteria;
 import escambovirtual.model.criteria.OfertaCriteria;
 import escambovirtual.model.entity.Anunciante;
 import escambovirtual.model.entity.Item;
+import escambovirtual.model.entity.ItemImagem;
 import escambovirtual.model.entity.Log;
 import escambovirtual.model.entity.Oferta;
 import escambovirtual.model.entity.OfertaItem;
@@ -120,6 +121,16 @@ public class OfertaController {
             Map<Long, Object> criteria = new HashMap<>();
             criteria.put(OfertaCriteria.ANUNCIANTE_ID, anunciante.getId());
             List<Oferta> ofertaList = os.readByCriteria(criteria, null, null);
+            if(ofertaList != null){
+                for (Oferta oferta : ofertaList) {
+                    if(oferta.getItem().getItemImagemList() != null && oferta.getItem().getItemImagemList().size() >0){
+                        ItemImagem itemImagem = oferta.getItem().getItemImagemList().get(0);
+                        List<ItemImagem> itemImagemList = new ArrayList<>();
+                        itemImagemList.add(itemImagem);
+                        oferta.getItem().setItemImagemList(itemImagemList);
+                    }
+                }
+            }
 
             mv.addObject("ofertaList", ofertaList);
             mv.addObject("anunciante", anunciante);
@@ -140,6 +151,12 @@ public class OfertaController {
             if (oferta != null) {
                 if (oferta.getItem().getAnunciante().getId().equals(anunciante.getId())) {
                     Item item = oferta.getOfertaItem().getItemList().get(0);
+                    for(Item aux : oferta.getOfertaItem().getItemList()){
+                        ItemImagem itemImagem = aux.getItemImagemList().get(0);
+                        List<ItemImagem> itemImagemList = new ArrayList<>();
+                        itemImagemList.add(itemImagem);
+                        aux.setItemImagemList(itemImagemList);
+                    }
                     mv = new ModelAndView("oferta/view");
                     mv.addObject("oferta", oferta);
                     mv.addObject("anunciante", anunciante);

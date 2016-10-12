@@ -33,6 +33,7 @@ public class AnuncianteService implements BaseAnuncianteService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw  e;
         }
     }
 
@@ -48,6 +49,7 @@ public class AnuncianteService implements BaseAnuncianteService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw  e;
         }
 
         return anunciante;
@@ -72,6 +74,7 @@ public class AnuncianteService implements BaseAnuncianteService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw  e;
         }
 
         return anuncianteList;
@@ -88,6 +91,7 @@ public class AnuncianteService implements BaseAnuncianteService {
         }catch(Exception e){
             conn.rollback();
             conn.close();
+            throw  e;
         }
     }
 
@@ -102,6 +106,7 @@ public class AnuncianteService implements BaseAnuncianteService {
         }catch(Exception e){
             conn.rollback();
             conn.close();
+            throw  e;
         }
     }
 

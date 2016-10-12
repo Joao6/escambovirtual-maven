@@ -18,6 +18,8 @@
         <link href="<c:url value="/resources/css/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="<c:url value="/resources/css/ghpages-materialize.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
 
+        <link href="<c:url value="/resources/css/modulo-anunciante/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="<c:url value="/resources/css/modulo-anunciante/oferta-view-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <!--SCRIPTS-->
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
@@ -31,7 +33,7 @@
             });
         </script> 
     </head>
-    <body style="background-color: #b0bec5;">
+    <body>
         <header>             
             <!--MODAL ACEITAR OFERTA-->
             <div id="aceitarOferta" class="modal">
@@ -48,47 +50,52 @@
                 </div>
             </div>
             <!--FIM MODAL-->
-            <jsp:include page="/resources/templates/menu-lateral-anunciante.jsp"/>
+            <jsp:include page="/resources/templates/menu-lateral-anunciante.jsp"/>           
 
-            <div class="row" style="padding-left: 15%; padding-right: 15%;">
-                <div class="row">
-                    <nav class="grey darken-3 card-panel col s12 z-depth-2">
-                        <div class="nav-wrapper">
-                            <div class="col s12">
-                                <a href="<c:url value="/anunciante/home"/>" class="breadcrumb">Home</a>                                
-                                <a href="<c:url value="/anunciante/oferta/list"/>" class="breadcrumb">Ofertas Recebidas</a>
-                                <a href="#!" class="breadcrumb">Ver oferta</a>
-                            </div>                        
-                        </div>
-                    </nav>
-                </div>  
+            <div class="row container nav-breadcrumb">                                    
+                <div class="col s12 m12 l12 links">
+                    <a href="<c:url value="/anunciante/home"/>" class="breadcrumb link-anterior">Home</a>
+                    <a href="<c:url value="/anunciante/oferta/list"/>" class="breadcrumb link-anterior">Ofertas Recebidas</a>
+                    <a href="#!" class="breadcrumb link-ativo">Ver Oferta</a>
+                </div>       
+            </div>
+            <div class="linha"></div>
 
-                <div class="card-panel" style="margin-top: -2%;">
-                    <div class="card-content">
-                        <div class="card-panel">
-                            <div class="card-title center">OFERTA ENVIANDA PELO ANUNCIANTE <strong>${anuncianteOferta.nome}</strong> PARA SEU ITEM <strong>${oferta.item.nome}</strong></div>
-                        </div>
-                        <div class="row">
-                            <span><strong>O ${anuncianteOferta.nome} oferece os seguintes itens em troca do seu item:</strong></span>
-                        </div>
-                        <div class="row">
-                            <c:forEach items="${oferta.ofertaItem.itemList}" var="itemOferta">
-                                <div class="card small col s12 m6 l6">
-                                    <div class="card-image waves-effect waves-block waves-light">
-                                        <a href="<c:url value="/anunciante/oferta/${oferta.id}/item/view/${itemOferta.id}"/>"><img class="activator" src="<c:url value="/resources/img/background3.jpg"/>"></a>
-                                    </div>
-                                    <div class="card-content">
-                                        <span class="card-title activator grey-text text-darken-4">${itemOferta.nome}</span>
-                                        <br/>
-                                        <span class="center-align">Clique sobre a imagem para ver mais detalhes</span>
-                                    </div>                                    
+            <div class="container">                
+                <div class="oferta">
+                    <div class="info-header">
+                        <h5 class="center-align">Oferta enviada pelo anunciante <span>${anuncianteOferta.nome}</span></h5>
+                        <h5 class="center-align">Para seu item <span>${oferta.item.nome}</span></h5>
+                    </div>
+                    <div class="row">                    
+                        <h5 style="margin-top: 4%;">Foram ofertados os seguintes itens:</h5>
+                    </div>
+                    <div class="row item">
+                        <c:forEach items="${oferta.ofertaItem.itemList}" var="itemOferta">
+                            <div class="card small col s12 m4 l4">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <a href="<c:url value="/anunciante/oferta/${oferta.id}/item/view/${itemOferta.id}"/>">
+                                        <c:if test="${empty itemOferta.itemImagemList}">
+                                            <img src="<c:url value="/resources/img/sem-imagem.jpg"></c:url>" class="responsive-img" style="padding-top: 8%;">                                                        
+                                        </c:if>
+                                        <c:if test="${not empty itemOferta.itemImagemList}">                                                            
+                                            <c:forEach items="${itemOferta.itemImagemList}" var="itemImagem">                                                            
+                                                <img class="responsive-img" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" height="200" width="200" style="padding-top: 9%;">                                                                                                   
+                                            </c:forEach>                                                            
+                                        </c:if>
+                                    </a>
                                 </div>
-                            </c:forEach>
-                        </div>
-                        <div class="row">
-                            <a class="btn brown right" href="<c:url value="/anunciante/oferta/list"/>">Voltar</a>                            
-                            <a class="btn blue waves-effect right modal-trigger" href="#aceitarOferta" style="margin-right: 0.6rem;">Aceitar Oferta</a>
-                        </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">${itemOferta.nome}</span>
+                                    <br/>
+                                    <span class="center-align">Clique sobre a imagem para ver mais detalhes</span>
+                                </div>                                    
+                            </div>
+                        </c:forEach>
+                    </div>
+                    <div class="row">
+                        <a class="btn blue waves-effect btn-large modal-trigger" href="#aceitarOferta">Aceitar Oferta</a>
+                        <a class="btn grey darken-3 btn-large " href="<c:url value="/anunciante/oferta/list"/>">Voltar</a>                            
                     </div>
                 </div>
             </div>

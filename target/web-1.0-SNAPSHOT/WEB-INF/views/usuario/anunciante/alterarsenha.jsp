@@ -18,51 +18,53 @@
         <link href="<c:url value="/resources/css/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="<c:url value="/resources/css/ghpages-materialize.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
 
+        <link href="<c:url value="/resources/css/modulo-anunciante/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="<c:url value="/resources/css/modulo-anunciante/alterar-senha-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <!--SCRIPTS-->        
-<!--        <script>
-            function validarSenha() {
-                NovaSenha = document.getElementById('novasenha').value;
-                CNovaSenha = document.getElementById('confirmarSenha').value;
-                if (NovaSenha !== CNovaSenha) {
-                    Materialize.toast('As senhas não são iguais!', 4000, 'orange rounded toast');
-                    $("form #novasenha").css({"border-color": "red"});  
-                    $("form #confirmarSenha").css({"border-color": "red"});  
-                    $("form #btn-salvar").prop("disabled", true);
-                    $("form #btn-salvar").addClass("grey");
-                    return false;
-                }else{
-                    Materialize.toast('Senhas iguais!', 4000, 'green rounded toast');
-                    $("form #novasenha").css({"border-color": "green"});  
-                    $("form #confirmarSenha").css({"border-color": "green"});
-                    $("form #btn-salvar").prop("disabled", false);
-                    $("form #btn-salvar").removeClass("grey");
-                }
-                return true;
-            }
-        </script>-->
+        <!--        <script>
+                    function validarSenha() {
+                        NovaSenha = document.getElementById('novasenha').value;
+                        CNovaSenha = document.getElementById('confirmarSenha').value;
+                        if (NovaSenha !== CNovaSenha) {
+                            Materialize.toast('As senhas não são iguais!', 4000, 'orange rounded toast');
+                            $("form #novasenha").css({"border-color": "red"});  
+                            $("form #confirmarSenha").css({"border-color": "red"});  
+                            $("form #btn-salvar").prop("disabled", true);
+                            $("form #btn-salvar").addClass("grey");
+                            return false;
+                        }else{
+                            Materialize.toast('Senhas iguais!', 4000, 'green rounded toast');
+                            $("form #novasenha").css({"border-color": "green"});  
+                            $("form #confirmarSenha").css({"border-color": "green"});
+                            $("form #btn-salvar").prop("disabled", false);
+                            $("form #btn-salvar").removeClass("grey");
+                        }
+                        return true;
+                    }
+                </script>-->
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/resources/js/materialize.min.js"/>"></script>
         <script src="<c:url value="/resources/js/init.js"/>"></script>
-        
+
         <script src="<c:url value="/resources/js/validate-senha.js"/>"></script>
     </head>
-    <body style="background-color: #b0bec5;">
+    <body>
         <header>
             <jsp:include page="/resources/templates/menu-lateral-anunciante.jsp"/>
 
-            <div class="row" style="padding-left:15%;padding-right: 15%;">
-                <nav class="grey darken-3 card-panel col s12 z-depth-2">
-                    <div class="nav-wrapper">
-                        <div class="col col s12 m6 l6">
-                            <a href="/web/anunciante/home" class="breadcrumb">Home</a>
-                            <a href="#!" class="breadcrumb">Alterar Senha</a>
-                        </div>
-                    </div>
-                </nav>
-                <form class="card-panel z-depth-2 col s12" method="post">
+            <div class="row container nav-breadcrumb">                                    
+                <div class="col s12 m6 l6 links">
+                    <a id="primeiro" href="/web/anunciante/home" class="breadcrumb link-anterior">Home</a>
+                    <a href="#!" class="breadcrumb link-ativo">Alterar Senha</a>
+                </div>       
+            </div>
+            <div class="linha"></div>
+
+            <div class="row container">
+                <form class="col s12 formulario" method="post">
                     <div class="card-title">                        
-                        <h5>Alterar Senha</h5>
+                        <h5 class="titulo">Altere a sua senha</h5>
                         <div class="form divider"></div>
                     </div>
                     <div class="row">
@@ -73,7 +75,7 @@
                         <div class="col s12 m6 l6" style="margin-top: 15px;">
                             <c:if test="${not empty validSenha.senha}">
                                 <h6 class="red-text" style="margin-top: 15px;"><strong>${validSenha.senha}</strong></h6>
-                            </c:if>                                
+                                    </c:if>                                
                         </div>
                     </div>
                     <div class="row">
@@ -88,11 +90,12 @@
                     </div>
                     <div class="row">
                         <!--<input type="submit" class="waves-effect waves-light btn right col s12 m4 l2" value="Salvar" />&nbsp;-->
-                        <a class="waves-effect waves-light btn brown right col s12 m4 l2" href="<c:url value="/anunciante/home"/>">Cancelar</a>
-                        <button id="btn-salvar" class="waves-effect waves-light btn blue right col s12 m4 l2" style="margin-right: 0.6rem;">Salvar</button>
+                        <a class="waves-effect waves-light btn grey darken-3 btn-cancelar btn-large right col s12 m4 l2" href="<c:url value="/anunciante/home"/>">Cancelar</a>
+                        <button id="btn-salvar" class="waves-effect waves-light btn blue right btn-large col s12 m4 l2" style="margin-right: 0.6rem;">Salvar</button>
                     </div>
                 </form>
             </div>
+
         </header>
     </body>
 </html>

@@ -25,8 +25,8 @@
         <script src="<c:url value="/resources/js/init.js"/>"></script>
 
         <script type="text/javascript" src="<c:url value="/resources/js/loader.js"/>"></script>         
-        <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfCTZesUuIlMSSbwJv35cUDcq9eeu5xF4" type="text/javascript"></script>-->
-        <script src="<c:url value="/resources/js/key-google.js"/>" type="text/javascript"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfCTZesUuIlMSSbwJv35cUDcq9eeu5xF4" type="text/javascript"></script>
+        <!--<script src="<c:url value="/resources/js/key-google.js"/>" type="text/javascript"></script>-->
 
     </head>
     <body style="background-color: #b0bec5;">

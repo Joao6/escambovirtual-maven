@@ -19,6 +19,9 @@
         <link href="<c:url value="/resources/css/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="<c:url value="/resources/css/ghpages-materialize.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
 
+        <link href="<c:url value="/resources/css/modulo-anunciante/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="<c:url value="/resources/css/modulo-anunciante/pesquisa-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+
         <!--SCRIPTS-->
         <script>
             $(document).ready(function () {
@@ -51,102 +54,103 @@
         <script type="text/javascript" src="<c:url value="/resources/js/materialize.min.js"/>"></script>
         <script src="<c:url value="/resources/js/init.js"/>"></script>
     </head>
-    <body style="background-color: #b0bec5;">
+    <body>
         <header>
             <jsp:include page="/resources/templates/menu-lateral-anunciante.jsp"></jsp:include>
 
-                <div class="row" style="padding-left: 15%; padding-right: 15%; ">
-                    <nav class="grey darken-3 card-panel col s12 z-depth-2">
-                        <div class="nav-wrapper">
-                            <div class="col s12">
-                                <a href="/web/anunciante/home" class="breadcrumb">Home</a>
-                                <a href="#!" class="breadcrumb">Pesquisa</a>
-                            </div>                        
+                <div class="row container nav-breadcrumb">                             
+                    <div class="col s12 l6 m6 links">
+                        <a href="<c:url value="/anunciante/home"/>" class="breadcrumb link-anterior">Home</a>                                              
+                    <a href="<c:url value="#!"/>" class="breadcrumb link-ativo">Pesquisar</a>                                              
+                </div>                                        
+            </div>
+            <div class="linha"></div>
+
+            <div class="col s12 m12 l12 container">                
+                <form class="formulario"> 
+                    <div class="row">
+                        <h5>Selecione um local e digite algo para pesquisar</h5>
+                        <!--<div class="form divider grey"></div>-->
+                        <div class="input-field col s12 m6 l6">
+                            <select name="estado" id="estado" class="browser-default" style="border-color: grey;" onchange="buscar_cidades()">
+                                <option value="" disabled="" selected="">Selecione o Estado</option>                                              
+                                <c:if test="${not empty estadoBuscado}">
+                                    <option value="${estadoBuscado.id}" disabled="" selected="">${estadoBuscado.nome}</option>
+                                </c:if>
+                                <c:forEach items="${estados}" var="estado">
+                                    <option value="${estado.id}">${estado.nome}</option>
+                                </c:forEach>
+                            </select>                            
                         </div>
-                    </nav>
-                    <div class="card-panel col s12 m12 l12" style="padding-bottom: 20px; padding-top: 5px;">
-                        <div class="card-content">
-                            <div class="row">
-                                <form> 
-                                    <div class="row">
-                                        <h5>Selecione um local e digite algo para pesquisar</h5>
-                                        <div class="form divider grey"></div>
-                                        <div class="input-field col s12 m6 l6">
-                                            <select name="estado" id="estado" class="browser-default" style="border-color: grey;" onchange="buscar_cidades()">
-                                                <option value="" disabled="" selected="">Selecione o Estado</option>                                              
-                                            <c:if test="${not empty estadoBuscado}">
-                                                <option value="${estadoBuscado.id}" disabled="" selected="">${estadoBuscado.nome}</option>
-                                            </c:if>
-                                            <c:forEach items="${estados}" var="estado">
-                                                <option value="${estado.id}">${estado.nome}</option>
-                                            </c:forEach>
-                                        </select>                            
-                                    </div>
-                                    <div id="load_cidades" class="input-field col s12 m6 l6">
-                                        <select name="cidadeID" id="cidade" class="browser-default" style="border-color: grey;">                                
-                                            <option value="" disabled="" selected="">Selecione o Estado primeiro</option>  
-                                            <c:if test="${not empty cidade}">
-                                                <option value="${cidade.id}" disabled="" selected="">${cidade.nome}</option>
-                                            </c:if>
-                                        </select>                            
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12 m6">
-                                        <input id="pesquisar" name="nomeCriterium" type="text" value="${nomeCriterium}"/>
-                                        <label for="pesquisar">Pesquise por itens</label>
-                                    </div>   
-                                    <button type="submit" class="btn blue" style="margin-top: 25px;">Search</button>
-                                </div>
-                            </form>
+                        <div id="load_cidades" class="input-field col s12 m6 l6">
+                            <select name="cidadeID" id="cidade" class="browser-default" style="border-color: grey;">                                
+                                <option value="" disabled="" selected="">Selecione a Cidade</option>  
+                                <c:if test="${not empty cidade}">
+                                    <option value="${cidade.id}" disabled="" selected="">${cidade.nome}</option>
+                                </c:if>
+                            </select>                            
                         </div>
-                        <c:if test="${empty itemList}">
-                            <div class="row">
-                                <div class="card-panel">
-                                    <div class="card-content">
-                                        <i class="material-icons">thumb_down</i>
-                                        <span class="card-title">Não foram encontrados resultados para esta busca.</span>
-                                    </div>
+                    </div>
+                    <div class="row ">
+                        <div class="input-field col s12 m6">
+                            <input id="pesquisar" name="nomeCriterium" type="text" value="${nomeCriterium}" placeholder="Digite algo para pesquisar"/>
+                            <!--<label for="pesquisar">Pesquise por itens</label>-->
+                        </div>   
+                        <button type="submit" class="btn blue btn-pesquisar">Pesquisar</button>
+                    </div>
+                </form>                
+
+                <div class="resultados">
+                    <c:if test="${empty itemList}">
+                        <div class="row">
+                            <div class="card-panel">
+                                <div class="card-content">
+                                    <i class="material-icons">thumb_down</i>
+                                    <span class="card-title" style="font-weight: 500; font-size: 16pt;">Não foram encontrados resultados para esta busca.</span>
                                 </div>
                             </div>
-                        </c:if>
-                        <c:if test="${count > 0}">
-                            <span style="margin-top: -20%;"><strong>Resultados encontrados: ${count}</strong></span>
-                            <br/>
-                        </c:if>
-                        <ul>
-                            <c:forEach var="item" items="${itemList}">
-                                <a href="<c:url value="/anunciante/pesquisar/item/${item.id}/view"></c:url>" class="black-text painelAnuncios hoverable">
-                                        <li>
-                                            <div class="col s12 m12 z-depth-1 painelAnuncios hoverable" style="margin-bottom: 2%;">
-                                                <!--<div class="card small">-->                                       
-                                                <div class="row">                                               
-                                                    <div class="card-image col s12 m4 l4">
-                                                    <c:if test="${empty item.itemImagemList}">
-                                                        <img src="<c:url value="/resources/img/background2.jpg"></c:url>" class="responsive-img" style="padding-top: 8%;">                                                        
-                                                    </c:if>
-                                                    <c:if test="${not empty item.itemImagemList}">                                                            
-                                                        <c:forEach items="${item.itemImagemList}" var="itemImagem">                                                            
-                                                            <img class="responsive-img" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" height="200" width="200" style="padding-top: 9%;">                                                                                                   
-                                                        </c:forEach>                                                            
-                                                    </c:if>
-                                                </div>
-                                                <div class="card-content">
-                                                    <span style="font-size: 15pt;"><strong>${item.nome}</strong></span> 
-                                                    <span class="right" style="padding-top: 1%;">${item.dataCadastro}</span>
-                                                    <br/>
-                                                    <div class="divider"></div>
-                                                    <br/>
-                                                    <span class=""><strong>Descrição:</strong></span>
-                                                    <p>${item.descricao}</p>
-                                                </div> 
+                        </div>
+                    </c:if>
+                    <c:if test="${count > 0}">                    
+                        <h5><strong>Resultados encontrados: ${count}</strong></h5>
+                        <br/>
+                    </c:if>
+                    <ul>
+                        <c:forEach var="item" items="${itemList}">
+                            <a href="<c:url value="/anunciante/pesquisar/item/${item.id}/view"></c:url>" class="black-text painelAnuncios hoverable">
+                                    <li>
+                                        <div class="col s12 m12 z-depth-1 painelAnuncios hoverable" style="margin-bottom: 2%;">
+                                            <!--<div class="card small">-->                                       
+                                            <div class="row">                                               
+                                                <div class="card-image col s12 m4 l4">
+                                                <c:if test="${empty item.itemImagemList}">
+                                                    <img src="<c:url value="/resources/img/sem-imagem.jpg"></c:url>" class="responsive-img" style="padding-top: 8%;">                                                        
+                                                </c:if>
+                                                <c:if test="${not empty item.itemImagemList}">                                                            
+                                                    <c:forEach items="${item.itemImagemList}" var="itemImagem">                                                            
+                                                        <img class="responsive-img" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" height="200" width="200" style="padding-top: 9%;">                                                                                                   
+                                                    </c:forEach>                                                            
+                                                </c:if>
                                             </div>
-                                            <!--</div>-->
+                                            <div class="card-content">
+                                                <!--<span style="font-size: 15pt;"><strong>${item.nome}</strong></span>--> 
+                                                <h5 class="item-nome" style="padding-top: 2%;">${item.nome}</h5>
+                                                <span class="right item-cadastro">${item.dataCadastro}</span>
+                                                <br/>
+                                                <div class="divider" style="width: 500px;"></div>
+                                                <br/>
+                                                <span class="descricao"><strong>Descrição:</strong></span>
+                                                <p class="descricao">${item.descricao}</p>
+                                            </div> 
                                         </div>
-                                    </li>
-                                </a>
-                            </c:forEach>
-                        </ul>
+                                        <!--</div>-->
+                                    </div>
+                                </li>
+                            </a>
+                        </c:forEach>
+                    </ul>
+
+                    <c:if test="${count > 0}">
                         <ul class="pagination center">
                             <c:if test="${offset > 0}">
                                 <li class="waves-effect"><a href="<c:url value="/anunciante/pesquisar/item?nomeCriterium=${nomeCriterium}&limit=${limit}&offset=${offset - limit}"/>"><i class="material-icons">chevron_left</i></a></li>                            
@@ -165,9 +169,10 @@
                                 <li class="waves-effect"><a href="<c:url value="/anunciante/pesquisar/item?nomeCriterium=${nomeCriterium}&limit=${limit}&offset=${offset}"/>"><i class="material-icons">chevron_right</i></a></li>
                                 </c:if>
                         </ul>
-                    </div>
-                </div>
-            </div>
+                    </c:if>
+
+                </div>  
+            </div>            
         </header>
     </body>
 </html>

@@ -301,8 +301,12 @@ public class AnuncianteController {
                 Estado estadoBuscado = es.readById(estado);
                 List<Estado> estadoList = es.readByCriteria(null, null, null);
                 CidadeService cs = new CidadeService();
-                Cidade cidade = cs.readById(cidadeID);
-                criteria.put(ItemCriteria.CIDADE_EQ, cidadeID);
+                Cidade cidade = null;
+                if (cidadeID != null) {
+                    cidade = cs.readById(cidadeID);
+                    criteria.put(ItemCriteria.CIDADE_EQ, cidadeID);                    
+                }
+
                 criteria.put(ItemCriteria.ESTADO_EQ, estado);
 
                 ItemService s = new ItemService();
@@ -317,10 +321,11 @@ public class AnuncianteController {
                 }
                 Long count = s.countByCriteria(criteria, limit, offset);
                 mv = new ModelAndView("pesquisaOn/list");
-                mv.addObject("cidade", cidade);
+
                 mv.addObject("itemList", itemList);
                 mv.addObject("nomeCriterium", nomeCriterium);
                 mv.addObject("anunciante", anunciante);
+                mv.addObject("cidade", cidade);
                 mv.addObject("count", count);
                 mv.addObject("limit", limit);
                 mv.addObject("offset", offset);

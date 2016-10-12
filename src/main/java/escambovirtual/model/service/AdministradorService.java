@@ -32,6 +32,7 @@ public class AdministradorService implements BaseAdministradorService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw  e;
         }
     }
 
@@ -47,6 +48,7 @@ public class AdministradorService implements BaseAdministradorService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw  e;
         }
 
         return administrador;
@@ -71,6 +73,7 @@ public class AdministradorService implements BaseAdministradorService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw  e;
         }
 
         return administradorList;
@@ -87,6 +90,7 @@ public class AdministradorService implements BaseAdministradorService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw  e;
         }
     }
 
@@ -101,6 +105,7 @@ public class AdministradorService implements BaseAdministradorService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw  e;
         }
     }
 
@@ -126,6 +131,7 @@ public class AdministradorService implements BaseAdministradorService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw  e;
         }
         return count;
     }

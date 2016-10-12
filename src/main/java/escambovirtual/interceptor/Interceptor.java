@@ -27,7 +27,7 @@ public class Interceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest req, HttpServletResponse res, Object arg2, ModelAndView modelAndView) throws Exception {
 
         String url = req.getRequestURL().toString();
-        
+
         if (url.endsWith("/anunciante/home") || url.endsWith("/administrador/home")) {
             if (req.getSession().getAttribute("usuarioSessao") != null) {
                 String urlDesejada = (String) req.getSession().getAttribute("urlDesejada");
@@ -43,11 +43,11 @@ public class Interceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object arg2) throws Exception {
 
-        String url = req.getRequestURL().toString();               
-        
+        String url = req.getRequestURL().toString();
+
         if (url.contains("css") || url.contains("fonts") || url.contains("img") || url.contains("js") || url.contains("less") || url.contains("woff2")) {
             return true;
-        }        
+        }
 
         if (url.endsWith("/web")) {
             if (req.getSession().getAttribute("usuarioSessao") == null) {
@@ -56,7 +56,7 @@ public class Interceptor implements HandlerInterceptor {
             }
         }
 
-        if (!url.endsWith("/web/index") && !url.endsWith("/usuario/login") && !url.endsWith("/anunciantes/novo") && !url.endsWith("item/search") && !url.endsWith("/anunciante/create/api") && !url.endsWith("/usuario/check/email") && !url.endsWith("/usuario/recuperar-senha") && !url.endsWith("/view")) {
+        if (!url.endsWith("/web/index") && !url.endsWith("/usuario/login") && !url.endsWith("/usuario/login/mobile") && !url.endsWith("/anunciantes/novo") && !url.endsWith("item/search") && !url.endsWith("/anunciante/create/api") && !url.endsWith("/usuario/check/email") && !url.endsWith("/usuario/recuperar-senha") && !url.contains("/web/item")) {
             if (req.getSession().getAttribute("usuarioSessao") == null) {
                 req.getSession().setAttribute("urlDesejada", url);
                 res.sendRedirect("/web/index");
@@ -66,20 +66,20 @@ public class Interceptor implements HandlerInterceptor {
 
         if (req.getSession().getAttribute("usuarioSessao") != null) {
             Usuario usuario = (Usuario) req.getSession().getAttribute("usuarioSessao");
-            if(usuario instanceof Anunciante){
+            if (usuario instanceof Anunciante) {
                 AnuncianteService s = new AnuncianteService();
                 s.readById(usuario.getId());
-            }else if(usuario instanceof Administrador){
+            } else if (usuario instanceof Administrador) {
                 AdministradorService s = new AdministradorService();
                 s.readById(usuario.getId());
             }
-            
+
             req.getSession().setAttribute("usuarioSessao", usuario);
             if (usuario.getPerfil() == Usuario.USUARIO_TIPO_ADMINISTRADOR) {
                 if (url.contains("anunciante")) {
                     res.sendRedirect("/web/administrador/permissao-negada");
                     return false;
-                }               
+                }
             }
             if (usuario.getPerfil() == Usuario.USUARIO_TIPO_ANUNCIANTE) {
                 if (url.contains("administrador")) {
@@ -87,9 +87,9 @@ public class Interceptor implements HandlerInterceptor {
                     return false;
                 }
             }
-        }
+        } 
+        
         return true;
     }
 
-    
 }

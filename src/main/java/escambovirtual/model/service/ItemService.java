@@ -33,6 +33,7 @@ public class ItemService implements BaseItemService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw e;
         }
     }
 
@@ -49,6 +50,7 @@ public class ItemService implements BaseItemService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw e;
         }
         return item;
     }
@@ -70,6 +72,7 @@ public class ItemService implements BaseItemService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw e;
         }
         return itemList;
     }
@@ -85,6 +88,7 @@ public class ItemService implements BaseItemService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw e;
         }
     }
 
@@ -99,6 +103,7 @@ public class ItemService implements BaseItemService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw e;
         }
     }
 
@@ -119,6 +124,7 @@ public class ItemService implements BaseItemService {
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw e;
         }
         return count;
     }
@@ -134,6 +140,7 @@ public class ItemService implements BaseItemService {
             conn.close();
         } catch (Exception e) {
             conn.close();
+            throw e;
         }
 
         return itemImagem;

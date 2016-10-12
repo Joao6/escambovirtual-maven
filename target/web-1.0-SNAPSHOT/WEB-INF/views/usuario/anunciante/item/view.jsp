@@ -20,6 +20,9 @@
 
         <link href="<c:url value="/resources/slider/css/style-slider.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
 
+        <link href="<c:url value="/resources/css/modulo-anunciante/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="<c:url value="/resources/css/modulo-anunciante/item-view-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+
         <!--SCRIPTS-->
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
@@ -37,26 +40,25 @@
             });
         </script>
     </head>
-    <body style="background-color: #b0bec5;">
+    <body>
         <header>
             <jsp:include page="/resources/templates/menu-lateral-anunciante.jsp"/>
 
-            <div class="row" style="padding-left: 15%; padding-right: 15%;">
-                <nav class="grey darken-3 card-panel col s12 z-depth-2">
-                    <div class="nav-wrapper">
-                        <div class="col s12">
-                            <a href="/web/anunciante/home" class="breadcrumb">Home</a>
-                            <a href="/web/anunciante/pesquisar/item" class="breadcrumb">Pesquisa</a>
-                            <a href="#!" class="breadcrumb">Ver Item</a>
-                        </div>                        
-                    </div>
-                </nav>
+            <div class="row container nav-breadcrumb">                             
+                <div class="col s12 l6 m6 links">
+                    <a href="<c:url value="/anunciante/home"/>" class="breadcrumb link-anterior">Home</a>                                              
+                    <a href="<c:url value="/anunciante/pesquisar/item"/>" class="breadcrumb link-anterior">Pesquisar</a>                                              
+                    <a href="#!" class="breadcrumb link-ativo">Ver Item</a>
+                </div>                                        
+            </div>
+            <div class="linha"></div>
 
+            <div class="container item">
                 <table>
                     <tbody>
                         <tr>
                             <td>
-                                <div class="card-panel col s12 m12 l12 z-depth-2" style="margin-top: -2%;">
+                                <div class="col s12 m12 l12" style="margin-top: -2%;">
 
                                     <table class="bordered">
                                         <tr>                                               
@@ -66,23 +68,10 @@
                                                 </div>
                                             </td>                                        
                                         </tr>                                    
-                                        <tr>
-                                            <!--<td rowspan="4"><img class="card-panel z-depth-2" src="<c:url value="/resources/img/sample-1.jpg"/>" height="200" width="200"></td>-->
-                                            <td colspan="4">
-                                                <%--<c:if test="${empty item.itemImagemList}">--%>
-                                                    <!--<img class="card-panel z-depth-2" src="<c:url value="/resources/img/sample-1.jpg"/>" height="200" width="200">-->
-                                                <%--</c:if>--%>
-                                                <%--<c:if test="${not empty item.itemImagemList}">--%>
-                                                <!--<div class="carousel" style="margin-top: -10%; margin-bottom: -15%;">-->
-                                                <%--<c:forEach items="${item.itemImagemList}" var="itemImagem">--%>
-                                                <!--<a class="carousel-item" href="#!">-->
-                                                    <!--<img class="responsive-img" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" height="200" width="200">-->
-                                                <!--</a>-->                                        
-                                                <%--</c:forEach>--%>
-                                                <!--</div>-->
-                                                <%--</c:if>--%>
+                                        <tr>                                        
+                                            <td colspan="4">                                            
                                                 <c:if test="${empty item.itemImagemList}">
-                                                    <img class="card-panel z-depth-2" src="<c:url value="/resources/img/sample-1.jpg"/>" height="200" width="200">
+                                                    <img class="card-panel z-depth-2" src="<c:url value="/resources/img/sem-imagem.jpg"/>" height="200" width="200">
                                                 </c:if>
 
                                                 <c:if test="${not empty item.itemImagemList}">
@@ -151,8 +140,8 @@
                                         </c:if>
                                         <tr>
                                             <td class="right-align" colspan="4">
-                                                <a class="waves-effect waves-light btn blue col s12 m5 l5" href="<c:url value="/anunciante/comunicacao/item/${item.id}"/>">Enviar mensagem ao anunciante</a>                                        
-                                                <a class="waves-effect waves-light btn brown col s12 m5 l5" href="<c:url value="/anunciante/item/${item.id}/ofertar"/>" style="margin-left: 0.6rem;">Fazer oferta por este item</a>
+                                                <a class="waves-effect waves-light btn blue col s12 m5 l5 btn-large" href="<c:url value="/anunciante/comunicacao/item/${item.id}"/>">Enviar mensagem ao anunciante</a>                                        
+                                                <a class="waves-effect waves-light btn grey darken-3 col s12 m5 l5 btn-large" href="<c:url value="/anunciante/item/${item.id}/ofertar"/>" style="margin-left: 0.6rem;">Fazer oferta por este item</a>
                                             </td>                                            
                                         </tr>                                        
                                     </table>
@@ -161,7 +150,7 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                </table>  
             </div>
         </header>
 

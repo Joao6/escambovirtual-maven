@@ -31,6 +31,7 @@ public class CidadeService implements BaseCidadeService{
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw  e;
         }
         return cidade;
     }
@@ -47,6 +48,7 @@ public class CidadeService implements BaseCidadeService{
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw  e;
         }
         return cidadeList;
     }

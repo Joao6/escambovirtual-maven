@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<nav class="light-blue darken-3">
+<nav class="navTop">
     <div class="container">
-        <div class="nav-wrapper center-align"><a class="page-title" style="font-size: 18pt;">Escambo Virtual</a></div>        
+        <div class="nav-wrapper center-align tituloPage"><a class="page-title">Escambo Virtual</a></div>                
     </div>
 </nav>
 <div class="container">
@@ -30,7 +30,7 @@
         </center>
     </div>
     <br/>                
-    <div class="divider"></div>
+    <div class="divider center-align" style="width: 80%;"></div>
     <li class="no-padding">
         <ul class="collapsible">                       
             <li>

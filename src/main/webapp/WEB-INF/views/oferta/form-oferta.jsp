@@ -18,6 +18,9 @@
         <link href="<c:url value="/resources/css/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="<c:url value="/resources/css/ghpages-materialize.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
 
+        <link href="<c:url value="/resources/css/modulo-anunciante/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="<c:url value="/resources/css/modulo-anunciante/form-oferta-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+
         <!--SCRIPTS-->
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
@@ -41,7 +44,7 @@
             });
         </script>        
     </head>
-    <body  style="background-color: #b0bec5;" ng-controller="OfertaController" ng-init="itens(${anunciante.id})">
+    <body ng-controller="OfertaController" ng-init="itens(${anunciante.id})">
         <header>
 
             <!--MODAL OFERTA-->
@@ -51,76 +54,65 @@
                     <p><strong>Você confirma o envio de uma oferta para o item em questão?</strong></p>
                     <p>Após o envio desta oferta, o anunciante responsável por este item poderá aceitar a sua oferta e assim realizar a troca dos itens.</p>
                     <p>Obs.: esta ação não poderá ser desfeita</p>
-                    <button class="btn blue waves-effect modal-close" ng-click="createOferta(${itemReceptor.id})">Confirmar</button>
-                    <a class="btn brown waves-effect modal-close">Cancelar</a>
+                    <button class="btn blue waves-effect modal-close btn-large" ng-click="createOferta(${itemReceptor.id})">Confirmar</button>
+                    <a class="btn grey darken-3 waves-effect modal-close btn-large">Cancelar</a>
                 </div>
             </div>
             <!--FIM MODAL-->
-            <jsp:include page="/resources/templates/menu-lateral-anunciante.jsp"/>
+            <jsp:include page="/resources/templates/menu-lateral-anunciante.jsp"/>               
 
-            <div class="row" style="padding-left: 15%; padding-right: 15%;">
+            <div class="row container nav-breadcrumb">                                    
+                <div class="col s12 m12 l12 links">
+                    <a href="<c:url value="/anunciante/home"/>" class="breadcrumb link-anterior">Home</a>
+                    <a href="<c:url value="/anunciante/pesquisar/item"/>" class="breadcrumb link-anterior">Pesquisar</a>
+                    <a href="<c:url value="/anunciante/pesquisar/item/${itemReceptor.id}/view"/>" class="breadcrumb link-anterior">Ver Item</a>
+                    <a href="#!" class="breadcrumb link-ativo">Fazer Oferta</a>
+                </div>       
+            </div>
+            <div class="linha"></div>
+
+
+
+            <div class="container">
+                <div class="info-title">
+                    <h6 class="">Fazer oferta ao item: <span>${itemReceptor.nome}</span></h6>
+                    <h6 class="" >Pertencente ao anunciante: <span>${itemReceptor.anunciante.nome}</span></h6>
+                </div>
+
                 <div class="row">
-                    <nav class="grey darken-3 card-panel col s12 z-depth-2">
-                        <div class="nav-wrapper">
-                            <div class="col s12">
-                                <a href="<c:url value="/anunciante/home"/>" class="breadcrumb">Home</a>
-                                <a href="<c:url value="/anunciante/pesquisar/item"/>" class="breadcrumb">Pesquisa</a>
-                                <a href="<c:url value="/anunciante/pesquisar/item/${itemReceptor.id}/view"/>" class="breadcrumb">Ver Item</a>
-                                <a href="#!" class="breadcrumb">Fazer Oferta</a>
-                            </div>                        
-                        </div>
-                    </nav>
-                </div>                
+                    <form name="formOferta" class=" formulario">
+                        <h6>Selecione os seus itens que deseja ofertar</h6>
+                        <br/>
+                        <select class="browser-default" style="border-color: grey;" ng-model="item.id" ng-change="addItem(item)">
+                            <option value="">Selecione</option>
+                            <option ng-repeat="item in itens" value="{{item.id}}">{{item.nome}}</option>
+                        </select>
 
-                <div class="card-panel grey darken-3" style="margin-top: -2%;">
-                    <div class="card-content">
-                        <div class="card-panel">
-                            <div class="card-content">
-                                <div class="card-title"><h6 class="center-align" style="text-transform: uppercase;"><strong>Realizar Oferta ao Item:</strong> ${itemReceptor.nome}</h6></div>
-                                <h6 class="center-align" style="text-transform: uppercase;"><strong>Pertencente ao anunciante: </strong>${itemReceptor.anunciante.nome}</h6>
+                        <div class="row">
+                            <div ng-repeat="item in itensOferta" ng-model="ofertaItem.itemList">                                                
+                                <!--aqui vai aparecer os itens selecionados-->
+                                <div class="card small col s12 m4 l4">                                                
+                                    <i class="material-icons" ng-click="removeItemOferta(item.id)">close</i>
+                                    <div class="card-image waves-effect waves-block waves-light">                                                    
+                                        <img ng-repeat="itemImagem in item.itemImagemList" class="activator" src="<c:url value="/anunciante/item/img/{{itemImagem.hash}}"/>">                                                    
+                                    </div>                                                
+                                    <div class="card-content">
+                                        <span class="card-title activator grey-text text-darken-4">{{item.nome}}</span>
+                                        <br/>
+                                        <span class="center-align" style="margin-bottom: 5%;">Clique para ver informações</span>
+                                    </div>
+                                    <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Informações<i class="material-icons right">close</i></span>
+                                        <p>{{item.descricao}}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div> 
-                        
-                        <div class="card-panel">
-                            <div class="card-content">
-                                <form name="formOferta">
-                                    <div class="card-title"><h6 class="center-align" style="text-transform: uppercase;"><strong>Selecione os itens que você deseja ofertar</strong></h6></div>
-                                    <br/>
-                                    <select class="browser-default" style="border-color: grey;" ng-model="item.id" ng-change="addItem(item)">
-                                        <option value="">Selecione</option>
-                                        <option ng-repeat="item in itens" value="{{item.id}}">{{item.nome}}</option>
-                                    </select>
-
-                                    <div class="row">
-                                        <div ng-repeat="item in itensOferta" ng-model="ofertaItem.itemList">                                                
-                                            <!--aqui vai aparecer os itens selecionados-->
-                                            <div class="card small col s12 m6 l6">                                                
-                                                <i class="material-icons" ng-click="removeItemOferta(item.id)">close</i>
-                                                <div class="card-image waves-effect waves-block waves-light">                                                    
-                                                    <img ng-repeat="itemImagem in item.itemImagemList" class="activator" src="<c:url value="/anunciante/item/img/{{itemImagem.hash}}"/>">                                                    
-                                                </div>                                                
-                                                <div class="card-content">
-                                                    <span class="card-title activator grey-text text-darken-4">{{item.nome}}</span>
-                                                    <br/>
-                                                    <span class="center-align" style="margin-bottom: 5%;">Clique na imagem para ver informações</span>
-                                                </div>
-                                                <div class="card-reveal">
-                                                    <span class="card-title grey-text text-darken-4">Informações<i class="material-icons right">close</i></span>
-                                                    <p>{{item.descricao}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                                   
-                                    <a class="btn blue modal-trigger waves-effect" href="#modalOferta">Enviar oferta</a>
-                                    <a class="btn brown waves-effect" href="<c:url value="/anunciante/pesquisar/item/${itemReceptor.id}/view"/>">cancelar</a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                        </div>                                   
+                        <a class="btn blue modal-trigger btn-large waves-effect" href="#modalOferta">Enviar oferta</a>
+                        <a class="btn grey darken-3 btn-large waves-effect" href="<c:url value="/anunciante/pesquisar/item/${itemReceptor.id}/view"/>">cancelar</a>
+                    </form>
                 </div>
             </div>
-        </div>
-    </div>
-</header>
-</body>
+        </header>
+    </body>
 </html>
