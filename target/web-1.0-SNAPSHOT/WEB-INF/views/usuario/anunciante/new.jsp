@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
         <title>Novo Cadastro de Anunciante</title>
+        <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>" type="image/x-icon">
 
         <!--Import Google Icon Font-->
         <link href="<c:url value="/resources/css/icon.css"/>" rel="stylesheet">

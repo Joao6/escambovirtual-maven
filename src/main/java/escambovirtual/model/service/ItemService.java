@@ -45,7 +45,9 @@ public class ItemService implements BaseItemService {
         try {
             ItemDAO dao = new ItemDAO();
             item = dao.readById(conn, id);
-            item.setItemImagemList(dao.readImagesHashByItemId(conn, item.getId()));
+            if (item != null) {
+                item.setItemImagemList(dao.readImagesHashByItemId(conn, item.getId()));
+            }
             conn.close();
         } catch (Exception e) {
             conn.rollback();

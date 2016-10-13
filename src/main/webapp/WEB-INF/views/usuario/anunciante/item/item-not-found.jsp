@@ -17,39 +17,39 @@
         <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/materialize.min.css"/>"  media="screen,projection"/>
         <link href="<c:url value="/resources/css/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="<c:url value="/resources/css/ghpages-materialize.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>" type="image/x-icon">
 
+        <link href="<c:url value="/resources/css/modulo-anunciante/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="<c:url value="/resources/css/modulo-anunciante/item-not-found-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <!--SCRIPTS-->
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/resources/js/materialize.min.js"/>"></script>
         <script src="<c:url value="/resources/js/init.js"/>"></script>
     </head>
-    <body style="background-color: #b0bec5;">        
+    <body>        
         <header>            
             <jsp:include page="/resources/templates/menu-lateral-anunciante.jsp"/>
 
-            <div class="row" style="padding-left: 15%; padding-right: 15%;">
-                <div class="row">
-                    <nav class="grey darken-3 card-panel col s12 z-depth-2">
-                        <div class="nav-wrapper">
-                            <div class="col s12">
-                                <a href="/web/anunciante/home" class="breadcrumb">Home</a>
-                                <a href="/web/anunciante/pesquisar/item" class="breadcrumb">Pesquisa</a>
-                                <a href="#!" class="breadcrumb">Ver Item</a>
-                            </div>                        
-                        </div>
-                    </nav>
-                </div>
-
-                <div class="card-panel" style="margin-top: -2%;">
-                    <div class="card-content">
-                        <div class="card-panel">
-                            <div class="card-title center"><strong style="text-transform: uppercase;">Desculpe, mas o item que você está tentando acessar não pertence a uma oferta enviada para você!</strong></div>
-                        </div>
-                        <img class="responsive-img" src="<c:url value="/resources/img/background1.jpg"/>">
-                    </div>
-                </div>
-            </div>                                   
+            <div class="row container nav-breadcrumb">                             
+                <div class="col s12 l6 m6 links">
+                    <a href="<c:url value="/anunciante/home"/>" class="breadcrumb link-anterior">Home</a>                                                                  
+                    <a href="#!" class="breadcrumb link-ativo">Erro!</a>
+                </div>                                        
+            </div>
+            <div class="linha"></div>
+            
+            <div class="container">
+                <h5>Algo de errado aconteceu!</h5>
+                
+                <h6>Possíveis motivos:</h6>
+                <ul>
+                    <li style="list-style: disc">O item que você está procurando não está cadastrado no sistema.</li>
+                    <li style="list-style: disc">Você não tem permissão para acessar esta área.</li>
+                </ul>
+                
+                <h6>Pedimos desculpas pelo acontecido!</h6>
+            </div>
         </header>
     </body>
 </html>

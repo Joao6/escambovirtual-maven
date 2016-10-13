@@ -17,31 +17,12 @@
         <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/materialize.min.css"/>"  media="screen,projection"/>
         <link href="<c:url value="/resources/css/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="<c:url value="/resources/css/ghpages-materialize.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>" type="image/x-icon">
 
         <link href="<c:url value="/resources/css/modulo-anunciante/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="<c:url value="/resources/css/modulo-anunciante/alterar-senha-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <!--SCRIPTS-->        
-        <!--        <script>
-                    function validarSenha() {
-                        NovaSenha = document.getElementById('novasenha').value;
-                        CNovaSenha = document.getElementById('confirmarSenha').value;
-                        if (NovaSenha !== CNovaSenha) {
-                            Materialize.toast('As senhas não são iguais!', 4000, 'orange rounded toast');
-                            $("form #novasenha").css({"border-color": "red"});  
-                            $("form #confirmarSenha").css({"border-color": "red"});  
-                            $("form #btn-salvar").prop("disabled", true);
-                            $("form #btn-salvar").addClass("grey");
-                            return false;
-                        }else{
-                            Materialize.toast('Senhas iguais!', 4000, 'green rounded toast');
-                            $("form #novasenha").css({"border-color": "green"});  
-                            $("form #confirmarSenha").css({"border-color": "green"});
-                            $("form #btn-salvar").prop("disabled", false);
-                            $("form #btn-salvar").removeClass("grey");
-                        }
-                        return true;
-                    }
-                </script>-->
+
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/resources/js/materialize.min.js"/>"></script>

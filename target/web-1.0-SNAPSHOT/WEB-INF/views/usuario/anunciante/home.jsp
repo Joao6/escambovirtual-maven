@@ -14,7 +14,7 @@
         <!--Import Google Icon Font-->
         <link href="<c:url value="/resources/css/icon.css"/>" rel="stylesheet">
 
-        <link rel="shortcut icon" type="image/png" href="<c:url value="/resources/img/ico.png"/>"/>
+        <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>" type="image/x-icon">
 
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/materialize.min.css"/>"  media="screen,projection"/>
@@ -42,7 +42,7 @@
                 </div>                                        
             </div>
             <div class="linha"></div>
-            
+
             <h5 class="title-info">Algumas informações da sua conta</h5>
             <c:if test="${countItem > 0}">
                 <div class="row" style="margin-top: -2%;">

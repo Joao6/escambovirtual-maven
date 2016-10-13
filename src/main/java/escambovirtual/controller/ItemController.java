@@ -187,13 +187,18 @@ public class ItemController {
             Usuario usuario = (Anunciante) session.getAttribute("usuarioSessao");
             ItemService s = new ItemService();
             Item item = s.readById(id);
-            if (item.getAnunciante().getId() == usuario.getId()) {
-                mv = new ModelAndView("usuario/anunciante/item/edit");
-                mv.addObject("item", item);
+            if (item != null) {
+                if (item.getAnunciante().getId() == usuario.getId()) {
+                    mv = new ModelAndView("usuario/anunciante/item/edit");
+                    mv.addObject("item", item);
+                    mv.addObject("anunciante", usuario);
+                    response.setStatus(200);
+                } else {
+                    mv = new ModelAndView("redirect:/anunciante/item/permissao-negada");                    
+                }
+            }else{
+                mv = new ModelAndView("usuario/anunciante/item/item-not-found");
                 mv.addObject("anunciante", usuario);
-                response.setStatus(200);
-            } else {
-                mv = new ModelAndView("redirect:/anunciante/item/permissao-negada");
             }
         } catch (Exception e) {
             mv = new ModelAndView("error");

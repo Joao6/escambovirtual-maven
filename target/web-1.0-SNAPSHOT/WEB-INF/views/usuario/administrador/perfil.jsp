@@ -17,7 +17,10 @@
         <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/materialize.min.css"/>"  media="screen,projection"/>
         <link href="<c:url value="/resources/css/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="<c:url value="/resources/css/ghpages-materialize.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>" type="image/x-icon">
 
+        <link href="<c:url value="/resources/css/modulo-administrador/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>       
+        <link href="<c:url value="/resources/css/modulo-administrador/perfil-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>       
         <!--SCRIPTS-->
         <script>
             function buscar_cidades() {
@@ -46,20 +49,20 @@
     <script type="text/javascript" src="<c:url value="/resources/js/materialize.min.js"/>"></script>
     <script src="<c:url value="/resources/js/init.js"/>"></script>
 </head>
-<body style="background-color: #b0bec5;">
+<body>
     <header>
         <jsp:include page="/resources/templates/menu-lateral-administrador.jsp"/>
 
-        <div class="row" style="padding-left:15%;padding-right: 15%;">
-            <nav class="grey darken-3 card-panel col s12 z-depth-2">
-                <div class="nav-wrapper">
-                    <div class="col s12">
-                        <a href="/web/anunciante/home" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">Perfil</a>
-                    </div>
-                </div>
-            </nav>
-            <form class="card-panel col s12 z-depth-2" method="post">
+        <div class="row container nav-breadcrumb">                             
+            <div class="col s12 l6 m6 links">
+                <a href="<c:url value="/administrador/home"/>" class="breadcrumb link-anterior">Home</a>                                              
+                <a href="#!" class="breadcrumb link-ativo">Perfil</a>                                              
+            </div>                                        
+        </div>
+        <div class="linha"></div>
+
+        <div class="container">
+            <form class="formulario" method="post">
                 <div class="card-title">                        
                     <h5>Meus Dados</h5>
                     <div class="form divider"></div>
@@ -67,14 +70,14 @@
                 <div class="row">
                     <div class="input-field col s12 m6 l6">                            
                         <c:if test="${not empty administrador.imagem}">                
-                            <img class="card-panel col s12 m6 l6 lighten-3 z-depth-2 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/usuario/${administrador.id}/img.jpg"/>">
+                            <img class="card-panel col s12 m6 l6 lighten-3 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/usuario/${administrador.id}/img.jpg"/>">
                         </c:if>
                         <c:if test="${empty administrador.imagem}">
                             <c:if test="${administrador.sexo == 'Masculino'}">                                                                           
-                                <img class="card-panel col s12 m6 l6 lighten-3 z-depth-2 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/resources/img/default-avatar_man.png"/>">
+                                <img class="card-panel col s12 m6 l6 lighten-3 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/resources/img/default-avatar_man.png"/>">
                             </c:if>
                             <c:if test="${administrador.sexo == 'Feminino'}">                                                                        
-                                <img class="card-panel col s12 m6 l6 lighten-3 z-depth-2 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/resources/img/default-avatar_women.png"/>">
+                                <img class="card-panel col s12 m6 l6 lighten-3 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/resources/img/default-avatar_women.png"/>">
                             </c:if>
                         </c:if>
                         <br/>
@@ -168,10 +171,10 @@
 
                 </div>
                 <div class="row">            
-                    <a class="waves-effect waves-light btn right brown col s12 m4 l2" href="<c:url value="/administrador/home"/>">Voltar</a>
-                    <button class="waves-effect waves-light btn blue right col s12 m4 l2" style="margin-right: 0.6rem;">Salvar</button>
+                    <a class="waves-effect waves-light btn right grey darken-3 btn-large col s12 m4 l2" href="<c:url value="/administrador/home"/>">Voltar</a>
+                    <button class="waves-effect waves-light btn blue right col s12 m4 l2 btn-large" style="margin-right: 0.6rem;">Salvar</button>
                 </div>
-            </form>
+            </form> 
         </div>
     </header>
 </body>

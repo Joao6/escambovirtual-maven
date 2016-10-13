@@ -18,7 +18,8 @@
         <link href="<c:url value="/resources/css/styleIndex.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        
+        <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>" type="image/x-icon">
+
         <!--SCRIPTS-->
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
@@ -105,24 +106,24 @@
                             </c:forEach>
                         </ul>
                         <c:if test="${count > 0}">
-                        <ul class="pagination center">
-                            <c:if test="${offset > 0}">
-                                <li class="waves-effect"><a href="<c:url value="/item/search?nomeCriterium=${nomeCriterium}&limit=${limit}&offset=${offset - limit}"/>"><i class="material-icons">chevron_left</i></a></li>                            
-                                </c:if>
+                            <ul class="pagination center">
+                                <c:if test="${offset > 0}">
+                                    <li class="waves-effect"><a href="<c:url value="/item/search?nomeCriterium=${nomeCriterium}&limit=${limit}&offset=${offset - limit}"/>"><i class="material-icons">chevron_left</i></a></li>                            
+                                    </c:if>
 
-                            <c:if test="${offset <= 0}">
-                                <li class="waves-effect"><a href="<c:url value="/item/search?nomeCriterium=${nomeCriterium}&limit=${limit}&offset=${offset}"/>"><i class="material-icons">chevron_left</i></a></li>                            
-                                </c:if>
+                                <c:if test="${offset <= 0}">
+                                    <li class="waves-effect"><a href="<c:url value="/item/search?nomeCriterium=${nomeCriterium}&limit=${limit}&offset=${offset}"/>"><i class="material-icons">chevron_left</i></a></li>                            
+                                    </c:if>
 
 
-                            <c:if test="${(offset + limit) < count}">
-                                <li class="waves-effect"><a href="<c:url value="/item/search?nomeCriterium=${nomeCriterium}&limit=${limit}&offset=${offset + limit}"/>"><i class="material-icons">chevron_right</i></a></li>
-                                </c:if>
+                                <c:if test="${(offset + limit) < count}">
+                                    <li class="waves-effect"><a href="<c:url value="/item/search?nomeCriterium=${nomeCriterium}&limit=${limit}&offset=${offset + limit}"/>"><i class="material-icons">chevron_right</i></a></li>
+                                    </c:if>
 
-                            <c:if test="${(offset + limit) >= count}">
-                                <li class="waves-effect"><a href="<c:url value="/item/search?nomeCriterium=${nomeCriterium}&limit=${limit}&offset=${offset}"/>"><i class="material-icons">chevron_right</i></a></li>
-                                </c:if>
-                        </ul>
+                                <c:if test="${(offset + limit) >= count}">
+                                    <li class="waves-effect"><a href="<c:url value="/item/search?nomeCriterium=${nomeCriterium}&limit=${limit}&offset=${offset}"/>"><i class="material-icons">chevron_right</i></a></li>
+                                    </c:if>
+                            </ul>
                         </c:if>
                     </div>
                 </div>
