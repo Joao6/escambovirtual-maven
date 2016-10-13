@@ -36,7 +36,7 @@
                     <a href="<c:url value="/administrador/home"/>" class="breadcrumb link-anterior">Home</a>                                              
                     <a href="#!" class="breadcrumb link-ativo">Administradores</a>                                              
                 </div>                                        
-                <a class="btn blue right btn-cadastrar" href="<c:url value="/administrador/new"/>" style="margin-bottom: 1%;">Cadastrar Administrador</a>
+                <a class="btn blue right btn-cadastrar btn-large" href="<c:url value="/administrador/new"/>" style="margin-bottom: 1%;">Cadastrar Administrador</a>
             </div>
             <div class="linha"></div>
 

@@ -64,12 +64,7 @@
                     });
                 }
             }
-        </script>
-        <style>
-            .active{
-                color:#0277bd !important;
-            }
-        </style>
+        </script>        
 
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
@@ -79,7 +74,7 @@
         <script src="<c:url value="/resources/js/jquery.maskedinput.min.js"/>"></script>
         <script src="<c:url value="/resources/js/mask-cadastro.js"/>"></script>
     </head>
-    <body>
+    <body class="body">
         <header>
             <jsp:include page="/resources/templates/menu-lateral-anunciante.jsp"/>            
 

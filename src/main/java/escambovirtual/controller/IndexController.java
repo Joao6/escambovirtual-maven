@@ -3,7 +3,9 @@ package escambovirtual.controller;
 import escambovirtual.constraints.AppConstraints;
 import escambovirtual.model.criteria.ItemCriteria;
 import escambovirtual.model.entity.Item;
+import escambovirtual.model.entity.ItemImagem;
 import escambovirtual.model.service.ItemService;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +40,14 @@ public class IndexController {
             itemCriteria.put(ItemCriteria.NOME_ILIKE, nomeCriterium);
             itemCriteria.put(ItemCriteria.STATUS_EQ, status);
             List<Item> itemList = is.readByCriteria(itemCriteria, limit, offset);
+            for (Item item : itemList) {
+                if (item.getItemImagemList() != null && item.getItemImagemList().size() > 0) {
+                    ItemImagem itemImagem = item.getItemImagemList().get(0);
+                    List<ItemImagem> itemImagemList = new ArrayList<>();
+                    itemImagemList.add(itemImagem);
+                    item.setItemImagemList(itemImagemList);
+                }
+            }
             Long count = is.countByCriteria(itemCriteria, limit, offset);
             mv = new ModelAndView("pesquisa/list");
             mv.addObject("nomeCriterium", nomeCriterium);

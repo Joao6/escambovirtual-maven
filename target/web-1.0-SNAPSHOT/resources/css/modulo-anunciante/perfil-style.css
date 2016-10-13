@@ -21,7 +21,23 @@ and open the template in the editor.
     font-weight: 700;
 }
 
-.btn-alterar{
-    margin-top: 32%;
+.info input{
+    margin: 5%;
+    
+} 
+
+.info label{
+    margin: 5%;
+    
+}
+
+.body label{
+    color: #7dc838;
+    font-weight: 500;
+}
+
+.active{
+    color: #7dc838 !important;
+    font-weight: 500 !important;
 }
 

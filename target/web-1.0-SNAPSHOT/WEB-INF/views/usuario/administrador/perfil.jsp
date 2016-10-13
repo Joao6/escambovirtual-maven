@@ -49,7 +49,7 @@
     <script type="text/javascript" src="<c:url value="/resources/js/materialize.min.js"/>"></script>
     <script src="<c:url value="/resources/js/init.js"/>"></script>
 </head>
-<body>
+<body class="body">
     <header>
         <jsp:include page="/resources/templates/menu-lateral-administrador.jsp"/>
 
@@ -68,55 +68,56 @@
                     <div class="form divider"></div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12 m6 l6">                            
+                    <div class="input-field col s12 m5 l5 center">                            
                         <c:if test="${not empty administrador.imagem}">                
-                            <img class="card-panel col s12 m6 l6 lighten-3 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/usuario/${administrador.id}/img.jpg"/>">
+                            <img class="card-panel col s12 m12 l12 lighten-3 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/usuario/${administrador.id}/img.jpg"/>">
                         </c:if>
                         <c:if test="${empty administrador.imagem}">
                             <c:if test="${administrador.sexo == 'Masculino'}">                                                                           
-                                <img class="card-panel col s12 m6 l6 lighten-3 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/resources/img/default-avatar_man.png"/>">
+                                <img class="card-panel col s12 m12 l12 lighten-3 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/resources/img/default-avatar_man.png"/>">
                             </c:if>
                             <c:if test="${administrador.sexo == 'Feminino'}">                                                                        
-                                <img class="card-panel col s12 m6 l6 lighten-3 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/resources/img/default-avatar_women.png"/>">
+                                <img class="card-panel col s12 m12 l12 lighten-3 responsive-img" style="margin: 1%;"  id="imagem" name="imagem" src="<c:url value="/resources/img/default-avatar_women.png"/>">
                             </c:if>
                         </c:if>
                         <br/>
-                        <a class="btn blue" href="<c:url value="/administrador/imagem-perfil/alterar"/>">Alterar imagem</a>
+                        <a class="btn blue btn-alterar" href="<c:url value="/administrador/imagem-perfil/alterar"/>">Alterar imagem</a>
+                    </div>
+                    <div class="info">
+                        <div class="input-field col s12 m7 l6">
+                            <input id="inputNome" name="nome" type="text" class="validate" value="${administrador.nome}" />
+                            <input type="hidden" name="perfil" value="1">
+                            <label for="inputNome">Nome</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input id="apelido" name="apelido" type="text" class="validate" value="${administrador.apelido}" />
+                            <label for="apelido">Apelido</label>
+                        </div>
+                        <div class="input-field col s12 m12 l6">
+                            <input id="inputEmail" name="email" type="email" class="validate" value="${administrador.email}"/>
+                            <label for="inputEmail">Email</label>
+                        </div>
                     </div>
                 </div>
                 <div class="divider"></div>
-                <br/>
+                <br/>              
                 <div class="row">
-                    <div class="input-field col s12 m6 l6">
-                        <input id="inputNome" name="nome" type="text" class="validate" value="${administrador.nome}" />
-                        <input type="hidden" name="perfil" value="1">
-                        <label for="inputNome">Nome</label>
-                    </div>
-                    <div class="input-field col s12 m6 l6">
-                        <input id="apelido" name="apelido" type="text" class="validate" value="${administrador.apelido}" />
-                        <label for="apelido">Apelido</label>
-                    </div>                                
-                </div>
-                <div class="row">
-                    <div class="input-field col s12 m12 l6">
-                        <input id="inputEmail" name="email" type="email" class="validate" value="${administrador.email}"/>
-                        <label for="inputEmail">Email</label>
-                    </div>
                     <div class="input-field col s12 m12 l6">
                         <input id="inputCpf" name="cpf" type="text" class="validate" value="${administrador.cpf}"/>
                         <label for="inputCpf">CPF</label>
                     </div>
-                </div>
-                <div class="row">         
-                    <div class="input-field col s12 m4 l4">
+                    <div class="input-field col s12 m6 l6">
                         <input id="telefone" name="telefone" type="text" class="validate" value="${administrador.telefone}"  maxlength="13" onkeypress="mascaraTel(this, '##-#####-####')"/>
                         <label for="telefone">Telefone</label>
                     </div>
-                    <div class="input-field col s12 m4 l4">
+                </div>
+                <div class="row">         
+
+                    <div class="input-field col s12 m6 l6">
                         <input id="nascimento" name="nascimento" type="text" class="validate" value="${administrador.nascimento}" onkeypress="mascaraData(this, '##/##/####')" maxlength="10"/>
                         <label for="nascimento">Data de Nascimento</label>
                     </div>
-                    <div class="input-field col s12 m4 l4">                                    
+                    <div class="input-field col s12 m6 l6">                                    
                         <select id="sexo" class="browser-default" name="sexo" style="border-color: grey;">
                             <option value="${administrador.sexo}"  selected>${administrador.sexo}</option>
                             <option></option>
@@ -146,7 +147,7 @@
                     </div>
                     <div id="load_cidades" class="input-field col s12 m6 l6">
                         <select name="cidade" id="cidade" class="browser-default" style="border-color: grey;">                                
-                            <option value="" disabled="" selected="">Selecione o Estado primeiro</option>
+                            <option value="" disabled="" selected="">Selecione a Cidade</option>
                             <c:if test="${not empty localizacao}">
                                 <c:if test="${not empty localizacao.cidade}">
                                     <option value="${localizacao.cidade.id}" selected="">${localizacao.cidade.nome}</option>

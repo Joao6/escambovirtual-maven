@@ -42,4 +42,14 @@ and open the template in the editor.
     font-weight: 700;
 }
 
+.body label{
+    color: #7dc838;
+    font-weight: 500;
+}
+
+.active{
+    color: #7dc838 !important;
+    font-weight: 500 !important;
+}
+
 

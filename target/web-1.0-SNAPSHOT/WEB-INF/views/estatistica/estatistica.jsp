@@ -19,6 +19,8 @@
         <link href="<c:url value="/resources/css/ghpages-materialize.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>" type="image/x-icon">
 
+        <link href="<c:url value="/resources/css/modulo-administrador/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>       
+        <link href="<c:url value="/resources/css/modulo-administrador/estatistica-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>       
         <!--SCRIPTS-->
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
@@ -30,38 +32,34 @@
         <!--<script src="<c:url value="/resources/js/key-google.js"/>" type="text/javascript"></script>-->
 
     </head>
-    <body style="background-color: #b0bec5;">
+    <body>
         <header>
             <jsp:include page="/resources/templates/menu-lateral-administrador.jsp"/>
 
-            <div class="row" style="padding-left: 15%; padding-right: 15%;">
-                <div class="row">
-                    <nav class="grey darken-3 card-panel col s12 z-depth-2">
-                        <div class="nav-wrapper">
-                            <div class="col s12">
-                                <a href="<c:url value="/anunciante/home"/>" class="breadcrumb">Home</a>                                
-                                <a href="#!" class="breadcrumb">Estatísticas</a>
-                            </div>                        
-                        </div>
-                    </nav>
-                </div>   
+            <div class="row container nav-breadcrumb">                             
+                <div class="col s12 l6 m6 links">
+                    <a href="<c:url value="/administrador/home"/>" class="breadcrumb link-anterior">Home</a>                                              
+                    <a href="<c:url value="#!"/>" class="breadcrumb link-ativo">Estatísticas</a>                                              
+                </div>                                        
+            </div>
+            <div class="linha"></div>
 
-                <div class="card-panel" style="margin-top: -2%;">
+                <div class="container graficos">
                     <div class="card-content">
                         <div class="row">
                             <div class="card-panel">
                                 <div class="card-title center">                                    
-                                    <span style="font-size: 19pt;"><i class="material-icons">assessment</i><strong>Estatísticas do Sistema</strong></span></div>
+                                    <span><i class="material-icons">assessment</i><strong>Estatísticas do Sistema</strong></span></div>
                             </div>
                             <div class="row">
                                 <form>
-                                    <select name="opcao" class="browser-default col s12 m6 l6 push-l1" style="border-color: grey">
+                                    <select name="opcao" class="browser-default select col s12 m6 l6 push-l1" style="border-color: grey">
                                         <option value="" selected="" disabled="">Selecione um tipo de dado</option>
                                         <option value="1">Sobre os Itens</option>
                                         <option value="2">Sobre os Usuários</option>
                                         <option value="3">Sobre os Estados </option>
                                     </select>                                    
-                                    <button type="submit" class="btn blue waves-effect col s12 m3 l3 push-l1" style="margin-left: 0.6rem;margin-top: 0.2rem;">Gerar Dados</button>
+                                    <button type="submit" class="btn blue waves-effect col s12 m3 l3 push-l1 btn-gerar" style="margin-left: 0.6rem;margin-top: 0.2rem;">Gerar Dados</button>
                                 </form>
                             </div>
                         </div>
@@ -121,7 +119,7 @@
                         </c:if>
                         <c:if test="${opcao == 3}">
                             <div class="row">
-                                <h5><strong>Por regiões do Brasil</strong></h5>
+                                <h5><strong>Usuários e Itens por regiões do Brasil</strong></h5>
                                 <script type='text/javascript'>
                                     google.charts.load('upcoming', {'packages': ['geochart']});
                                     google.charts.setOnLoadCallback(drawMarkersMap);
@@ -154,8 +152,7 @@
                             </tr>
                         </table>
                     </div>
-                </div>
-            </div>
+                </div>            
         </header>
     </body>
 </html>

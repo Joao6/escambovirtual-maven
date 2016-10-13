@@ -19,28 +19,27 @@
         <link href="<c:url value="/resources/css/ghpages-materialize.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>" type="image/x-icon">
 
+        <link href="<c:url value="/resources/css/modulo-administrador/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>       
+        <link href="<c:url value="/resources/css/modulo-administrador/log-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>       
         <!--SCRIPTS-->
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/resources/js/materialize.min.js"/>"></script>
         <script src="<c:url value="/resources/js/init.js"/>"></script>
     </head>
-    <body  style="background-color: #b0bec5;">
+    <body>
         <header>
             <jsp:include page="/resources/templates/menu-lateral-administrador.jsp"/>
 
-            <div class="row" style="padding-left: 15%; padding-right: 15%;">
-                <div class="row">
-                    <nav class="grey darken-3 card-panel col s12 z-depth-2">
-                        <div class="nav-wrapper">
-                            <div class="col s12">
-                                <a href="/web/administrador/home" class="breadcrumb">Home</a>
-                                <a href="#!" class="breadcrumb">Administradores</a>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-                <div class="card-panel" style="margin-top: -2%;">
+            <div class="row container nav-breadcrumb">                             
+                <div class="col s12 l6 m6 links">
+                    <a href="<c:url value="/administrador/home"/>" class="breadcrumb link-anterior">Home</a>                                              
+                    <a href="<c:url value="#!"/>" class="breadcrumb link-ativo">Logs</a>                                              
+                </div>                                        
+            </div>
+            <div class="linha"></div>
+                
+                <div class="container tabela">
                     <div class="card-content">
                         <h5 class="center">LOGS DO SISTEMA</h5>
                         <div class="divider"></div>
@@ -79,13 +78,12 @@
                                 <li class="waves-effect"><a href="<c:url value="/administrador/list/logs?limit=${limit}&offset=${offset + limit}"/>"><i class="material-icons">chevron_right</i></a></li>
                                 </c:if>
 
-                                <c:if test="${(offset + limit) >= count}">
+                            <c:if test="${(offset + limit) >= count}">
                                 <li class="waves-effect"><a href="<c:url value="/administrador/list/logs?limit=${limit}&offset=${offset}"/>"><i class="material-icons">chevron_right</i></a></li>
                                 </c:if>
                         </ul>
                     </div>
-                </div> 
-            </div>
+                </div>             
         </header>
     </body>
 </html>

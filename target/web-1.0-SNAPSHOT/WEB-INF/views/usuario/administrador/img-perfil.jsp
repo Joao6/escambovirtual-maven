@@ -19,6 +19,8 @@
         <link href="<c:url value="/resources/css/ghpages-materialize.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>" type="image/x-icon">
 
+        <link href="<c:url value="/resources/css/modulo-administrador/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>       
+        <link href="<c:url value="/resources/css/modulo-administrador/img-perfil-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>       
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/resources/js/materialize.min.js"/>"></script>
@@ -46,60 +48,58 @@
             ;
         </script>
     </head>
-    <body style="background-color: #b0bec5;">   
+    <body>   
         <header>
             <jsp:include page="/resources/templates/menu-lateral-administrador.jsp"/>
 
-            <div class="row" style="padding-left:15%;padding-right: 15%;">
-                <div class="row">
-                    <nav class="grey darken-3 card-panel col s12 z-depth-2">
-                        <div class="nav-wrapper">
-                            <div class="col s12">
-                                <a href="/web/administrador/home" class="breadcrumb">Home</a>
-                                <a href="/web/administrador/perfil" class="breadcrumb">Perfil</a>
-                                <a href="#!" class="breadcrumb">Alterar Imagem de Perfil</a>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-                <div class="card-panel grey darken-3" style="margin-top: -2%;">
-                    <div class="card-content">
-                        <div class="card-panel">
-                            <div class="card-panel" style="margin-left: 33%; margin-right: 33%;">
-                                <c:if test="${not empty administrador.imagem}">                
-                                <img class="z-depth-2" id="imagem" src="<c:url value="/usuario/${administrador.id}/img.jpg"/>" height="200" width="200">
+            <div class="row container nav-breadcrumb">                             
+                <div class="col s12 l6 m6 links">
+                    <a href="<c:url value="/administrador/home"/>" class="breadcrumb link-anterior">Home</a>                                              
+                    <a href="<c:url value="/administrador/perfil"/>" class="breadcrumb link-anterior">Perfil</a>                                              
+                    <a href="<c:url value="#!"/>" class="breadcrumb link-ativo">Alterar imagem de perfil</a>                                              
+                </div>                                        
+            </div>
+            <div class="linha"></div>
+
+
+            <div class="container formulario">
+                <div class="card-content">                       
+                    <div class="card-title center">Imagem de Perfil</div>
+                    <div class="card-panel" style="margin-left: 33%; margin-right: 33%;">
+                        <c:if test="${not empty administrador.imagem}">                
+                            <img class="center" id="imagem" src="<c:url value="/usuario/${administrador.id}/img.jpg"/>" height="200" width="200">
+                        </c:if>
+                        <c:if test="${empty administrador.imagem}">
+                            <c:if test="${administrador.sexo == 'Masculino'}">                                                                                                               
+                                <img class="center responsive-img" id="imagem" src="<c:url value="/resources/img/default-avatar_man.png"/>" height="200" width="200">
                             </c:if>
-                            <c:if test="${empty administrador.imagem}">
-                                <c:if test="${administrador.sexo == 'Masculino'}">                                                                                                               
-                                    <img class="z-depth-2" id="imagem" src="<c:url value="/resources/img/default-avatar_man.png"/>" height="200" width="200">
-                                </c:if>
-                                <c:if test="${administrador.sexo == 'Feminino'}">                                                                                                            
-                                    <img class="z-depth-2" id="imagem" src="<c:url value="/resources/img/default-avatar_women.png"/>" height="200" width="200">
-                                </c:if>
+                            <c:if test="${administrador.sexo == 'Feminino'}">                                                                                                            
+                                <img class="center" id="imagem" src="<c:url value="/resources/img/default-avatar_women.png"/>" height="200" width="200">
                             </c:if>
-                            </div>
-                            <div calss="row">
-                                <form method="post" enctype="multipart/form-data">
-                                    <div class="file-field input-field row">
-                                        <div class="btn blue">
-                                            <span>Adicionar imagem de perfil</span>
-                                            <input type="file" name="file" id="file" value="<c:url value="/usuario/${anunciante.id}/img.jpg"/>" onchange="carregaImagem(this, 'imagem')">                                
-                                        </div>
-                                        <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text">
-                                        </div>                                        
-                                    </div>  
-                                    <!--<hr style="border: 1px dashed;">-->
-                                    <br/>
-                                    <div class="row">
-                                        <a class="btn brown right" href="<c:url value="/administrador/perfil"/>">Cancelar</a>
-                                        <button type="submit" class="btn blue right" style="margin-right: 0.6rem;">Salvar</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                        </c:if>
                     </div>
+                    <div calss="row">
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="file-field input-field row">
+                                <div class="btn blue">
+                                    <span>Adicionar imagem de perfil</span>
+                                    <input type="file" name="file" id="file" value="<c:url value="/usuario/${anunciante.id}/img.jpg"/>" onchange="carregaImagem(this, 'imagem')">                                
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate col s12 m6 l6" type="text">
+                                </div>                                        
+                            </div>  
+                            <!--<hr style="border: 1px dashed;">-->
+                            <br/>
+                            <div class="row">
+                                <a class="btn grey darken-3 right btn-large" href="<c:url value="/administrador/perfil"/>">Cancelar</a>
+                                <button type="submit" class="btn blue btn-large right" style="margin-right: 0.6rem;">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
+            </div>
         </header>
     </body>
 </html>

@@ -33,4 +33,12 @@ and open the template in the editor.
     font-weight: 700;
 }
 
+.welcome{
+    margin-top: 2%;
+}
+
+.welcome h5{
+    font-weight: 700;
+}
+
 

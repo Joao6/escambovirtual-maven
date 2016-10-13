@@ -43,8 +43,8 @@
             </div>
             <div class="linha"></div>
 
-            <h5 class="title-info">Algumas informações da sua conta</h5>
             <c:if test="${countItem > 0}">
+            <h5 class="title-info">Algumas informações da sua conta</h5>
                 <div class="row" style="margin-top: -2%;">
                     <div class="informacoes">
                         <div class="card-content">
@@ -66,18 +66,18 @@
             </c:if>
             <c:if test="${countItem == 0}">
                 <div class="row" style="margin-top: -2%;">
-                    <div class="card-panel">
+                    <div class="container welcome">
                         <div class="card-content">
                             <table class="bordered">
                                 <tr>                                               
-                                    <td colspan="4">
+                                    <td colspan="2">
                                         <div class="card-title">                        
                                             <h5>Seja bem vindo(a)!</h5>                                                            
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td rowspan="4" class=""><img class="z-depth-2" src="<c:url value="/resources/img/cadastrar.png"/>" height="250" width="250"></td>
+                                    <td rowspan="4" class="img"><img class="img responsive-img" src="<c:url value="/resources/img/cadastrar.png"/>" height="250" width="250"></td>
                                 </tr>
                                 <tr>
                                     <td><b>Você ainda não possui itens cadastrados</b></td>                                                    
