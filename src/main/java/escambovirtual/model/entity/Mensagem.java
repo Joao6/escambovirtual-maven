@@ -10,8 +10,11 @@ import java.util.Date;
 public class Mensagem extends BaseEntity{
     
     private String texto;
-    private Usuario usuario;
-    private Date data_hora;
+    private Usuario remetente;
+    private Usuario destinatario;
+    private Item item;
+    private Date data_hora_envio;   
+    private Date data_hora_leitura;   
 
     public String getTexto() {
         return texto;
@@ -21,19 +24,43 @@ public class Mensagem extends BaseEntity{
         this.texto = texto;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getRemetente() {
+        return remetente;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setRemetente(Usuario remetente) {
+        this.remetente = remetente;
     }
 
-    public Date getData_hora() {
-        return data_hora;
+    public Usuario getDestinatario() {
+        return destinatario;
     }
 
-    public void setData_hora(Date data_hora) {
-        this.data_hora = data_hora;
-    }       
+    public void setDestinatario(Usuario destinatario) {
+        this.destinatario = destinatario;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Date getData_hora_envio() {
+        return data_hora_envio;
+    }
+
+    public void setData_hora_envio(Date data_hora_envio) {
+        this.data_hora_envio = data_hora_envio;
+    }
+
+    public Date getData_hora_leitura() {
+        return data_hora_leitura;
+    }
+
+    public void setData_hora_leitura(Date data_hora_leitura) {
+        this.data_hora_leitura = data_hora_leitura;
+    }
 }

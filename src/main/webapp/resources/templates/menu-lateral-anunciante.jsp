@@ -46,13 +46,13 @@
                 <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="/anunciante/pesquisar/item"/>"><i class="material-icons">search</i>Pesquisar</a>
             </li>
             <li>
-                <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="#"/>"><i class="material-icons">chat</i>Conversas</a>
+                <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="/anunciante/mensagem/list"/>"><i class="material-icons">chat</i>Conversas</a>
             </li>  
             <li>
                 <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="/anunciante/oferta/list"/>"><i class="material-icons">call_received</i>Ofertas Recebidas</a>
             </li>                                   
             <li>
-                <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="#"/>"><i class="material-icons">import_export</i>Trocas Realizadas</a>
+                <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="/anunciante/troca/list"/>"><i class="material-icons">import_export</i>Trocas Realizadas</a>
             </li>
             <li>
                 <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="/sair"/>"><i class="material-icons">settings_power</i>Sair</a>

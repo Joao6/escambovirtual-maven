@@ -8,20 +8,27 @@ import java.util.Date;
  * @author Joao
  */
 public abstract class Usuario extends BaseEntity {
-    
+
     public static final Long USUARIO_TIPO_ADMINISTRADOR = 1L;
     public static final Long USUARIO_TIPO_ANUNCIANTE = 2L;
-    
+
     private String nome;
     private String apelido;
     private String email;
-    private String senha;    
+    private String senha;
     private String telefone;
     private String nascimento;
     private String sexo;
     private Long perfil;
     private Date data_cadastro;
     private Imagem imagem;
+
+    public Usuario() {
+    }
+
+    public Usuario(Long id) {
+        super(id);
+    }
 
     public Imagem getImagem() {
         return imagem;
@@ -38,7 +45,7 @@ public abstract class Usuario extends BaseEntity {
     public void setData_cadastro(Date data_cadastro) {
         this.data_cadastro = data_cadastro;
     }
-   
+
     public String getApelido() {
         return apelido;
     }
@@ -102,5 +109,5 @@ public abstract class Usuario extends BaseEntity {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
- 
+
 }

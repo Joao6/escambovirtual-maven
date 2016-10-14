@@ -42,7 +42,7 @@
             <div class="navbar-fixed">
                 <nav id="navbarTop">
                     <div class="nav-wrapper">
-                        <a href="#!" class="brand-logo"></a>
+                        <a href="<c:url value="/"/>" class="brand-logo"><img src="<c:url value="/resources/img/logo_escambovirtual.png"/>" height="50" width="150" style="margin-top: 7px; margin-left: 200px;"></a>
                         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons white-text">menu</i></a>
                         <ul class="right hide-on-med-and-down">                                                
                             <!--<li><i class="material-icons">perm_identity</i></li>-->

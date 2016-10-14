@@ -18,6 +18,7 @@
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/materialize.min.css"/>"  media="screen,projection"/>
         <link href="<c:url value="/resources/css/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="<c:url value="/resources/css/styleIndex.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="<c:url value="/resources/css/anunciante/cadastro-anunciante.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <script src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
         <script src="<c:url value="/resources/js/jquery.maskedinput.min.js"/>"></script>
@@ -48,16 +49,17 @@
         <jsp:include page="../login.jsp"></jsp:include>
             <!-- NAVBAR -->
             <div class="navbar-fixed">
-                <nav class="grey darken-3" id="navbarTop">
-                    <div class="nav-wrapper container">
-                        <a id="logo-container" href="<c:url value="/"/>" class="brand-logo white-text">Escambo Virtual</a>
-                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons white-text">menu</i></a>
-                    <ul class="right hide-on-med-and-down">                                                
-                        <li><i class="material-icons">perm_identity</i></li>
-                        <li><a class='modal-trigger btn blue white-text' href='#modalLogin' style="margin-right: 30px;">Entrar</a></li>                               
+                <nav id="navbarTop">
+                    <div class="nav-wrapper">
+                        <a href="<c:url value="/"/>" class="brand-logo"><img src="<c:url value="/resources/img/logo_escambovirtual.png"/>" height="50" width="150" style="margin-top: 7px; margin-left: 200px;"></a>
+                        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons white-text">menu</i></a>
+                        <ul class="right hide-on-med-and-down">                                                
+                            <!--<li><i class="material-icons">perm_identity</i></li>-->
+                            <li><img class="img-login" src="<c:url value="/resources/img/login.png"/>"></li>
+                        <li><a class='modal-trigger btn btn-entrar white-text' href='#modalLogin' style="margin-right: 30px;">Entrar</a></li>                               
                     </ul>                                                
                     <ul class="side-nav" id="mobile-demo">
-                        <li><a href="#modalLogin">Entrar</a></li>                        
+                        <li><a href="<c:url value="/usuario/login/mobile"/>">Entrar</a></li>                        
                     </ul>
                 </div>
             </nav>

@@ -9,9 +9,18 @@ import java.util.Date;
  */
 public class Oferta extends BaseEntity {
 
-    Date dataOferta;
-    Item item;
-    OfertaItem ofertaItem;
+    private Date dataOferta;
+    private Item item;
+    private OfertaItem ofertaItem;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Date getDataOferta() {
         return dataOferta;

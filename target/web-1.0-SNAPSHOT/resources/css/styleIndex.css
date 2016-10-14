@@ -139,34 +139,34 @@ and open the template in the editor.
 
 .box4{
     overflow: hidden;
-    width: 16%;
+    /*width: 16%;*/
     height: 200px;    
 }
 
 .box5{
-    width: 16%;
+    /*width: 16%;*/
     height: 200px;
     background-color: #6eb0e0;
 }
 
 .box6{
-    width: 16%;
+    /*width: 16%;*/
     height: 200px;    
 }
 
 .box7{
-    width: 16%;
+    /*width: 16%;*/
     height: 200px;
     background-color: #ffc80b;
 }
 
 .box8{
-    width: 16%;
+    /*width: 16%;*/
     height: 200px;    
 }
 
 .box9{
-    width: 16%;
+    /*width: 16%;*/
     height: 200px;
     background-color: #629b34;
 }

@@ -6,6 +6,13 @@ package escambovirtual.model.entity;
  * @author Joao
  */
 public class Anunciante extends Usuario {
+
+    public Anunciante() {
+    }
+    
+    public Anunciante(Long id) {
+        super(id);
+    }
     
     private Integer reputacao;
 

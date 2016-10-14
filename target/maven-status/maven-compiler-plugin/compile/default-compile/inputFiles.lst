@@ -1,83 +1,86 @@
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\Imagem.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\dao\ComunicacaoDAO.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\Oferta.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseAnuncianteService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\controller\EstatisticaController.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\dao\LogDAO.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\ComunicacaoService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\OfertaItem.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\EstatisticaGeral.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\controller\IndexController.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\criteria\OfertaCriteria.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\CidadeService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseCidadeService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\criteria\AnuncianteCriteria.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\controller\AdministradorController.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\ConnectionManager.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\Troca.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\dao\CidadeDAO.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\BaseCRUDService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\Estado.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\Cidade.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\criteria\LocalizacaoCriteria.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\Administrador.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\ItemImagem.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\Localizacao.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\Main.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseComunicacaoService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseEmailService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\dao\LocalizacaoDAO.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\dao\TrocaDAO.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\Comunicacao.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\EstatisticaRegiao.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\SenhaService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\PalavraChaveService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseUsuarioService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\EstatisticaService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\AdministradorService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseEstatisticaService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseAdministradorService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\controller\ComunicacaoController.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\TrocaService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\Usuario.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\ItemService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\LogService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\dao\ItemDAO.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\controller\ItemController.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseLogService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\constraints\AppConstraints.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\UsuarioService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseOfertaService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\criteria\TrocaCriteria.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\BaseEntity.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseSenhaService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\interceptor\Interceptor.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseEstadoService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\dao\PalavraChaveDAO.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\EmailService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\EstadoService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\OfertaService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BasePalavraChaveService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\util\FileUploadForm.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\criteria\CidadeCriteria.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\criteria\AdministradorCriteria.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseLocalizacaoService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\AnuncianteService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\controller\AnuncianteController.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseTrocaService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\dao\UsuarioDAO.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\dao\EstatisticaDAO.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\controller\UsuarioController.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\service\BaseItemService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\Item.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\controller\OfertaController.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\criteria\UsuarioCriteria.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\dao\OfertaDAO.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\Mensagem.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\criteria\ItemCriteria.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\service\LocalizacaoService.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\Anunciante.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\PalavraChave.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\entity\Log.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\dao\EstadoDAO.java
-C:\Users\rafael-pc\Documents\escambovirtual-maven-master\escambovirtual-maven-master\src\main\java\escambovirtual\model\base\BaseDAO.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\controller\ComunicacaoController.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseAnuncianteService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Item.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\controller\EstatisticaController.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Comunicacao.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseEmailService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseCidadeService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\MensagemDAO.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\CidadeService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\BaseDAO.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\criteria\ItemCriteria.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\EstatisticaRegiao.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\AdministradorService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\util\FileUploadForm.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\ConnectionManager.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\LocalizacaoDAO.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\controller\AdministradorController.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\EstatisticaGeral.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\LogService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseUsuarioService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\EstadoDAO.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\OfertaItem.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseLogService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\criteria\UsuarioCriteria.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\criteria\AnuncianteCriteria.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\Main.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseAdministradorService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\criteria\CidadeCriteria.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseSenhaService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\CidadeDAO.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\BaseEntity.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseItemService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\EstatisticaDAO.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Estado.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\BaseCRUDService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Cidade.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Imagem.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\controller\TrocaController.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\criteria\OfertaCriteria.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Localizacao.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\TrocaDAO.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\controller\OfertaController.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Mensagem.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\controller\MensagemController.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseOfertaService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\criteria\LocalizacaoCriteria.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\criteria\TrocaCriteria.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\UsuarioService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\OfertaDAO.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Usuario.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\LogDAO.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\controller\IndexController.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\EstatisticaService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BasePalavraChaveService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Troca.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Log.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\AnuncianteService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseEstatisticaService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseTrocaService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\criteria\AdministradorCriteria.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\ItemService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\controller\AnuncianteController.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\controller\UsuarioController.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\EmailService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\interceptor\Interceptor.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseLocalizacaoService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\TrocaService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\ItemDAO.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\PalavraChaveService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\constraints\AppConstraints.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\PalavraChave.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\ItemImagem.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\controller\ItemController.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\OfertaService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\EstadoService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\PalavraChaveDAO.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseEstadoService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Oferta.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Anunciante.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\MensagemService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Administrador.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\LocalizacaoService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\SenhaService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseMensagemService.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\UsuarioDAO.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BaseComunicacaoService.java

@@ -25,6 +25,7 @@ import escambovirtual.model.service.OfertaService;
 import escambovirtual.model.service.SenhaService;
 import escambovirtual.model.service.UsuarioService;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -170,7 +171,8 @@ public class AnuncianteController {
             mv = new ModelAndView("redirect:/anunciante/perfil");
 
             Log log = new Log();
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            Date date = new Date();
+            log.setDataHora(date);
             log.setEvento("Edicao de perfil anunciante");
             log.setIdEvento(anunciante.getId());
             log.setIdUsuario(anunciante.getId());
@@ -214,7 +216,8 @@ public class AnuncianteController {
             mv = new ModelAndView("redirect:/anunciante/perfil");
 
             Log log = new Log();
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            Date date = new Date();
+            log.setDataHora(date);
             log.setEvento("Alteração de imagem anunciante");
             log.setIdUsuario(anunciante.getId());
             LogService sls = new LogService();
@@ -274,7 +277,8 @@ public class AnuncianteController {
             mv = new ModelAndView("redirect:/anunciante/home");
 
             Log log = new Log();
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            Date date = new Date();
+            log.setDataHora(date);
             log.setEvento("Alteração de senha anunciante");
             log.setIdEvento(anunciante.getId());
             log.setIdUsuario(anunciante.getId());
@@ -304,7 +308,7 @@ public class AnuncianteController {
                 Cidade cidade = null;
                 if (cidadeID != null) {
                     cidade = cs.readById(cidadeID);
-                    criteria.put(ItemCriteria.CIDADE_EQ, cidadeID);                    
+                    criteria.put(ItemCriteria.CIDADE_EQ, cidadeID);
                 }
 
                 criteria.put(ItemCriteria.ESTADO_EQ, estado);
@@ -376,7 +380,8 @@ public class AnuncianteController {
                 s.create(anuncianteNew);
 
                 Log log = new Log();
-                log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+                Date date = new Date();
+                log.setDataHora(date);
                 log.setEvento("Cadastro de anunciante");
                 log.setIdEvento(anuncianteNew.getId());
                 log.setIdUsuario(anuncianteNew.getId());

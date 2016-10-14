@@ -20,6 +20,7 @@ import escambovirtual.model.service.OfertaService;
 import escambovirtual.model.service.PalavraChaveService;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -137,7 +138,8 @@ public class ItemController {
             s.create(item);
 
             Log log = new Log();
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            Date date = new Date();
+            log.setDataHora(date);
             log.setEvento("Cadastro de item");
             log.setIdEvento(item.getId());
             log.setIdUsuario(anunciante.getId());
@@ -194,9 +196,9 @@ public class ItemController {
                     mv.addObject("anunciante", usuario);
                     response.setStatus(200);
                 } else {
-                    mv = new ModelAndView("redirect:/anunciante/item/permissao-negada");                    
+                    mv = new ModelAndView("redirect:/anunciante/item/permissao-negada");
                 }
-            }else{
+            } else {
                 mv = new ModelAndView("usuario/anunciante/item/item-not-found");
                 mv.addObject("anunciante", usuario);
             }
@@ -234,7 +236,8 @@ public class ItemController {
             response.setStatus(200);
 
             Log log = new Log();
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            Date date = new Date();
+            log.setDataHora(date);
             log.setEvento("Edição de item");
             log.setIdEvento(id);
             log.setIdUsuario(anunciante.getId());
@@ -261,7 +264,8 @@ public class ItemController {
 //                response.setStatus(200);
 
                 Log log = new Log();
-                log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+                Date date = new Date();
+                log.setDataHora(date);
                 log.setEvento("Exclusão de item");
                 log.setIdEvento(idItem);
                 log.setIdUsuario(usuario.getId());

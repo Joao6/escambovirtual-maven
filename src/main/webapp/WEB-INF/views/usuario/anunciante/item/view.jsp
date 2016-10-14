@@ -87,7 +87,7 @@
 
                                                             <c:forEach items="${item.itemImagemList}" var="itemImagem">
                                                                 <div data-p="112.50" style="display: none;">
-                                                                    <img data-u="image" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" />
+                                                                    <img data-u="image" class="responsive-img" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" />
                                                                     <img data-u="thumb" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" />
                                                                 </div>
                                                             </c:forEach>
@@ -141,7 +141,7 @@
                                         </c:if>
                                         <tr>
                                             <td class="right-align" colspan="4">
-                                                <a class="waves-effect waves-light btn blue col s12 m5 l5 btn-large" href="<c:url value="/anunciante/comunicacao/item/${item.id}"/>">Enviar mensagem ao anunciante</a>                                        
+                                                <a class="waves-effect waves-light btn blue col s12 m5 l5 btn-large" href="<c:url value="/anunciante/mensagem/item/${item.id}"/>">Enviar mensagem ao anunciante</a>                                        
                                                 <a class="waves-effect waves-light btn grey darken-3 col s12 m5 l5 btn-large" href="<c:url value="/anunciante/item/${item.id}/ofertar"/>" style="margin-left: 0.6rem;">Fazer oferta por este item</a>
                                             </td>                                            
                                         </tr>                                        

@@ -13,6 +13,7 @@ import escambovirtual.model.service.LogService;
 import escambovirtual.model.service.SenhaService;
 import escambovirtual.model.service.UsuarioService;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +50,8 @@ public class UsuarioController {
             mv.addObject("administrador", usuario);
 
             Log log = new Log();
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            Date date = new Date();
+            log.setDataHora(date);
             log.setEvento("Login de administrador");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());
@@ -61,7 +63,8 @@ public class UsuarioController {
             mv.addObject("anunciante", usuario);
 
             Log log = new Log();
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            Date date = new Date();
+            log.setDataHora(date);
             log.setEvento("Login de anunciante");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());
@@ -76,12 +79,12 @@ public class UsuarioController {
     }
 
     @RequestMapping(value = "/usuario/login/mobile", method = RequestMethod.GET)
-    public ModelAndView getLoginMobile(){
+    public ModelAndView getLoginMobile() {
         ModelAndView mv = new ModelAndView("usuario/login-mobile");
-        
+
         return mv;
     }
-    
+
     @RequestMapping(value = "/usuario/login/mobile", method = RequestMethod.POST)
     public ModelAndView postLoginMobile(String email, String senha, HttpSession session) throws Exception {
         UsuarioService s = new UsuarioService();
@@ -98,7 +101,8 @@ public class UsuarioController {
             mv.addObject("administrador", usuario);
 
             Log log = new Log();
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            Date date = new Date();
+            log.setDataHora(date);
             log.setEvento("Login via mobile de administrador");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());
@@ -110,7 +114,8 @@ public class UsuarioController {
             mv.addObject("anunciante", usuario);
 
             Log log = new Log();
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            Date date = new Date();
+            log.setDataHora(date);
             log.setEvento("Login via mobile de anunciante");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());
@@ -132,7 +137,8 @@ public class UsuarioController {
 
         if (usuario instanceof Administrador) {
 
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            Date date = new Date();
+            log.setDataHora(date);
             log.setEvento("Logout de administrador");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());
@@ -141,7 +147,8 @@ public class UsuarioController {
 
         } else if (usuario instanceof Anunciante) {
 
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            Date date = new Date();
+            log.setDataHora(date);
             log.setEvento("Logout de anunciante");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());
@@ -165,7 +172,8 @@ public class UsuarioController {
             mv = new ModelAndView("redirect:/index");
 
             Log log = new Log();
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+            Date date = new Date();
+            log.setDataHora(date);
             log.setEvento("Recuperação de senha");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());

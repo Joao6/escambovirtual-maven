@@ -24,20 +24,19 @@ CREATE TABLE administrador(
     PRIMARY KEY(usuario_fk)
 );
 
-CREATE TABLE comunicacao(
-	usuario_fk BIGINT NOT NULL,
-	item_fk BIGINT NOT NULL,
-	PRIMARY KEY(usuario_fk,item_fk)
+CREATE TABLE mensagem
+(
+  id bigserial NOT NULL,
+  data_hora_envio timestamp without time zone NOT NULL,
+  data_hora_leitura timestamp without time zone,
+  texto varchar(600) NOT NULL,
+  remetente_fk bigint NOT NULL,
+  destinatario_fk bigint NOT NULL,
+  item_fk bigint NOT NULL,
+  CONSTRAINT mensagem_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE mensagem(
-	id BIGSERIAL NOT NULL,
-	data_hora DATE NOT NULL,
-	texto VARCHAR NOT NULL,
-	comunicacao_usuario_fk BIGINT,
-	comunicacao_item_fk BIGINT,
-	PRIMARY KEY(id)
-);
+
 
 CREATE TABLE item(
 	id BIGSERIAL NOT NULL,
@@ -96,8 +95,11 @@ CREATE TABLE troca(
 	avaliacao_nivel_satisfacao INT,
 	avaliacao_data_hora TIMESTAMP,
 	avaliacao_descricao VARCHAR(255),
+        data_hora TIMESTAMP,
 	status varchar(50) NOT NULL,
 	oferta_fk BIGINT NOT NULL,
+        usuario1_fk BIGINT NOT NULL,
+        usuario2_fk BIGINT NOT NULL,
 	PRIMARY KEY(oferta_fk)
 );
 
@@ -183,14 +185,14 @@ CREATE TRIGGER trigger_gerahash
 alter table usuario_imagem add constraint usuario_imagem_usuario_fk foreign key (usuario_fk) references usuario(id) on update cascade on delete cascade;
 ALTER TABLE anunciante ADD CONSTRAINT anunciante_usuario_fk FOREIGN KEY (usuario_fk) REFERENCES usuario(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE administrador ADD CONSTRAINT administrador_usuario_fk FOREIGN KEY (usuario_fk) REFERENCES usuario(id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE comunicacao ADD CONSTRAINT comunicacao_usuario_fk FOREIGN KEY (usuario_fk) REFERENCES usuario(id) ON UPDATE CASCADE ON DELETE CASCADE;-- ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE comunicacao ADD CONSTRAINT comunicacao_item_fk FOREIGN KEY (item_fk) REFERENCES item(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE log ADD CONSTRAINT log_usuario_fk FOREIGN KEY (usuario_fk) REFERENCES usuario(id);
 ALTER TABLE item_palavra_chave ADD CONSTRAINT item_palavra_chave_item_fk FOREIGN KEY (item_fk) REFERENCES item(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE item_palavra_chave ADD CONSTRAINT item_palavra_chave_palavra_chave_fk FOREIGN KEY (palavra_chave_fk) REFERENCES palavra_chave(id) ON UPDATE CASCADE ON DELETE SET NULL;
 ALTER TABLE item ADD CONSTRAINT item_usuario_fk FOREIGN KEY (usuario_fk) REFERENCES usuario(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE oferta ADD CONSTRAINT oferta_item_fk FOREIGN KEY (item_fk) REFERENCES item(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE troca ADD CONSTRAINT troca_oferta_fk FOREIGN KEY (oferta_fk) REFERENCES oferta(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE troca ADD CONSTRAINT troca_usuario1_fk FOREIGN KEY (usuario1_fk) REFERENCES usuario(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE troca ADD CONSTRAINT troca_usuario2_fk FOREIGN KEY (usuario2_fk) REFERENCES usuario(id) ON UPDATE CASCADE ON DELETE CASCADE;
 alter table item_imagem add constraint item_imagem_item_fk foreign key (item_fk) references item(id) on update cascade on delete cascade;
 ALTER TABLE oferta_item ADD CONSTRAINT oferta_item_oferta_fk FOREIGN KEY (oferta_fk) REFERENCES oferta(id) ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE oferta_item ADD CONSTRAINT oferta_item_item_fk FOREIGN KEY (item_fk) REFERENCES item(id) ON UPDATE CASCADE ON DELETE CASCADE;
@@ -201,5 +203,8 @@ ALTER TABLE localizacao ADD CONSTRAINT localizacao_item_fk FOREIGN KEY (item_fk)
 ALTER TABLE cidade ADD CONSTRAINT cidade_estado_fk FOREIGN KEY (estado_fk) REFERENCES estado(id) ON UPDATE CASCADE ON DELETE SET NULL;
 ALTER TABLE item ADD CONSTRAINT item_estado_fk FOREIGN KEY (estado_fk) REFERENCES estado(id) ON UPDATE CASCADE ON DELETE SET NULL;
 ALTER TABLE item ADD CONSTRAINT item_cidade_fk FOREIGN KEY (cidade_fk) REFERENCES cidade(id) ON UPDATE CASCADE ON DELETE SET NULL;
+alter table mensagem add constraint mensagem_remetente_fk foreign key (remetente_fk) references usuario(id);
+alter table mensagem add constraint mensagem_destinatario_fk foreign key (remetente_fk) references usuario(id);
+alter table mensagem add constraint mensagem_item_fk foreign key (item_fk) references item(id);
 
 

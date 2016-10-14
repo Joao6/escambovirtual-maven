@@ -14,6 +14,7 @@ import escambovirtual.model.service.ItemService;
 import escambovirtual.model.service.LogService;
 import escambovirtual.model.service.OfertaService;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -92,11 +93,14 @@ public class OfertaController {
                 ofI.setItemList(itemList);
                 OfertaService os = new OfertaService();
                 oferta.setOfertaItem(ofI);
+                oferta.setStatus("Enviada");
+                Date date = new Date();
+                oferta.setDataOferta(date);
                 os.create(oferta);
                 response.setStatus(200);
 
                 Log log = new Log();
-                log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+                log.setDataHora(date);
                 log.setEvento("Cadastro de Oferta");
                 log.setIdEvento(oferta.getId());
                 log.setIdUsuario(usuario.getId());
@@ -121,9 +125,9 @@ public class OfertaController {
             Map<Long, Object> criteria = new HashMap<>();
             criteria.put(OfertaCriteria.ANUNCIANTE_ID, anunciante.getId());
             List<Oferta> ofertaList = os.readByCriteria(criteria, null, null);
-            if(ofertaList != null){
+            if (ofertaList != null) {
                 for (Oferta oferta : ofertaList) {
-                    if(oferta.getItem().getItemImagemList() != null && oferta.getItem().getItemImagemList().size() >0){
+                    if (oferta.getItem().getItemImagemList() != null && oferta.getItem().getItemImagemList().size() > 0) {
                         ItemImagem itemImagem = oferta.getItem().getItemImagemList().get(0);
                         List<ItemImagem> itemImagemList = new ArrayList<>();
                         itemImagemList.add(itemImagem);
@@ -151,7 +155,7 @@ public class OfertaController {
             if (oferta != null) {
                 if (oferta.getItem().getAnunciante().getId().equals(anunciante.getId())) {
                     Item item = oferta.getOfertaItem().getItemList().get(0);
-                    for(Item aux : oferta.getOfertaItem().getItemList()){
+                    for (Item aux : oferta.getOfertaItem().getItemList()) {
                         ItemImagem itemImagem = aux.getItemImagemList().get(0);
                         List<ItemImagem> itemImagemList = new ArrayList<>();
                         itemImagemList.add(itemImagem);
@@ -253,25 +257,5 @@ public class OfertaController {
         return mv;
     }
 
-    //aceitar a oferta para realizar a troca
-    @RequestMapping(value = "/anunciante/oferta/{id}/aceitar", method = RequestMethod.POST)
-    public ModelAndView postAceitarOferta(@PathVariable Long id, HttpSession session) {
-        ModelAndView mv = null;
-        try {
-            Anunciante anunciante = (Anunciante) session.getAttribute("usuarioSessao");
-            mv = new ModelAndView("redirect:/anunciante/oferta/list");
-
-            Log log = new Log();
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
-            log.setEvento("Aceite de Oferta");
-            log.setIdEvento(id);
-            log.setIdUsuario(anunciante.getId());
-            LogService sl = new LogService();
-            sl.create(log);
-        } catch (Exception e) {
-            mv = new ModelAndView("error");
-            mv.addObject("error", e);
-        }
-        return mv;
-    }
+    
 }

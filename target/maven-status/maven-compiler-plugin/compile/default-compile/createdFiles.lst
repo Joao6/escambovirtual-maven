@@ -1,4 +1,5 @@
 escambovirtual\model\entity\Oferta.class
+escambovirtual\model\base\service\BaseMensagemService.class
 escambovirtual\model\entity\Estado.class
 escambovirtual\model\base\service\BaseLocalizacaoService.class
 escambovirtual\model\service\TrocaService.class
@@ -16,6 +17,7 @@ escambovirtual\interceptor\Interceptor.class
 escambovirtual\model\criteria\CidadeCriteria.class
 escambovirtual\model\service\LocalizacaoService.class
 escambovirtual\model\service\EstadoService.class
+escambovirtual\model\service\MensagemService.class
 escambovirtual\model\dao\EstatisticaDAO.class
 escambovirtual\constraints\AppConstraints.class
 escambovirtual\model\entity\Localizacao.class
@@ -24,11 +26,12 @@ escambovirtual\model\ConnectionManager.class
 escambovirtual\model\entity\Administrador.class
 escambovirtual\model\entity\Imagem.class
 escambovirtual\model\base\service\BaseComunicacaoService.class
+escambovirtual\controller\MensagemController.class
+escambovirtual\model\dao\MensagemDAO.class
 escambovirtual\model\service\EstatisticaService.class
 escambovirtual\controller\AnuncianteController.class
 escambovirtual\model\criteria\LocalizacaoCriteria.class
 escambovirtual\model\criteria\AdministradorCriteria.class
-escambovirtual\model\service\ComunicacaoService.class
 escambovirtual\model\criteria\TrocaCriteria.class
 escambovirtual\model\base\service\BaseSenhaService.class
 escambovirtual\model\base\service\BaseItemService.class
@@ -71,13 +74,13 @@ escambovirtual\controller\AdministradorController.class
 escambovirtual\model\entity\OfertaItem.class
 escambovirtual\model\base\service\BaseOfertaService.class
 escambovirtual\model\base\service\BaseEstadoService.class
+escambovirtual\controller\TrocaController.class
 escambovirtual\model\base\service\BaseEstatisticaService.class
 escambovirtual\model\service\PalavraChaveService.class
 escambovirtual\controller\IndexController.class
 escambovirtual\model\dao\TrocaDAO.class
 escambovirtual\model\entity\Usuario.class
 escambovirtual\model\base\service\BaseUsuarioService.class
-escambovirtual\model\dao\ComunicacaoDAO.class
 escambovirtual\model\criteria\AnuncianteCriteria.class
 escambovirtual\model\dao\OfertaDAO.class
 escambovirtual\model\base\service\BaseLogService.class

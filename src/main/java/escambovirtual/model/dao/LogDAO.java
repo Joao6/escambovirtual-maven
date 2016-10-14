@@ -5,11 +5,13 @@ import escambovirtual.model.entity.Log;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class LogDAO implements BaseDAO<Log>{
+public class LogDAO implements BaseDAO<Log> {
 
     @Override
     public void create(Connection conn, Log entity) throws Exception {
@@ -19,7 +21,7 @@ public class LogDAO implements BaseDAO<Log>{
         int i = 0;
 
         ps.setString(++i, entity.getEvento());
-        ps.setDate(++i, new java.sql.Date(new java.util.Date().getTime()));
+        ps.setTimestamp(++i, new Timestamp(entity.getDataHora().getTime()));
         ps.setLong(++i, entity.getIdEvento());
         ps.setString(++i, entity.getDescricao());
         ps.setLong(++i, entity.getIdUsuario());
@@ -33,7 +35,6 @@ public class LogDAO implements BaseDAO<Log>{
         rs.close();
         ps.close();
     }
-
 
     @Override
     public void update(Connection conn, Log entity) throws Exception {
@@ -49,7 +50,7 @@ public class LogDAO implements BaseDAO<Log>{
     public Long countByCriteria(Connection conn, Map<Long, Object> criteria, Long limit, Long offset) throws Exception {
         Long count = null;
         String sql = "SELECT count(*) count FROM log WHERE 1=1";
-        
+
         PreparedStatement ps = conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
@@ -89,11 +90,12 @@ public class LogDAO implements BaseDAO<Log>{
             log.setId(rs.getLong("id"));
             log.setEvento(rs.getString("evento"));
             log.setDescricao(rs.getString("descricao"));
-            
+
 //            String data[] = rs.getString("data_hora").split("-");
 //            String data2 = data[2] + "/" + data[1] + "/" + data[0];
 //            log.setDataHora(data2);
-            log.setDataHora(rs.getDate("data_hora"));
+            log.setDataHora(new Date(rs.getTimestamp("data_hora").getTime()));
+//            log.setDataHora(rs.getDate("data_hora"));
             log.setIdEvento(rs.getLong("id_evento"));
             log.setIdUsuario(rs.getLong("usuario_fk"));
 
@@ -102,5 +104,5 @@ public class LogDAO implements BaseDAO<Log>{
 
         return logList;
     }
-    
+
 }

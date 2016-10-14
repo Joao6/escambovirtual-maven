@@ -2,9 +2,10 @@ package escambovirtual.model.service;
 
 import escambovirtual.model.ConnectionManager;
 import escambovirtual.model.base.service.BaseTrocaService;
+import escambovirtual.model.dao.ItemDAO;
 import escambovirtual.model.dao.OfertaDAO;
 import escambovirtual.model.dao.TrocaDAO;
-import escambovirtual.model.entity.Oferta;
+import escambovirtual.model.entity.Item;
 import escambovirtual.model.entity.Troca;
 import java.sql.Connection;
 import java.util.List;
@@ -22,6 +23,19 @@ public class TrocaService implements BaseTrocaService{
         try {
             TrocaDAO dao = new TrocaDAO();
             dao.create(conn, entity);
+            
+            ItemDAO itemDAO = new ItemDAO();
+            entity.getOferta().getItem().setStatus("Trocado");
+            itemDAO.update(conn, entity.getOferta().getItem());
+            for(Item aux : entity.getOferta().getOfertaItem().getItemList()){
+                aux.setStatus("Trocado");
+                itemDAO.update(conn, aux);
+            }
+            
+            entity.getOferta().setStatus("Aceita");
+            OfertaDAO ofertaDAO = new OfertaDAO();
+            ofertaDAO.update(conn, entity.getOferta());
+            
             conn.commit();
             conn.close();
         } catch (Exception e) {

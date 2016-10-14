@@ -44,7 +44,7 @@
                     <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="/administrador/list"/>"><i class="material-icons">note_add</i>Administradores</a>
                 </li>
                 <li>
-                    <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="/administrador/list/itens"/>"><i class="material-icons">assignment</i>Avaliar Itens</a>
+                    <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="/administrador/list/itens"/>"><i class="material-icons">thumbs_up_down</i>Avaliar Itens</a>
                 </li>                        
                 <li>
                     <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="/administrador/estatisticas-sistema"/>"><i class="material-icons">assessment</i>Estatísticas</a>

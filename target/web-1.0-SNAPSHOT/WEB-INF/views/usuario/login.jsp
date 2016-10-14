@@ -59,7 +59,7 @@
                         </div>
                         <div class="row center">                                
                             <button class="btn blue col s12 m6 push-l3 waves-effect waves-light" style="margin-right: 0.6rem; margin-bottom: 0.6rem;">Entrar</button>                                
-                            <input type="button" class="btn brown col s12 m6 push-l3 waves-effect waves-light modal-close" value="Voltar">
+                            <input type="button" class="btn grey darken-3 col s12 m6 push-l3 waves-effect waves-light modal-close" value="Voltar">
                         </div>
                         <div class="row center">
                             <a href="<c:url value="/anunciantes/novo"/>">Registrar</a>
