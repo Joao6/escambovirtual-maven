@@ -46,7 +46,7 @@
                 <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="/anunciante/pesquisar/item"/>"><i class="material-icons">search</i>Pesquisar</a>
             </li>
             <li>
-                <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="/anunciante/mensagem/list"/>"><i class="material-icons">chat</i>Conversas</a>
+                <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="/anunciante/mensagem/list"/>"><i class="material-icons">chat</i>Conversas<span id="menuConversa" class="alert"></span></a>
             </li>  
             <li>
                 <a class="collapsible-header black-text waves-effect waves-color-demo" href="<c:url value="/anunciante/oferta/list"/>"><i class="material-icons">call_received</i>Ofertas Recebidas</a>

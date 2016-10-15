@@ -50,6 +50,7 @@ D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Usuario.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\dao\LogDAO.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\controller\IndexController.java
+D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\criteria\MensagemCriteria.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\service\EstatisticaService.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\base\service\BasePalavraChaveService.java
 D:\Documentos\FAI\Fai 2016\www\Projeto Escambo Virtual  - WEB\web\src\main\java\escambovirtual\model\entity\Troca.java

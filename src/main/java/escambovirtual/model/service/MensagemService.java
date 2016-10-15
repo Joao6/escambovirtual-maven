@@ -4,9 +4,12 @@ import escambovirtual.model.ConnectionManager;
 import escambovirtual.model.base.service.BaseMensagemService;
 import escambovirtual.model.dao.MensagemDAO;
 import escambovirtual.model.entity.Mensagem;
+import escambovirtual.model.entity.Usuario;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import static jdk.nashorn.internal.runtime.Debug.id;
 
 /**
  *
@@ -48,7 +51,18 @@ public class MensagemService implements BaseMensagemService{
 
     @Override
     public List<Mensagem> readByCriteria(Map<Long, Object> criteria, Long limit, Long offset) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        List<Mensagem> mensagemList = new ArrayList<>();
+        try {
+            MensagemDAO dao = new MensagemDAO();
+            mensagemList = dao.readByCriteria(conn, criteria, limit, offset);
+            conn.close();
+        } catch (Exception e) {
+            conn.rollback();
+            conn.close();
+            throw e;
+        }
+        return mensagemList;
     }
 
     @Override
@@ -74,6 +88,21 @@ public class MensagemService implements BaseMensagemService{
     @Override
     public Long countByCriteria(Map<Long, Object> criteria, Long limit, Long offset) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public List<Mensagem> verificaMensagem(Usuario usuario) throws Exception {
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        List<Mensagem> mensagemList = new ArrayList<>();
+        try {
+            MensagemDAO dao = new MensagemDAO();
+            mensagemList = dao.verificaMensagem(usuario, conn);
+            conn.close();
+        } catch (Exception e) {
+            conn.rollback();
+            conn.close();
+            throw e;
+        }
+        return mensagemList;
     }
 
     @Override

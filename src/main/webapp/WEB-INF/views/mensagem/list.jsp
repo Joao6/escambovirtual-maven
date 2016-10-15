@@ -39,8 +39,16 @@
             </div>
             <div class="linha"></div>
 
-            <div class="container conteudo">
-
+            <div class="container">
+                <c:forEach items="${mensagemList}" var="mensagem">
+                    <a href="<c:url value="/anunciante/mensagem/${mensagem.id}"/>">
+                        <div class="card-panel">
+                            <h5>item: ${mensagem.item.id}</h5>
+                            <h6>${mensagem.remetente.id}:</h6>
+                            <h6>${mensagem.texto}</h6>
+                        </div>
+                    </a>
+                </c:forEach>
             </div>
         </header>
     </body>

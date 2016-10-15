@@ -18,6 +18,7 @@ escambovirtual\model\criteria\CidadeCriteria.class
 escambovirtual\model\service\LocalizacaoService.class
 escambovirtual\model\service\EstadoService.class
 escambovirtual\model\service\MensagemService.class
+escambovirtual\model\criteria\MensagemCriteria.class
 escambovirtual\model\dao\EstatisticaDAO.class
 escambovirtual\constraints\AppConstraints.class
 escambovirtual\model\entity\Localizacao.class

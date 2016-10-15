@@ -30,6 +30,8 @@
         <script type="text/javascript" src="<c:url value="/resources/js/jquery.maskedinput.min.js"/>"></script>
         <script type="text/javascript" src="<c:url value="/resources/js/materialize.min.js"/>"></script>
         <script src="<c:url value="/resources/js/init.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/resources/js/verifica-mensagem.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/resources/js/mensagem.js"/>"></script>
     </head>
 
     <body>
