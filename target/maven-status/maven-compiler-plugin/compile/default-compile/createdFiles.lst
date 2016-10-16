@@ -48,6 +48,7 @@ escambovirtual\model\base\service\BaseAnuncianteService.class
 escambovirtual\model\service\ItemService.class
 escambovirtual\model\base\service\BasePalavraChaveService.class
 escambovirtual\model\entity\Cidade.class
+escambovirtual\controller\MensagemController$1.class
 escambovirtual\model\criteria\ItemCriteria.class
 escambovirtual\model\service\EmailService.class
 escambovirtual\model\dao\LogDAO.class

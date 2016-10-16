@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import static jdk.nashorn.internal.runtime.Debug.id;
 
 /**
  *
@@ -108,6 +107,21 @@ public class MensagemService implements BaseMensagemService{
     @Override
     public Map<String, String> validate(Map<String, Object> fields) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public List<Mensagem> readMessageByItemAndAnunciante(Map<Long, Object> criteria) throws Exception{
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        List<Mensagem> mensagemList = new ArrayList<>();
+        try {
+            MensagemDAO dao = new MensagemDAO();
+            mensagemList = dao.readMessageByItemAndAnunciante(conn, criteria);
+            conn.close();
+        } catch (Exception e) {
+            conn.rollback();
+            conn.close();
+            throw e;
+        }
+        return mensagemList;
     }
     
 }

@@ -6,7 +6,7 @@ import java.util.Date;
 public class Log extends BaseEntity{
     
     private String evento;
-    private Date dataHora;
+    private String dataHora;
     private Long idEvento;
     private String descricao;
     private Long idUsuario;
@@ -19,13 +19,15 @@ public class Log extends BaseEntity{
         this.evento = evento;
     }
 
-    public Date getDataHora() {
+    public String getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(Date dataHora) {
+    public void setDataHora(String dataHora) {
         this.dataHora = dataHora;
     }
+
+ 
 
     public Long getIdEvento() {
         return idEvento;

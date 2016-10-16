@@ -100,7 +100,7 @@ public class OfertaController {
                 response.setStatus(200);
 
                 Log log = new Log();
-                log.setDataHora(date);
+//                log.setDataHora(date);
                 log.setEvento("Cadastro de Oferta");
                 log.setIdEvento(oferta.getId());
                 log.setIdUsuario(usuario.getId());

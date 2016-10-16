@@ -51,7 +51,7 @@ public class UsuarioController {
 
             Log log = new Log();
             Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Login de administrador");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());
@@ -64,7 +64,7 @@ public class UsuarioController {
 
             Log log = new Log();
             Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Login de anunciante");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());
@@ -102,7 +102,7 @@ public class UsuarioController {
 
             Log log = new Log();
             Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Login via mobile de administrador");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());
@@ -115,7 +115,7 @@ public class UsuarioController {
 
             Log log = new Log();
             Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Login via mobile de anunciante");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());
@@ -138,7 +138,7 @@ public class UsuarioController {
         if (usuario instanceof Administrador) {
 
             Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Logout de administrador");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());
@@ -148,7 +148,7 @@ public class UsuarioController {
         } else if (usuario instanceof Anunciante) {
 
             Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Logout de anunciante");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());
@@ -173,7 +173,7 @@ public class UsuarioController {
 
             Log log = new Log();
             Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Recuperação de senha");
             log.setIdEvento(usuario.getId());
             log.setIdUsuario(usuario.getId());

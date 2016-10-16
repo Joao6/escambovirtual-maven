@@ -172,7 +172,7 @@ public class AnuncianteController {
 
             Log log = new Log();
             Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Edicao de perfil anunciante");
             log.setIdEvento(anunciante.getId());
             log.setIdUsuario(anunciante.getId());
@@ -217,7 +217,7 @@ public class AnuncianteController {
 
             Log log = new Log();
             Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Alteração de imagem anunciante");
             log.setIdUsuario(anunciante.getId());
             LogService sls = new LogService();
@@ -278,7 +278,7 @@ public class AnuncianteController {
 
             Log log = new Log();
             Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Alteração de senha anunciante");
             log.setIdEvento(anunciante.getId());
             log.setIdUsuario(anunciante.getId());
@@ -381,7 +381,7 @@ public class AnuncianteController {
 
                 Log log = new Log();
                 Date date = new Date();
-                log.setDataHora(date);
+//                log.setDataHora(date);
                 log.setEvento("Cadastro de anunciante");
                 log.setIdEvento(anuncianteNew.getId());
                 log.setIdUsuario(anuncianteNew.getId());

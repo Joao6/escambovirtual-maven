@@ -139,7 +139,7 @@ public class ItemController {
 
             Log log = new Log();
             Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Cadastro de item");
             log.setIdEvento(item.getId());
             log.setIdUsuario(anunciante.getId());
@@ -237,7 +237,7 @@ public class ItemController {
 
             Log log = new Log();
             Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Edição de item");
             log.setIdEvento(id);
             log.setIdUsuario(anunciante.getId());
@@ -265,7 +265,7 @@ public class ItemController {
 
                 Log log = new Log();
                 Date date = new Date();
-                log.setDataHora(date);
+//                log.setDataHora(date);
                 log.setEvento("Exclusão de item");
                 log.setIdEvento(idItem);
                 log.setIdUsuario(usuario.getId());

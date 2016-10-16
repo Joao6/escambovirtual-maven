@@ -59,7 +59,7 @@ public class TrocaController {
                 mv = new ModelAndView("redirect:/anunciante/troca/list");
 
                 Log log = new Log();
-                log.setDataHora(date);
+//                log.setDataHora(date);
                 log.setEvento("Aceite de Oferta - Troca Realizada");
                 log.setIdEvento(id);
                 log.setIdUsuario(anunciante.getId());

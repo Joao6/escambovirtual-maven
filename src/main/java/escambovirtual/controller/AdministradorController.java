@@ -128,7 +128,7 @@ public class AdministradorController {
             s.create(adm);
 
             Log log = new Log();
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+//            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
             log.setEvento("Cadastro de administrador");
             log.setIdEvento(adm.getId());
             log.setIdUsuario(administrador.getId());
@@ -167,7 +167,7 @@ public class AdministradorController {
             s.update(administrador);
 
             Log log = new Log();
-            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+//            log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
             log.setEvento("Alteração de senha administrador");
             log.setIdEvento(administrador.getId());
             log.setIdUsuario(administrador.getId());
@@ -233,7 +233,7 @@ public class AdministradorController {
                 mv = new ModelAndView("redirect:/administrador/list/itens");
 
                 Log log = new Log();
-                log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
+//                log.setDataHora(new java.sql.Date(new java.util.Date().getTime()));
                 log.setEvento("Edição de status de item");
                 log.setDescricao("Item Publicado");
                 log.setIdEvento(item.getId());
@@ -273,7 +273,7 @@ public class AdministradorController {
 
                 Log log = new Log();
                 Date date = new Date();
-                log.setDataHora(date);
+//                log.setDataHora(date);
                 log.setEvento("Edição de status de item");
                 log.setDescricao("Item não publicado. Motivo:" + motivo);
                 log.setIdEvento(item.getId());
@@ -368,7 +368,7 @@ public class AdministradorController {
 
             Log log = new Log();
             Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Edicao de perfil administrador");
             log.setIdEvento(adm.getId());
             log.setIdUsuario(adm.getId());
@@ -402,7 +402,7 @@ public class AdministradorController {
 
                 Log log = new Log();
                 Date date = new Date();
-                log.setDataHora(date);
+//                log.setDataHora(date);
                 log.setEvento("Cadastro de administrador");
                 log.setIdEvento(admNew.getId());
                 log.setIdUsuario(adm.getId());
@@ -445,7 +445,7 @@ public class AdministradorController {
 
             Log log = new Log();
                         Date date = new Date();
-            log.setDataHora(date);
+//            log.setDataHora(date);
             log.setEvento("Alteração de imagem administrador");
             log.setIdUsuario(administrador.getId());
             LogService sls = new LogService();
