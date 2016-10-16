@@ -103,8 +103,8 @@ public class MensagemDAO implements BaseDAO<Mensagem> {
             mensagem.setTexto(rs.getString("texto"));
 
             mensagem.setDestinatario(new Anunciante(rs.getLong("destinatario_fk")));
-            ItemDAO dao = new ItemDAO();
-            Item item = dao.readById(conn, rs.getLong("item_fk"));
+            Item item = new Item();
+            item.setId(rs.getLong("item_fk"));
             mensagem.setItem(item);
 
             UsuarioDAO userDAO = new UsuarioDAO();

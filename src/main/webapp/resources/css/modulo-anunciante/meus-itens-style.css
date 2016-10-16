@@ -21,9 +21,9 @@ and open the template in the editor.
     margin: 2% 0 3% 0;
 }
 
-.btn-cadastrar{
+/*.btn-cadastrar{
     margin-left: 29%;    
-}
+}*/
 
 @media screen and (max-width: 1024px) {
     .btn-cadastrar{

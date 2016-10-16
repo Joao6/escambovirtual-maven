@@ -66,7 +66,7 @@
                     <a href="<c:url value="/anunciante/home"/>" class="breadcrumb link-anterior">Home</a>
                     <a href="#!" class="breadcrumb link-ativo">Meus Itens</a>
                 </div>
-                <a class="waves-effect waves-light btn blue btn-large btn-cadastrar" href="<c:url value="/anunciante/item/new"/>" style="margin-top: 1rem;">Cadastrar item</a>
+                <a class="waves-effect waves-light btn blue btn-large btn-cadastrar right" href="<c:url value="/anunciante/item/new"/>" style="margin-top: 1%;">Cadastrar item</a>
             </div>
             <div class="linha"></div>                       
 

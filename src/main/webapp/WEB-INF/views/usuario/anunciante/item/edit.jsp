@@ -23,7 +23,11 @@
         <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>" type="image/x-icon">
 
         <link href="<c:url value="/resources/slider/css/style-slider.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
-        
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="/resources/js/materialize.min.js"/>"></script>
+        <script src="<c:url value="/resources/js/init.js"/>"></script>
+
 
         <script src="<c:url value="/resources/js/jquery.maskedinput.min.js"/>"></script>
         <script src="<c:url value="/resources/js/mask-cadastro.js"/>"></script>
@@ -39,10 +43,7 @@
                 $('.carousel').carousel();
             });
         </script>
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/resources/js/materialize.min.js"/>"></script>
-        <script src="<c:url value="/resources/js/init.js"/>"></script>
+
     </head>
     <body class="body">
         <header>

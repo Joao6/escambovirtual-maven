@@ -109,10 +109,13 @@ public class MensagemController {
             List<Mensagem> msgList = s.readByCriteria(criteria, null, null);
             if (msgList != null && msgList.size() > 0) {
                 for (Mensagem aux : msgList) {
+                    ItemService is = new ItemService();
+                    aux.setItem(is.readById(aux.getItem().getId()));
                     if (aux.getItem().getItemImagemList() != null && aux.getItem().getItemImagemList().size() > 0) {
                         ItemImagem itemImagem = aux.getItem().getItemImagemList().get(0);
                         List<ItemImagem> itemImagemList = new ArrayList<>();
                         itemImagemList.add(itemImagem);
+                        aux.getItem().setItemImagemList(itemImagemList);
                     }
                 }
             }

@@ -136,6 +136,28 @@
                                 </div>                         
                             </div>
                         </div>
+                        <div class="panel4">                            
+                            <div class="card-title">                        
+                                <h5>Adicione uma localização para este item</h5>
+                                <div class="form divider grey"></div>
+                                <br/>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12 m6 l6">
+                                    <select name="estado" id="estado" class="browser-default" style="border-color: grey;" onchange="buscar_cidades()">
+                                        <option value="" disabled="" selected="">Selecione o Estado</option>                                                                              
+                                        <c:forEach items="${estados}" var="estado">
+                                            <option value="${estado.id}">${estado.nome}</option>
+                                        </c:forEach>
+                                    </select>                            
+                                </div>
+                                <div id="load_cidades" class="input-field col s12 m6 l6">
+                                    <select name="cidadeID" id="cidade" class="browser-default" style="border-color: grey;">                                
+                                        <option value="" disabled="" selected="">Selecione a Cidade</option>                                                
+                                    </select>                            
+                                </div>
+                            </div>                            
+                        </div>
                         <div class="panel3">                            
                             <div class="row">
                                 <div class="card-title">                        
@@ -219,28 +241,7 @@
                                 </div>                                       
                             </div>                                                                            
                         </div>
-                        <div class="panel4">                            
-                            <div class="card-title">                        
-                                <h5>Adicione uma localização para este item</h5>
-                                <div class="form divider grey"></div>
-                                <br/>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m6 l6">
-                                    <select name="estado" id="estado" class="browser-default" style="border-color: grey;" onchange="buscar_cidades()">
-                                        <option value="" disabled="" selected="">Selecione o Estado</option>                                                                              
-                                        <c:forEach items="${estados}" var="estado">
-                                            <option value="${estado.id}">${estado.nome}</option>
-                                        </c:forEach>
-                                    </select>                            
-                                </div>
-                                <div id="load_cidades" class="input-field col s12 m6 l6">
-                                    <select name="cidadeID" id="cidade" class="browser-default" style="border-color: grey;">                                
-                                        <option value="" disabled="" selected="">Selecione a Cidade</option>                                                
-                                    </select>                            
-                                </div>
-                            </div>                            
-                        </div>
+
                         <a class="waves-effect waves-light btn right grey darken-3 btn-large col s12 m4 l2" href="<c:url value="/anunciante/item"/>">Cancelar</a>                                
                         <button type="submit" class="waves-effect waves-light btn blue right btn-large col s12 m4 l2" style="margin-right: 0.6rem;">Salvar</button>                                                
                 </form>
