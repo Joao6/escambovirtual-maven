@@ -20,6 +20,11 @@ and open the template in the editor.
     background-color: #e2e2e2;
 }
 
+.mensagem strong{
+    font-size: 13pt;
+    font-weight: 600;
+}
+
 .titulo h6{
     font-size: 16pt;
     font-weight: 700;

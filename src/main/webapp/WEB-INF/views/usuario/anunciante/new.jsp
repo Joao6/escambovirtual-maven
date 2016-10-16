@@ -69,6 +69,7 @@
         <!-- FORMULARIO -->           
         <div class="fundo-cadastro">
             <div class="container">
+                <h3 class="titulo center">Cadastre-se no Escambo Virtual</h3>
                 <form id="anuncianteForm" name="anuncianteForm">
                     <div class="row">
                         <div class="card-panel col s12 m12" id="form1">
@@ -126,7 +127,7 @@
                                 </div>                                
                             </div>
                             <button type="button" id="btn-cadastrar" class="col s12 m3 push-m6 btn btn-large waves-effect waves-light blue" ng-click="create(anunciante)" ng-disabled="anuncianteForm.$invalid || !emailOk || !senhaOk" style="margin-bottom: 10px">Cadastrar</button>                            
-                            <a href="<c:url value="/"/>" class="show-on-med-and-down"> <button type="button" class="btn btn-large btn-cancelar brown col s12 m3 push-m6">Cancelar</button></a>
+                            <a href="<c:url value="/"/>" class="show-on-med-and-down"> <button type="button" class="btn btn-large btn-cancelar grey darken-3 col s12 m3 push-m6">Cancelar</button></a>
                         </div> 
                     </div>            
                 </form>

@@ -97,4 +97,32 @@ public class TrocaController {
         }
         return mv;
     }
+
+    @RequestMapping(value = "/anunciante/troca/{id}", method = RequestMethod.GET)
+    public ModelAndView getDetalhesTroca(@PathVariable Long id, HttpSession session) {
+        ModelAndView mv;
+        try {
+            Anunciante anunciante = (Anunciante) session.getAttribute("usuarioSessao");
+            TrocaService s = new TrocaService();
+            Troca troca = s.readById(id);
+            if (troca != null) {
+                if (troca.getUsuario1().getId().equals(anunciante.getId()) || troca.getUsuario2().getId().equals(anunciante.getId())) {
+
+                    mv = new ModelAndView("troca/view");
+                    mv.addObject("anunciante", anunciante);
+                    mv.addObject("troca", troca);
+                } else {
+                    mv = new ModelAndView("troca/error");
+                    mv.addObject("anunciante", anunciante);
+                }
+            } else {
+                mv = new ModelAndView("troca/error");
+                mv.addObject("anunciante", anunciante);
+            }
+        } catch (Exception e) {
+            mv = new ModelAndView("error");
+            mv.addObject("error", e);
+        }
+        return mv;
+    }
 }

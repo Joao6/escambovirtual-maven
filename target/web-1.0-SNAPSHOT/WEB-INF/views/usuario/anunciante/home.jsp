@@ -11,27 +11,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
         <title>Home</title>
-        <!--Import Google Icon Font-->
-        <link href="<c:url value="/resources/css/icon.css"/>" rel="stylesheet">
-
-        <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>" type="image/x-icon">
-
-        <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/materialize.min.css"/>"  media="screen,projection"/>
-        <link href="<c:url value="/resources/css/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <link href="<c:url value="/resources/css/ghpages-materialize.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <!--CSS BASE-->
+        <jsp:include page="/resources/css/bases/css/base-style.jsp"/>
 
         <link href="<c:url value="/resources/css/modulo-anunciante/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="<c:url value="/resources/css/modulo-anunciante/home-anunciante.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
 
         <!--SCRIPTS-->
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>        
+        <!--JS BASE-->
+        <jsp:include page="/resources/css/bases/js/base-script.jsp"/>
         <script type="text/javascript" src="<c:url value="/resources/js/jquery.maskedinput.min.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/resources/js/materialize.min.js"/>"></script>
-        <script src="<c:url value="/resources/js/init.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/resources/js/verifica-mensagem.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/resources/js/mensagem.js"/>"></script>
+        
     </head>
 
     <body>

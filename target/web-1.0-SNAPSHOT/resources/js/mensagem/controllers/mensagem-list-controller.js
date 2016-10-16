@@ -44,8 +44,8 @@ angular.module('mensagemApp').controller('MensagemController', function ($scope,
     $scope.enviarMensagem = function (mensagem) {
         try {
             MensagemService.enviarMensagem(mensagem).success(function () {
-
-                _getMensagens();
+                $("#texto").val("");                
+                _getMensagens();                
                 Materialize.toast('Enviada!', 4000, 'green rounded');
 //                window.location.href = '/gerenciador/empreendedor/empreendimentos';
             }).error(function () {

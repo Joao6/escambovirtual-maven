@@ -126,7 +126,7 @@ public class TrocaDAO implements BaseDAO<Troca> {
                 troca.setUsuario1(anunciante1);
             }
             
-            sql = "select usuario2_fk, usuario.*, anunciante.* from troca left join usuario on usuario.id = troca.usuario1_fk left join anunciante on anunciante.usuario_fk=usuario.id where troca.oferta_fk=?";
+            sql = "select usuario2_fk, usuario.*, anunciante.* from troca left join usuario on usuario.id = troca.usuario2_fk left join anunciante on anunciante.usuario_fk=usuario.id where troca.oferta_fk=?";
             ps = conn.prepareStatement(sql);
             ps.setLong(1, oferta.getId());
             

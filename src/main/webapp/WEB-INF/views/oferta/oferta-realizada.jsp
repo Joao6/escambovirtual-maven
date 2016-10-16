@@ -11,19 +11,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
         <title>Ver Oferta Realizada</title>
-        <!--Import Google Icon Font-->
-        <link href="<c:url value="/resources/css/icon.css"/>" rel="stylesheet">    
-        <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/materialize.min.css"/>"  media="screen,projection"/>
-        <link href="<c:url value="/resources/css/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <link href="<c:url value="/resources/css/ghpages-materialize.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>" type="image/x-icon">
+        <!--CSS BASE-->
+        <jsp:include page="/resources/css/bases/css/base-style.jsp"/>
 
         <!--SCRIPTS-->
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js"/>"></script>
-        <script type="text/javascript" src="<c:url value="/resources/js/materialize.min.js"/>"></script>
-        <script src="<c:url value="/resources/js/init.js"/>"></script>
+        <!--JS BASE-->
+        <jsp:include page="/resources/css/bases/js/base-script.jsp"/>
     </head>
     <body style="background-color: #b0bec5;">        
         <header>            
