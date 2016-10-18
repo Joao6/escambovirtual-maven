@@ -46,3 +46,9 @@ and open the template in the editor.
     padding: 1% 1% 0 1%;
     margin-bottom: 2%;
 }
+
+#chat{
+    height: 300px;    
+    background-color:#F2F2F2;
+    overflow:auto;
+}

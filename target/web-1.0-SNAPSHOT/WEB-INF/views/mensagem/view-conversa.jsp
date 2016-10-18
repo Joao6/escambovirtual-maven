@@ -47,14 +47,11 @@
                 </div>
                 <div class="mensagens">
                     <div class="card-title">Mensagens</div>
-                    <%--<c:forEach items="${mensagemList}" var="mensagens">--%>
-                    <!--<div class="mensagem">-->
-                        <!--<span>${mensagens.remetente.nome}: ${mensagens.texto}</span>-->
-                    <!--</div>-->
-                    <%--</c:forEach>--%>
-                    <div ng-repeat="mensagens in mensagemList| orderBy:'data_hora_envio'">
-                        <div class="mensagem">
-                            <span><strong>{{mensagens.remetente.nome}}:</strong> {{mensagens.texto}}</span>
+                    <div id="chat">
+                        <div ng-repeat="mensagens in mensagemList| orderBy:'data_hora_envio'">
+                            <div class="mensagem">                                
+                                <span><strong>{{mensagens.remetente.nome}}:</strong> {{mensagens.texto}}</span>
+                            </div>
                         </div>
                     </div>
                 </div>

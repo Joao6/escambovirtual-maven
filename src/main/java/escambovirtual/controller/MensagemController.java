@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package escambovirtual.controller;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import escambovirtual.model.criteria.MensagemCriteria;
 import escambovirtual.model.entity.Anunciante;
@@ -18,6 +12,7 @@ import escambovirtual.model.service.AnuncianteService;
 import escambovirtual.model.service.ItemService;
 import escambovirtual.model.service.MensagemService;
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -189,7 +184,7 @@ public class MensagemController {
             Mensagem msg = (Mensagem) session.getAttribute("mensagem");
 //            Mensagem msg = s.readById(idMensagem);
             if (msg != null) {
-                if (msg.getRemetente().getId().equals(anuncianteSessao.getId()) && msg.getData_hora_leitura() == null) {
+                if (msg.getRemetente().getId().equals(anuncianteSessao.getId())) {
                     parceiroChat = msg.getDestinatario();
                 } else if (msg.getDestinatario().getId().equals(anuncianteSessao.getId())) {
                     parceiroChat = msg.getRemetente();
@@ -240,6 +235,7 @@ public class MensagemController {
                 Date date = new Date();
                 mensagemNova.setData_hora_envio(date);
                 mensagemNova.setItem(mensagemSessao.getItem());
+                
 //                mensagemNova.setTexto(mensagem);
 
                 MensagemService s = new MensagemService();

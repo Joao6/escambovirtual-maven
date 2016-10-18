@@ -13,32 +13,31 @@ import java.util.List;
  * @author Joao
  */
 public class EstatisticaDAO {
-    
-    public List<EstatisticaRegiao> infoRegiao(Connection conn) throws Exception{
-        String sql = "select estado.id, estado.nome, estado.uf, count(item.id) qtde_item, count(localizacao.usuario_fk) qtde_usuario from estado left join item on item.estado_fk=estado.id left join localizacao on localizacao.estado_fk=estado.id group by estado.id, estado.nome, estado.uf order by estado.nome";
-        
+
+    public List<EstatisticaRegiao> infoRegiao(Connection conn) throws Exception {
+        String sql = "select E.id, E.uf, E.nome as estado, count(I.id) as qtd_item from estado E left join item I on E.id = I.estado_fk group by E.id";
+
         Statement s = conn.createStatement();
         ResultSet rs = s.executeQuery(sql);
-        
+
         List<EstatisticaRegiao> estatisticaRegiaoList = new ArrayList<>();
-        
-        while(rs.next()){
+
+        while (rs.next()) {
             EstatisticaRegiao estatisticaRegiao = new EstatisticaRegiao();
             Estado estado = new Estado();
             estado.setId(rs.getLong("id"));
-            estado.setNome(rs.getString("nome"));
+            estado.setNome(rs.getString("estado"));
             estado.setUf(rs.getString("uf"));
-            
+
             estatisticaRegiao.setEstado(estado);
-            
-            estatisticaRegiao.setQtdeItem(rs.getLong("qtde_item"));
-            estatisticaRegiao.setQtdeUsuario(rs.getLong("qtde_usuario"));
-            
+
+            estatisticaRegiao.setQtdeItem(rs.getLong("qtd_item"));            
+
             estatisticaRegiaoList.add(estatisticaRegiao);
         }
         rs.close();
         s.close();
         return estatisticaRegiaoList;
     }
-    
+
 }

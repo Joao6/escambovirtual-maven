@@ -126,9 +126,9 @@
 
                                     function drawMarkersMap() {
                                         var data = google.visualization.arrayToDataTable([
-                                            ['Estate', 'Qtde Itens', 'Qtde Usuários'],
+                                            ['Estate', 'Qtde Itens'],
                                     <c:forEach items="${infoEstado}" var="estado">
-                                            ['${estado.estado.nome}', ${estado.qtdeItem}, ${estado.qtdeUsuario}],
+                                            ['${estado.estado.nome}', ${estado.qtdeItem}],
                                     </c:forEach>
                                         ]);
                                         var options = {

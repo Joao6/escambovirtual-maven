@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
-        <title>Home</title>
+        <title>Detalhes da troca</title>
         <!--CSS BASE-->
         <jsp:include page="/resources/css/bases/css/base-style.jsp"/>
 
