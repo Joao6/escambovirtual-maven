@@ -56,6 +56,7 @@ public class TrocaDAO implements BaseDAO<Troca> {
             troca.setStatus(rs.getString("status_troca"));
             Oferta oferta = new Oferta();
             oferta.setId(rs.getLong("oferta_id"));
+            troca.setId(oferta.getId());
             oferta.setDataOferta(rs.getDate("oferta_data_hora"));
             Item item = new Item();
             item.setId(rs.getLong("item_id"));
@@ -235,6 +236,7 @@ public class TrocaDAO implements BaseDAO<Troca> {
             troca.setData_hora(new Date(rs.getTimestamp("data_hora").getTime()));
             Oferta oferta = new Oferta();
             oferta.setId(rs.getLong("oferta_fk"));
+            troca.setId(oferta.getId());
             troca.setOferta(oferta);
             
             sql = "select * from usuario where usuario.id=?";

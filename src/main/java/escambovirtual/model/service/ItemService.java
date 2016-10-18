@@ -3,9 +3,11 @@ package escambovirtual.model.service;
 import escambovirtual.model.ConnectionManager;
 import escambovirtual.model.base.service.BaseItemService;
 import escambovirtual.model.dao.ItemDAO;
+import escambovirtual.model.entity.Cidade;
 import escambovirtual.model.entity.Item;
 import escambovirtual.model.entity.ItemImagem;
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -111,7 +113,29 @@ public class ItemService implements BaseItemService {
 
     @Override
     public Map<String, String> validate(Map<String, Object> fields) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Map<String, String> errors = new HashMap<>();
+        
+        String nome = (String) fields.get("nome");
+        if(nome == null || nome.trim().isEmpty()){
+            errors.put("nome", "É necessário que você dê um nome ao item!");
+        }
+        
+        String data = (String) fields.get("data_aquisicao");
+        if(data == null){
+            errors.put("data", "Coloque ao menos uma data aproximada");
+        }
+        
+        String descricao = (String) fields.get("descricao");
+        if(descricao == null || descricao.trim().isEmpty()){
+            errors.put("descricao", "Coloque uma simples descrição...");
+        }
+        
+        Cidade cidade = (Cidade) fields.get("cidade");
+        if(cidade == null){
+            errors.put("cidade", "Precisamos que você coloque uma localização para que outras pessoas possam encontrar seu item!");            
+        }
+        
+        return errors;
     }
 
     @Override

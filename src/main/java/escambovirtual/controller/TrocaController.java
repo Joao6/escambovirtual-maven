@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package escambovirtual.controller;
 
 import escambovirtual.model.criteria.TrocaCriteria;
@@ -122,6 +117,17 @@ public class TrocaController {
         } catch (Exception e) {
             mv = new ModelAndView("error");
             mv.addObject("error", e);
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/anunciante/troca/view/item", method = RequestMethod.GET)
+    public ModelAndView getItemTroca(HttpSession session, @PathVariable Long idTroca) {
+        ModelAndView mv;
+        try {
+            mv = new ModelAndView();
+        } catch (Exception e) {
+            mv = new ModelAndView();
         }
         return mv;
     }

@@ -128,7 +128,7 @@ public class MensagemDAO implements BaseDAO<Mensagem> {
 
     @Override
     public void update(Connection conn, Mensagem entity) throws Exception {
-        String sql = "UPDATE mensagem SET data_hora_leitura=? WHERE id=?;";
+        String sql = "UPDATE mensagem SET data_hora_leitura=? WHERE id=?";
 
         PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -152,7 +152,7 @@ public class MensagemDAO implements BaseDAO<Mensagem> {
     }
 
     public List<Mensagem> verificaMensagem(Usuario usuario, Connection conn) throws Exception {
-        String sql = "select * from mensagem where destinatario_fk=? ";
+        String sql = "select * from mensagem where destinatario_fk=? and data_hora_leitura is null ";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setLong(1, usuario.getId());
 

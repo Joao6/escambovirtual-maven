@@ -93,8 +93,14 @@ public class ItemController {
             item.setAnunciante(anunciante);
             item.setStatus(status);
             CidadeService cs = new CidadeService();
-            Cidade cidade = cs.readById(cidadeID);
-            item.setCidade(cidade);
+            Cidade cidade = new Cidade();
+            if (cidadeID != null) {
+                cidade = cs.readById(cidadeID);
+                item.setCidade(cidade);
+            }else{
+                cidade = null;
+                item.setCidade(cidade);
+            }
 
             List<ItemImagem> itemImagemList = new ArrayList<ItemImagem>();
             if (file1 != null && !file1.getContentType().equals("application/octet-stream")) {
@@ -135,24 +141,43 @@ public class ItemController {
             item.setItemImagemList(itemImagemList);
 
             ItemService s = new ItemService();
-            s.create(item);
 
-            Log log = new Log();
-            Date date = new Date();
+            Map<String, Object> fields = new HashMap<>();
+            fields.put("nome", item.getNome());
+            fields.put("data_aquisicao", item.getDataAquisicao());
+            fields.put("descricao", item.getDescricao());
+            fields.put("cidade", item.getCidade());
+
+            Map<String, String> errors = s.validate(fields);
+            if (errors.isEmpty() || errors == null) {
+                s.create(item);
+                Log log = new Log();
+                Date date = new Date();
 //            log.setDataHora(date);
-            log.setEvento("Cadastro de item");
-            log.setIdEvento(item.getId());
-            log.setIdUsuario(anunciante.getId());
-            LogService sl = new LogService();
-            sl.create(log);
+                log.setEvento("Cadastro de item");
+                log.setIdEvento(item.getId());
+                log.setIdUsuario(anunciante.getId());
+                LogService sl = new LogService();
+                sl.create(log);
 
-            response.setStatus(200);
+                response.setStatus(200);
 
-            EmailService es = new EmailService();
-            String assunto = "Novo item cadastrado!";
-            String texto = "Olá, " + anunciante.getNome() + ". O seu item acabou de ser cadastrado no sistema Escambo Virtual. Agora ele passará por uma avaliação para checar se está apto a ser publicado em nosso Sistema. Em breve você será notificado novamente sobre o status de seu item. Agradecemos a colaboração =)";
-            es.sendEmail(anunciante.getEmail(), assunto, texto);
-            mv = new ModelAndView("redirect:/anunciante/item");
+                EmailService es = new EmailService();
+                String assunto = "Novo item cadastrado!";
+                String texto = "Olá, " + anunciante.getNome() + ". O seu item acabou de ser cadastrado no sistema Escambo Virtual. Agora ele passará por uma avaliação para checar se está apto a ser publicado em nosso Sistema. Em breve você será notificado novamente sobre o status de seu item. Agradecemos a colaboração =)";
+                es.sendEmail(anunciante.getEmail(), assunto, texto);
+                mv = new ModelAndView("redirect:/anunciante/item");
+            } else {
+                EstadoService es = new EstadoService();
+                List<Estado> estadoList = es.readByCriteria(null, null, null);
+                mv = new ModelAndView("usuario/anunciante/item/new");
+                mv.addObject("anunciante", anunciante);
+                mv.addObject("errors", errors);
+                mv.addObject("estados", estadoList);
+                mv.addObject("fields", fields);
+                mv.addObject("local", item.getCidade());
+            }
+
         } catch (Exception e) {
             mv = new ModelAndView("error");
             mv.addObject("error", e);

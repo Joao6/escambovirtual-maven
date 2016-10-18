@@ -91,22 +91,34 @@
                                 <br/>
                             </div>
                             <div class="row">
+                                <c:if test="${not empty errors.nome}">
+                                    <div class="red-text col s12 m6 l6">${errors.nome}</div>
+                                </c:if>  
+                                <c:if test="${not empty errors.data}">
+                                    <div class="red-text col s12 m6 l6">${errors.data}</div>
+                                </c:if>  
+                            </div>
+                            <div class="row">
                                 <div class="input-field col s12 m6 l6">
-                                    <input id="nome" name="nome" type="text" class="validate" placeholder="Ex.: bola" required=""/>
+                                    <input id="nome" name="nome" type="text" class="validate" placeholder="Ex.: bola" required="" value="${fields.nome}"/>
                                     <label for="nome">Nome*</label>
                                 </div>
                                 <div class="input-field col s12 m6 l6">
-                                    <input id="dataAquisicao" name="dataAquisicao" type="text" class="validate" placeholder="Ex.: 31/02/2014" required=""/>
+                                    <input id="dataAquisicao" name="dataAquisicao" type="text" class="validate" placeholder="Ex.: 31/02/2014" required="" value="${fields.data_aquisicao}"/>
                                     <label for="dataAquisicao">Data de aquisição*</label>
                                 </div>                          
                             </div>
+                            <c:if test="${not empty errors.descricao}">
+                                <div class="row red-text">${errors.descricao}</div>
+                            </c:if>  
                             <div class="row">
                                 <!--<span><strong>Insira uma breve descrição sobre ele:</strong></span>-->
                                 <div class="input-field col s12">
-                                    <textarea id="textarea1" class="materialize-textarea" name="descricao" length="1400" placeholder="Faça uma breve descrição do seu item" required=""></textarea>
+                                    <textarea id="textarea1" class="materialize-textarea" name="descricao" length="1400" placeholder="Faça uma breve descrição do seu item" required="">${fields.descricao}</textarea>
                                     <label for="textarea1">Descrição*</label>
                                 </div>
-                            </div>                            
+                            </div>
+
                         </div>
                         <div class="panel2">                            
                             <div class="row">
@@ -131,14 +143,18 @@
                         </div>
                         <div class="panel4">                            
                             <div class="card-title">                        
-                                <h5>Adicione uma localização para este item</h5>
+                                <h5>Adicione uma localização para este item*</h5>
                                 <div class="form divider grey"></div>
                                 <br/>
                             </div>
+                            <c:if test="${not empty errors.cidade}">
+                                <div class="row red-text">${errors.cidade}</div>
+                            </c:if>  
                             <div class="row">
                                 <div class="input-field col s12 m6 l6">
                                     <select name="estado" id="estado" class="browser-default" style="border-color: grey;" onchange="buscar_cidades()">
-                                        <option value="" disabled="" selected="">Selecione o Estado</option>                                                                              
+                                        <option value="" disabled="" selected="">Selecione o Estado</option>
+                                        <c:if test="${not empty local}"><option value="${local.estado.id}" disabled="" selected="">${local.estado.nome}</option></c:if>
                                         <c:forEach items="${estados}" var="estado">
                                             <option value="${estado.id}">${estado.nome}</option>
                                         </c:forEach>
@@ -146,10 +162,14 @@
                                 </div>
                                 <div id="load_cidades" class="input-field col s12 m6 l6">
                                     <select name="cidadeID" id="cidade" class="browser-default" style="border-color: grey;">                                
-                                        <option value="" disabled="" selected="">Selecione a Cidade</option>                                                
+                                        <c:if test="${not empty local}"><option value="${local.id}" disabled="" selected="">${local.nome}</option></c:if>
+                                        <c:if test="${empty local}">
+                                            <option value="" disabled="" selected="">Selecione a Cidade</option>                                                
+                                        </c:if>
                                     </select>                            
                                 </div>
-                            </div>                            
+                            </div>
+
                         </div>
                         <div class="panel3">                            
                             <div class="row">

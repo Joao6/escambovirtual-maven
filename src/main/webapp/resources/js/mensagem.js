@@ -5,7 +5,9 @@ mensagem = {
             method: 'POST',
             url: '/web/anunciante/mensagem/verifica',
             success: function (data) {
-                $('#menuConversa').text('+' + data.length);
+                if(data.length > 0){
+                    $('#menuConversa').text('+' + data.length);
+                }                
                 setTimeout(function () {
                     me.verificaMensagem();
                 }, 15000);

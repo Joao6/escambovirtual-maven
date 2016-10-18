@@ -189,7 +189,7 @@ public class MensagemController {
             Mensagem msg = (Mensagem) session.getAttribute("mensagem");
 //            Mensagem msg = s.readById(idMensagem);
             if (msg != null) {
-                if (msg.getRemetente().getId().equals(anuncianteSessao.getId())) {
+                if (msg.getRemetente().getId().equals(anuncianteSessao.getId()) && msg.getData_hora_leitura() == null) {
                     parceiroChat = msg.getDestinatario();
                 } else if (msg.getDestinatario().getId().equals(anuncianteSessao.getId())) {
                     parceiroChat = msg.getRemetente();
@@ -199,6 +199,13 @@ public class MensagemController {
                 criteria.put(MensagemCriteria.USUARIO_SESSAO_ID, anuncianteSessao.getId());
                 criteria.put(MensagemCriteria.ITEM_ID, msg.getItem().getId());
                 mensagemList = s.readMessageByItemAndAnunciante(criteria);
+                Date date = new Date();
+                for (Mensagem mensagem : mensagemList) {
+                    if (mensagem.getData_hora_leitura() == null && mensagem.getDestinatario().getId().equals(anuncianteSessao.getId())) {
+                        mensagem.setData_hora_leitura(date);
+                        s.update(mensagem);
+                    }
+                }
                 AnuncianteService anun = new AnuncianteService();
                 parceiroChat = anun.readById(parceiroChat.getId());
                 response.setStatus(200);
@@ -234,10 +241,10 @@ public class MensagemController {
                 mensagemNova.setData_hora_envio(date);
                 mensagemNova.setItem(mensagemSessao.getItem());
 //                mensagemNova.setTexto(mensagem);
-                
+
                 MensagemService s = new MensagemService();
                 s.create(mensagemNova);
-                
+
                 response.setStatus(200);
             }
         } catch (Exception e) {
