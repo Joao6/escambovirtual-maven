@@ -54,7 +54,7 @@
                             <ul>
                                 <c:forEach items="${troca.oferta.ofertaItem.itemList}" var="item">
                                     <li style="list-style: disc; margin-left: 3%;"><h5 class="itemOferta">${item.nome}</h5></li>
-                                </c:forEach>
+                                    </c:forEach>
                             </ul>
                         </c:if>
 
@@ -63,7 +63,7 @@
                             <ul>
                                 <c:forEach items="${troca.oferta.ofertaItem.itemList}" var="item">
                                     <li style="list-style: disc; margin-left: 3%;"><h5 class="itemOferta"><a href="/anunciante/troca/${troca.id}/view/item/${item.id}">${item.nome}</a></h5></li>
-                                    </c:forEach>
+                                        </c:forEach>
                             </ul>
                             <h5 class="tituloLista">Pelo item </h5>
                             <ul>
@@ -71,7 +71,6 @@
                             </ul>
                         </c:if>
                     </div>
-                        <h6>Caso queira ver mais detalhes sobre cada item desta troca, basta clicar sobre cada um deles!</h6>
                 </div>
             </div>
         </header>

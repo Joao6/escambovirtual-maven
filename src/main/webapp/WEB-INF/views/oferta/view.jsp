@@ -34,10 +34,10 @@
                 <div class="modal-content">
                     <form method="post" action="/web/anunciante/oferta/${oferta.id}/aceitar">
                         <h4>Aceitar Oferta e Realizar a Troca</h4>
-                        <p><strong>Atenção, após você aceitar esta oferta, os itens relacionados à mesma serão colocados no status "Aguardando a troca", 
+                        <p><strong>Atenção, após você aceitar esta oferta, os itens relacionados à mesma serão colocados no status "Trocado", 
                                 portanto não poderão mais ser visualizados por outros anunciantes que realizarem pesquisas no sistema.</strong></p>
                         <p>Recomendamos que esta ação seja confirmada apenas quando a troca já tenha sido finalizada de fato.</p>
-                        <p>Com a sua confirmação, o anunciante que realizou esta oferta, será notificado que você a aceitou e poderá confirmar a troca dos itens.</p>
+                        <p>Com a sua confirmação, a ação de troca será confirmada e não poderá ser revertida!</p>
                         <button class="btn blue waves-effect modal-close">Aceitar</button>
                         <a class="btn grey darken-3 waves-effect modal-close">Cancelar</a>
                     </form>

@@ -119,7 +119,7 @@
                         </c:if>
                         <c:if test="${opcao == 3}">
                             <div class="row">
-                                <h5><strong>Usuários e Itens por regiões do Brasil</strong></h5>
+                                <h5><strong>Itens por regiões do Brasil</strong></h5>
                                 <script type='text/javascript'>
                                     google.charts.load('upcoming', {'packages': ['geochart']});
                                     google.charts.setOnLoadCallback(drawMarkersMap);
