@@ -2,9 +2,7 @@ package escambovirtual.model.service;
 
 import escambovirtual.model.ConnectionManager;
 import escambovirtual.model.base.service.BaseLogService;
-import escambovirtual.model.criteria.UsuarioCriteria;
 import escambovirtual.model.dao.LogDAO;
-import escambovirtual.model.dao.UsuarioDAO;
 import escambovirtual.model.entity.Log;
 import java.sql.Connection;
 import java.util.HashMap;

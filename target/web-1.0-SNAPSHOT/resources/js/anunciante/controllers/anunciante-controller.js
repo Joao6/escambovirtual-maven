@@ -80,8 +80,10 @@
                             Materialize.toast(app.MESSAGE_SENHAS_OK, 4000, 'green rounded toast');
                             $scope.senhaOk = true;
                         } else {
-                            $("form #senha").css({"background-color": "rgba(255, 192, 206, 0.5)"});
+                            $("form #senha1").css({"background-color": "rgba(255, 192, 206, 0.5)"});
                             $("form #senha2").css({"background-color": "rgba(255, 192, 206, 0.5)"});
+                            $("form #senha1").css({"border-color": "red"});
+                            $("form #senha2").css({"border-color": "red"});
                             Materialize.toast(app.MESSAGE_SENHAS_ERROR, 4000, 'red rounded toast');
                             $scope.senhaOk = false;
                         }

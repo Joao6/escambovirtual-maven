@@ -230,6 +230,11 @@ public class AdministradorController {
                 String status = "Publicar";
                 item.setStatus(status);
                 s.update(item);
+                EmailService es = new EmailService();
+                 String texto = "Olá, " + item.getAnunciante().getNome() + ". Viemos por meio deste, notificar que "
+                        + "seu item acaba de ser publicado no sistema Escambo Virtual. A partir de agora ele pode"
+                         + " ser pesquisado e encontrado por pessoas interessadas!";
+                es.sendEmail(item.getAnunciante().getEmail(), "Item publicado!", texto);
                 mv = new ModelAndView("redirect:/administrador/list/itens");
 
                 Log log = new Log();
