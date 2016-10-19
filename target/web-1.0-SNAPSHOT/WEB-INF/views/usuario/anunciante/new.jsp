@@ -69,7 +69,8 @@
         <!-- FORMULARIO -->           
         <div class="fundo-cadastro">
             <div class="container">
-                <h3 class="titulo center">Cadastre-se no Escambo Virtual</h3>
+                
+                <h4 class="titulo center col s12">Cadastre-se no Escambo Virtual</h4>
                 <form id="anuncianteForm" name="anuncianteForm">
                     <div class="row">
                         <div class="card-panel col s12 m12" id="form1">

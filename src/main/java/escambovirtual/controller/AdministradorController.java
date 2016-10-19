@@ -462,16 +462,6 @@ public class AdministradorController {
         ModelAndView mv = null;
         try {
 
-//            Administrador adm = (Administrador) session.getAttribute("usuarioSessao");
-//            LogService s = new LogService();
-//            List<Log> logList = s.readByCriteria(null, limit, offset);
-//            Long count = s.countByCriteria(null, limit, offset);
-//            mv = new ModelAndView("usuario/administrador/listLog");
-//            mv.addObject("logList", logList);
-//            mv.addObject("administrador", adm);
-//            mv.addObject("count", count);
-//            mv.addObject("limit", limit);
-//            mv.addObject("offset", offset);
             if (limit != null && offset != null) {
                 Administrador adm = (Administrador) session.getAttribute("usuarioSessao");
                 LogService s = new LogService();
@@ -491,26 +481,6 @@ public class AdministradorController {
                 }
                 mv = new ModelAndView(redirect);
             }
-
-//            if (limit != null && offset != null) {
-//                Administrador adm = (Administrador) session.getAttribute("usuarioSessao");
-//                LogService s = new LogService();
-//                List<Log> logList = s.readByCriteria(null, limit, offset);
-//                Long count = s.countByCriteria(null, limit, offset);
-//                mv = new ModelAndView("usuario/administrador/listLog");
-//                mv.addObject("admList", logList);
-//                mv.addObject("administrador", adm);
-//                mv.addObject("count", count);
-//                mv.addObject("limit", limit);
-//                mv.addObject("offset", offset);
-//            } else {
-//                String redirect = "redirect:/administrador/list?";
-//
-//                if (limit == null) {
-//                    redirect += "limit=" + AppConstraints.LIMIT_LIST_LOG + "&offset=0";
-//                }
-//                mv = new ModelAndView(redirect);
-//            }
         } catch (Exception e) {
             mv = new ModelAndView("error");
             mv.addObject("error", e);

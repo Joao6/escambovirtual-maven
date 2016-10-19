@@ -38,52 +38,58 @@
                 </div>                                        
             </div>
             <div class="linha"></div>
-                
-                <div class="container tabela">
-                    <div class="card-content">
-                        <h5 class="center">LOGS DO SISTEMA</h5>
-                        <div class="divider"></div>
-                        <table class="bordered responsive-table striped">
-                            <thead>
-                            <th>Evento</th>
-                            <th>Data Hora</th>
-                            <th>ID Evento</th>
-                            <th>Descrição</th>
-                            <th>ID Usuario</th>
-                            <th></th>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${logList}" var="log">
-                                    <tr>
-                                        <td>${log.evento}</td>
-                                        <td>${log.dataHora}</td>
-                                        <td>${log.idEvento}</td>
-                                        <td>${log.descricao}</td>                                        
-                                        <td>${log.idUsuario}</td>                                        
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-                        <ul class="pagination center">
-                            <c:if test="${offset > 0}">
-                                <li class="waves-effect"><a href="<c:url value="/administrador/list/logs?limit=${limit}&offset=${offset - limit}"/>"><i class="material-icons">chevron_left</i></a></li>                            
-                                </c:if>
 
-                            <c:if test="${offset <= 0}">
-                                <li class="waves-effect"><a href="<c:url value="/administrador/list/logs?limit=${limit}&offset=${offset}"/>"><i class="material-icons">chevron_left</i></a></li>                            
-                                </c:if>
+            <div class="container tabela">
+                <div class="card-content">
+                    <h5 class="center">LOGS DO SISTEMA</h5>
+                    <div class="divider"></div>
+                    <table class="bordered responsive-table striped">
+                        <thead>
+                        <th>Evento</th>
+                        <th>Data Hora</th>
+                        <th>ID Evento</th>
+                        <th>Descrição</th>
+                        <!--
+                        <th>ID Usuario</th>
+                        -->
+                        <th>ID - Usuário</th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${logList}" var="log">
+                                <tr>
+                                    <td>${log.evento}</td>
+                                    <td>${log.dataHora}</td>
+                                    <td>${log.idEvento}</td>
+                                    <td>${log.descricao}</td>                                        
+                                    <!--
+                                    <td>${log.idUsuario}</td>
+                                    -->
+                                    <td>${log.idUsuario} - ${log.nomeUsuario}</td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                    <ul class="pagination center">
+                        <c:if test="${offset > 0}">
+                            <li class="waves-effect"><a href="<c:url value="/administrador/list/logs?limit=${limit}&offset=${offset - limit}"/>"><i class="material-icons">chevron_left</i></a></li>                            
+                            </c:if>
+
+                        <c:if test="${offset <= 0}">
+                            <li class="waves-effect"><a href="<c:url value="/administrador/list/logs?limit=${limit}&offset=${offset}"/>"><i class="material-icons">chevron_left</i></a></li>                            
+                            </c:if>
 
 
-                            <c:if test="${(offset + limit) < count}">
-                                <li class="waves-effect"><a href="<c:url value="/administrador/list/logs?limit=${limit}&offset=${offset + limit}"/>"><i class="material-icons">chevron_right</i></a></li>
-                                </c:if>
+                        <c:if test="${(offset + limit) < count}">
+                            <li class="waves-effect"><a href="<c:url value="/administrador/list/logs?limit=${limit}&offset=${offset + limit}"/>"><i class="material-icons">chevron_right</i></a></li>
+                            </c:if>
 
-                            <c:if test="${(offset + limit) >= count}">
-                                <li class="waves-effect"><a href="<c:url value="/administrador/list/logs?limit=${limit}&offset=${offset}"/>"><i class="material-icons">chevron_right</i></a></li>
-                                </c:if>
-                        </ul>
-                    </div>
-                </div>             
+                        <c:if test="${(offset + limit) >= count}">
+                            <li class="waves-effect"><a href="<c:url value="/administrador/list/logs?limit=${limit}&offset=${offset}"/>"><i class="material-icons">chevron_right</i></a></li>
+                            </c:if>
+                    </ul>
+                </div>
+            </div>             
         </header>
     </body>
 </html>

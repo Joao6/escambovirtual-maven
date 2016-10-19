@@ -1,7 +1,6 @@
 package escambovirtual.model.entity;
 
 import escambovirtual.model.base.BaseEntity;
-import java.util.Date;
 
 public class Log extends BaseEntity{
     
@@ -10,7 +9,17 @@ public class Log extends BaseEntity{
     private Long idEvento;
     private String descricao;
     private Long idUsuario;
+    private String nomeUsuario;
 
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+        
+    
     public String getEvento() {
         return evento;
     }

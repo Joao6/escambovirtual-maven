@@ -32,35 +32,40 @@
             </div>
             <div class="linha"></div>
 
-            <div class="container">                
-                <ul>
-                    <c:forEach items="${mensagemList}" var="mensagem">
-                        <a href="<c:url value="/anunciante/mensagem/${mensagem.id}"/>"  class="black-text hoverable painelAnuncios">
-                            <li>
-                                <div class="col s12 m12 z-depth-1 painelAnuncios hoverable" style="margin-bottom: 2%;">
-                                    <!--<div class="card small">-->                                       
-                                    <div class="row">                                               
-                                        <div class="card-image col s12 m4 l4">
-                                            <c:if test="${empty mensagem.item.itemImagemList}">
-                                                <img src="<c:url value="/resources/img/sem-imagem.jpg"></c:url>" class="responsive-img" style="padding-top: 8%;">                                                        
-                                            </c:if>
-                                            <c:if test="${not empty mensagem.item.itemImagemList}">                                                            
-                                                <c:forEach items="${mensagem.item.itemImagemList}" var="itemImagem">                                                            
-                                                    <img class="responsive-img" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" height="200" width="200" style="padding-top: 9%;">                                                                                                   
-                                                </c:forEach>                                                            
-                                            </c:if>
+            <div class="container"> 
+                <c:if test="${empty mensagemList}">
+                    <h5 class="card-title center" style="font-weight: 700;">Você ainda não possui nenhum chat iniciado.</h5>
+                </c:if>
+                <c:if test="${not empty mensagemList}">
+                    <ul>
+                        <c:forEach items="${mensagemList}" var="mensagem">
+                            <a href="<c:url value="/anunciante/mensagem/${mensagem.id}"/>"  class="black-text hoverable painelAnuncios">
+                                <li>
+                                    <div class="col s12 m12 z-depth-1 painelAnuncios hoverable" style="margin-bottom: 2%;">
+                                        <!--<div class="card small">-->                                       
+                                        <div class="row">                                               
+                                            <div class="card-image col s12 m4 l4">
+                                                <c:if test="${empty mensagem.item.itemImagemList}">
+                                                    <img src="<c:url value="/resources/img/sem-imagem.jpg"></c:url>" class="responsive-img" style="padding-top: 8%;">                                                        
+                                                </c:if>
+                                                <c:if test="${not empty mensagem.item.itemImagemList}">                                                            
+                                                    <c:forEach items="${mensagem.item.itemImagemList}" var="itemImagem">                                                            
+                                                        <img class="responsive-img" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>" height="200" width="200" style="padding-top: 9%;">                                                                                                   
+                                                    </c:forEach>                                                            
+                                                </c:if>
+                                            </div>
+                                            <div class="card-content">
+                                                <h5>Item: ${mensagem.item.nome}</h5>
+                                                <h6>${mensagem.remetente.nome}: ${mensagem.texto}</h6>                                            
+                                            </div> 
                                         </div>
-                                        <div class="card-content">
-                                            <h5>Item: ${mensagem.item.nome}</h5>
-                                            <h6>${mensagem.remetente.nome}: ${mensagem.texto}</h6>                                            
-                                        </div> 
+                                        <!--</div>-->
                                     </div>
-                                    <!--</div>-->
-                                </div>
-                            </li>
-                        </a>
-                    </c:forEach>
-                </ul>
+                                </li>
+                            </a>
+                        </c:forEach>
+                    </ul>
+                </c:if>
             </div>
         </header>
     </body>

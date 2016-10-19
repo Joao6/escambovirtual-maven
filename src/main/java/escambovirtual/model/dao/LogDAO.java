@@ -5,9 +5,7 @@ import escambovirtual.model.entity.Log;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -71,14 +69,20 @@ public class LogDAO implements BaseDAO<Log> {
 
     @Override
     public List<Log> readByCriteria(Connection conn, Map<Long, Object> criteria, Long limit, Long offset) throws Exception {
-        String sql = "SELECT id, evento, data_hora, id_evento, descricao, usuario_fk FROM log WHERE 1=1";
-
+        String sql = "SELECT L.id as id, L.evento as evento, L.data_hora as data_hora, L.id_evento as id_evento, L.descricao as descricao, L.usuario_fk as usuario_fk, U.nome as nome FROM log L left join usuario U on U.id = L.usuario_fk WHERE 1=1 ";
+        
+        //applyCriteria deve acontecer aqui!!!!!!!!!!####################
+        //antes do order by
+        
+        sql += "order by L.data_hora desc";
+        
         if (limit != null && limit > 0) {
             sql += " limit " + limit;
         }
         if (offset != null && offset >= 0) {
             sql += " offset " + offset;
         }
+        
 
         PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -90,28 +94,23 @@ public class LogDAO implements BaseDAO<Log> {
             log.setId(rs.getLong("id"));
             log.setEvento(rs.getString("evento"));
             log.setDescricao(rs.getString("descricao"));
-
-//            String data[] = rs.getString("data_hora").split("-");
-//            String data2 = data[2] + "/" + data[1] + "/" + data[0];
-//            log.setDataHora(data2);
-//            log.setDataHora(new Date(rs.getTimestamp("data_hora").getTime()));
+            
             String teste1[] = rs.getString("data_hora").split(" ");
-
+            
             String teste2[] = teste1[0].split("-");
-
+            
             String teste3 = teste2[2] + "/" + teste2[1] + "/" + teste2[0];
-
+            
             String teste4[] = teste1[1].split(":");
-
+            
             String teste5 = teste4[0] + ":" + teste4[1];
-
+            
             String teste6 = teste3 + " " + teste5;
-
+            
             log.setDataHora(teste6);
-            
-            
-//            log.setDataHora(rs.getDate("data_hora"));
+
             log.setIdEvento(rs.getLong("id_evento"));
+            log.setNomeUsuario(rs.getString("nome"));
             log.setIdUsuario(rs.getLong("usuario_fk"));
 
             logList.add(log);

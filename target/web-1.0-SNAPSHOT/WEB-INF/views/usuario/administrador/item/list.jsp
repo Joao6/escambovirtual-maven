@@ -114,7 +114,7 @@
                                                                     <img class="card-panel responsive-img" src="<c:url value="/resources/img/sem-imagem.jpg"/>" height="200" width="200">
                                                                 </c:if>
                                                                 <c:if test="${not empty item.itemImagemList}">
-                                                                    <div class="carousel" style="margin-top: -10%; margin-bottom: -15%;">
+                                                                    <div class="carousel" style="margin-top: -10%;">
                                                                         <c:forEach items="${item.itemImagemList}" var="itemImagem">
                                                                             <a class="carousel-item" href="#one!">
                                                                                 <img class="responsive-img" src="<c:url value="/anunciante/item/img/${itemImagem.hash}"/>">

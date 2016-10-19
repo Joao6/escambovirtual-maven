@@ -69,20 +69,17 @@ public class LogService implements BaseLogService{
         Connection conn = ConnectionManager.getInstance().getConnection();
         Long count = null;
         try {
-            UsuarioDAO dao = new UsuarioDAO();
-            if (criteria == null) {
-                criteria = new HashMap<>();
-            }
-            criteria.remove(UsuarioCriteria.ANUNCIANTE);
-            criteria.put(UsuarioCriteria.ADMINISTRADOR, Boolean.TRUE);
+            LogDAO dao = new LogDAO();
             count = dao.countByCriteria(conn, criteria, limit, offset);
             conn.commit();
             conn.close();
         } catch (Exception e) {
             conn.rollback();
             conn.close();
+            throw e;
         }
         return count;
+    
     }
 
     @Override

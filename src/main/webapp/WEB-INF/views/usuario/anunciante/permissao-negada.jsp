@@ -13,27 +13,25 @@
         <title>Permissão Negada</title>
         <!--CSS BASE-->
         <jsp:include page="/resources/css/bases/css/base-style.jsp"/>
-
+        <link href="<c:url value="/resources/css/modulo-anunciante/base-style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>       
         <!--SCRIPTS-->
         <!--JS BASE-->
         <jsp:include page="/resources/css/bases/js/base-script.jsp"/>
     </head>
-    <body style="background-color: #b0bec5;">
+    <body>
         <header>
             <jsp:include page="/resources/templates/menu-lateral-anunciante.jsp"/>
-            
-            <div class="row" style="padding-left: 15%; padding-right: 15%;">
-                <div class="row">
-                <nav class="grey darken-3 card-panel col s12 z-depth-2">
-                    <div class="nav-wrapper">
-                        <div class="col s12">
-                            <a href="/web/anunciante/home" class="breadcrumb">Home</a>                            
-                            <a href="#!" class="breadcrumb">Permissão Negada</a>
-                        </div>                        
-                    </div>
-                </nav>
-                </div>
-                <div class="card-panel" style="margin-top: -2%;">
+
+            <div class="row container nav-breadcrumb">                             
+                <div class="col s12 l12 m12 links">
+                    <a href="<c:url value="/anunciante/home"/>" class="breadcrumb link-anterior">Home</a>                          
+                    <a href="#!" class="breadcrumb link-ativo">Erro</a>
+                </div>                                        
+            </div>
+            <div class="linha"></div>
+
+            <div class="container row">
+                <div class="card-panel">
                     <div class="card-content">
                         <div class="card-title center" style="text-transform: uppercase;"><strong>Você não possui permissão para acessar esta área!</strong></div>
                         <div class="divider"></div>

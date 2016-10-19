@@ -102,7 +102,19 @@ public class TrocaService implements BaseTrocaService{
 
     @Override
     public Long countByCriteria(Map<Long, Object> criteria, Long limit, Long offset) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = ConnectionManager.getInstance().getConnection();
+        Long count = null;
+        try {
+            TrocaDAO dao = new TrocaDAO();
+            count = dao.countByCriteria(conn, criteria, limit, offset);
+            conn.commit();
+            conn.close();
+        } catch (Exception e) {
+            conn.rollback();
+            conn.close();
+            throw e;
+        }
+        return count;
     }
 
     @Override

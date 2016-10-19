@@ -300,7 +300,19 @@ public class TrocaDAO implements BaseDAO<Troca> {
 
     @Override
     public Long countByCriteria(Connection conn, Map<Long, Object> criteria, Long limit, Long offset) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "select count(*) count from troca where usuario1_fk=? or usuario2_fk=?";
+        Long count = null;
+        PreparedStatement ps = conn.prepareStatement(sql);
+        int i = 0;
+        ps.setLong(++i, (Long)criteria.get(TrocaCriteria.ANUNCIANTE_EQ));
+        ps.setLong(++i, (Long)criteria.get(TrocaCriteria.ANUNCIANTE_EQ));
+        
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()){
+            count = rs.getLong("count");
+        }
+        
+        return count;
     }
 
     @Override

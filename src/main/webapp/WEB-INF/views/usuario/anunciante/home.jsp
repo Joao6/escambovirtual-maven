@@ -49,7 +49,7 @@
                                     <td><b>Ofertas recebidas: </b><c:if test="${not empty countOferta}">${countOferta}</c:if><c:if test="${empty countOferta}">Nenhuma até o momento</c:if></td>
                                     </tr>
                                     <tr>
-                                        <td><b>Trocas realizadas: </b>Nenhuma até o momento</td>
+                                        <td><b>Trocas realizadas: </b><c:if test="${not empty countTrocas}">${countTrocas}</c:if><c:if test="${empty countTrocas}">Nenhuma até o momento</c:if></td>
                                     </tr>                                
                                 </table>
                             </div>
