@@ -124,6 +124,7 @@ public class OfertaController {
             OfertaService os = new OfertaService();
             Map<Long, Object> criteria = new HashMap<>();
             criteria.put(OfertaCriteria.ANUNCIANTE_ID, anunciante.getId());
+            criteria.put(OfertaCriteria.STATUS_EQ, "Enviada");
             List<Oferta> ofertaList = os.readByCriteria(criteria, null, null);
             if (ofertaList != null) {
                 for (Oferta oferta : ofertaList) {

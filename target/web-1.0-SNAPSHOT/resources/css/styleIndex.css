@@ -204,6 +204,9 @@ and open the template in the editor.
 
 .nomes{
     font-family: 'Montserrat', sans-serif;
+    margin-top: 50%;
+    font-size: 15pt;
+    margin-left: 10%;
 
 }
 

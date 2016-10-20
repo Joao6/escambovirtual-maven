@@ -314,7 +314,7 @@ public class OfertaDAO implements BaseDAO<Oferta> {
 
         String status = (String) criteria.get(OfertaCriteria.STATUS_EQ);
         if (status != null && !status.isEmpty()) {
-            sql += "AND oferta.status=" + status;
+            sql += "AND oferta.status='" + status+"'";
         }
 
         return sql;

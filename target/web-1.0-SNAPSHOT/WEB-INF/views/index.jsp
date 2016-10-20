@@ -128,21 +128,21 @@
                     </div>
                     <div class="box5 col s12 m2 l2">
                         <h5 class="nomes">Joao Pedro</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
                     </div>
                     <div class="box6 col s12 m2 l2">
                         <img class="img" src="<c:url value="/resources/img/mauricio.jpg"/>">
                     </div>
                     <div class="box7 col s12 m2 l2">
                         <h5 class="nomes">José Mauricio</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
                     </div>
                     <div class="box8 col s12 m2 l2">
                         <img class="img" src="<c:url value="/resources/img/pedro.jpg"/>">
                     </div>
                     <div class="box9 col s12 m2 l2">
                         <h5 class="nomes">Pedro Arvellos</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
                     </div>
                 </div>
             </div>
